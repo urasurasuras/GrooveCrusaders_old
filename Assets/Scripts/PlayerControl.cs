@@ -1,10 +1,68 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Input;
 using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
+    //CONTROLS
+    [SerializeField] private Player1controls _controls;
+
+
+    private void OnEnable()
+    {
+        _controls.player1.South.performed += HandleSouth;
+        _controls.player1.South.Enable();
+
+        _controls.player1.East.performed += HandleEast;
+        _controls.player1.East.Enable();
+
+        _controls.player1.North.performed += HandleNorth;
+        _controls.player1.North.Enable();
+
+        _controls.player1.West.performed += HandleWest;
+        _controls.player1.West.Enable();
+    }
+
+
+    private void HandleSouth(InputAction.CallbackContext context)
+    {
+        Debug.Log("South");
+    }
+    private void HandleWest(InputAction.CallbackContext obj)
+    {
+        Debug.Log("West");
+    }
+    private void HandleNorth(InputAction.CallbackContext obj)
+    {
+        Debug.Log("North");
+    }
+    private void HandleEast(InputAction.CallbackContext obj)
+    {
+        Debug.Log("East");
+    }
+
+    private void OnDisable()
+    {
+        _controls.player1.South.performed -= HandleSouth;
+        _controls.player1.South.Disable();
+
+        _controls.player1.East.performed -= HandleEast;
+        _controls.player1.East.Disable();
+
+        _controls.player1.North.performed -= HandleNorth;
+        _controls.player1.North.Disable();
+
+        _controls.player1.West.performed -= HandleWest;
+        _controls.player1.West.Disable();
+    }
+
+
+
+
+
     public float speed;
     public Text countText;
     public Text sizeText;
@@ -47,6 +105,9 @@ public class PlayerControl : MonoBehaviour
         //rb2d.AddForce(movement*speed);
 
         //7. Instead of adding force (like above) we use -/+ position to make more responsive movement while also implementing the "speed" variable
+
+
+
         if (Input.GetKey(KeyCode.A))
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
