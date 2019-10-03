@@ -19,7 +19,7 @@ public class PlayerControl : MonoBehaviour
     private bool facingRight;
 
     public bool winCondition;
-    public GameObject playingSound = GameObject.Find("PlayingSound");
+
 
     
     public GameObject liteToRight, liteToLeft;
@@ -35,13 +35,8 @@ public class PlayerControl : MonoBehaviour
         facingRight = true;
         count = 0;
         size = 0;
-        winText.text = "";
+        //winText.text = "";
         //loseText.text = "";
-
-        pickupSound = GetComponent<AudioSource>();
-        winSound = GetComponent<AudioSource>();
-        playSound = GetComponent<AudioSource>();
-        loseSound = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -79,37 +74,37 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    public bool charPickingUp;
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("PickUp"))
-        {
-            other.gameObject.SetActive(false);
-            count = count+1;
-            pickupSound.Play();//11. Added an audio source component to the “Player” object that plays a sound each time an OnTriggerEnter2D method is called
-            size = size -1;
-            transform.localScale += new Vector3(-0.01F, -0.01F, 0);//9. Made the player’s scale slightly smaller on each pickup
+    //public bool charPickingUp;
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.gameObject.CompareTag("PickUp"))
+    //    {
+    //        other.gameObject.SetActive(false);
+    //        count = count+1;
+    //        pickupSound.Play();//11. Added an audio source component to the “Player” object that plays a sound each time an OnTriggerEnter2D method is called
+    //        size = size -1;
+    //        transform.localScale += new Vector3(-0.01F, -0.01F, 0);//9. Made the player’s scale slightly smaller on each pickup
 
-        }
-    }
+    //    }
+    //}
 
    
     // Update is called once per frame
     void Update()
     {
-        countText.text = "Count: " + count.ToString();
-        sizeText.text = "Size: " + size.ToString();
-        if (count >= 13)
-        {
-            winText.text = "You Win !";
-            winCondition = true;
-        }
+        //countText.text = "Count: " + count.ToString();
+        //sizeText.text = "Size: " + size.ToString();
+        //if (count >= 13)
+        //{
+        //    winText.text = "You Win !";
+        //    winCondition = true;
+        //}
 
-        if (winCondition==true)
-        {
-            playingSound.gameObject.SetActive(false);
-            winSound.Play();
-        }
+        //if (winCondition==true)
+        //{
+
+        //    winSound.Play();
+        //}
         
     }
 

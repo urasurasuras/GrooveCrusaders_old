@@ -2039,11 +2039,9 @@ MonoBehaviour:
   playSound: {fileID: 0}
   loseSound: {fileID: 0}
   winCondition: 0
-  playingSound: {fileID: 0}
   liteToRight: {fileID: 0}
   liteToLeft: {fileID: 0}
   fireRate: 0
-  charPickingUp: 0
 --- !u!61 &1949333874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2090,7 +2088,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1949333876
 SpriteRenderer:
   m_ObjectHideFlags: 0
