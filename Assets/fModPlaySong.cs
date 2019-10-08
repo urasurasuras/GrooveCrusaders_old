@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class fModPlaySong : MonoBehaviour
 {
+    //private PlayerControl player = GameObject.Find("Player").GetComponent<PlayerControl>();
     [StructLayout(LayoutKind.Sequential)]
     class TimelineInfo
     {
@@ -25,6 +26,10 @@ public class fModPlaySong : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //if(player.gameStarted = true)
+        //{
+
+        //}
         timelineInfo = new TimelineInfo();
 
         // Explicitly create the delegate object and assign it to a member so it doesn't get freed
@@ -40,6 +45,7 @@ public class fModPlaySong : MonoBehaviour
 
         musicInstance.setCallback(beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
         //Debug.Log("CALLBACK");
+        
         musicInstance.start();
     }
 
@@ -56,7 +62,8 @@ public class fModPlaySong : MonoBehaviour
 
     void OnGUI()
     {
-        GUILayout.Box(String.Format("Current Bar = {0}, Last Marker = {1}", timelineInfo.currentMusicBar, (string)timelineInfo.lastMarker));
+        GUILayout.Box(String.Format("Current Bar = {0}{1}", timelineInfo.currentMusicBar, (string)timelineInfo.lastMarker));
+        Debug.Log("GUI");
     }
 
 
@@ -65,7 +72,7 @@ public class fModPlaySong : MonoBehaviour
     [AOT.MonoPInvokeCallback(typeof(FMOD.Studio.EVENT_CALLBACK))]
     static FMOD.RESULT BeatEventCallback(FMOD.Studio.EVENT_CALLBACK_TYPE type, FMOD.Studio.EventInstance instance, IntPtr parameterPtr)
     {
-        Debug.Log("callback");
+        //Debug.Log("callback");
         // Retrieve the user data
         IntPtr timelineInfoPtr;
         FMOD.RESULT result = instance.getUserData(out timelineInfoPtr);

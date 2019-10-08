@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
+    public bool gameStarted;
+
     //CONTROLS
     [SerializeField] private Player1controls _controls;
 
@@ -89,6 +91,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameStarted = false;
         rb2d = GetComponent<Rigidbody2D>();
         facingRight = true;
         count = 0;
@@ -128,11 +131,11 @@ public class PlayerControl : MonoBehaviour
         {
             transform.position += Vector3.down * speed * Time.deltaTime;
         }
-        if(Input.GetKey (KeyCode.Space)&& Time.time > nextFire)
+        /*if(Input.GetKey (KeyCode.Space)&& Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
             fire();
-        }
+        }*/
     }
 
     //public bool charPickingUp;
@@ -153,6 +156,13 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameStarted)
+        {
+            if (Input.anyKeyDown)
+            {
+                gameStarted = true;
+            }
+        }
         //countText.text = "Count: " + count.ToString();
         //sizeText.text = "Size: " + size.ToString();
         //if (count >= 13)

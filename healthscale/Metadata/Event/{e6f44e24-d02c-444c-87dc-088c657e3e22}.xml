@@ -5,7 +5,7 @@
 			<value>BossHealth</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c2d95048-02cc-4572-a66b-8978075229ca}</destination>
@@ -65,18 +65,11 @@
 	<object class="EventAutomatableProperties" id="{b73f09fc-0cc7-4e7d-bf9d-c0ebc97c2337}" />
 	<object class="MarkerTrack" id="{d80cf9a9-0541-460f-81cc-c31750a9a850}" />
 	<object class="GroupTrack" id="{1f450012-b90a-4b91-b296-5cf87bdbf2d1}">
-		<relationship name="modules">
-			<destination>{ac8dc6ce-aed3-4dfc-aa65-3523bf42e468}</destination>
-		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{3ebdd111-a3cb-4e5c-9f3b-a5db93d7eadb}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{1f312efe-ea5f-4273-b87d-c89b5fbfc4c9}">
-		<relationship name="modules">
-			<destination>{ac8dc6ce-aed3-4dfc-aa65-3523bf42e468}</destination>
-		</relationship>
-	</object>
+	<object class="Timeline" id="{1f312efe-ea5f-4273-b87d-c89b5fbfc4c9}" />
 	<object class="ParameterProxy" id="{2f8bd76c-24ac-4ed7-a346-85b5eb830b24}">
 		<relationship name="preset">
 			<destination>{1431c4a8-65c3-4a96-99d4-49cd6e2a1509}</destination>
@@ -107,14 +100,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{7f91c94c-c835-422e-9016-59e3f78e1ff1}" />
-	<object class="SingleSound" id="{ac8dc6ce-aed3-4dfc-aa65-3523bf42e468}">
-		<property name="length">
-			<value>272.16979591836736</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{1648083d-2419-4896-afe8-7fedf7a15183}</destination>
-		</relationship>
-	</object>
 	<object class="EventMixerGroup" id="{3ebdd111-a3cb-4e5c-9f3b-a5db93d7eadb}">
 		<property name="name">
 			<value>Audio 1</value>
