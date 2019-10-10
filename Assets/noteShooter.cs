@@ -7,8 +7,9 @@ using EZCameraShake;
 
 public class noteShooter : MonoBehaviour
 {
+    public static noteShooter instance;
     public bool gameStarted = false;
-    public float beatsPerMin;   //better if determined by FMOD
+    //public float beatsPerMin;   //better if determined by FMOD
 
     [StructLayout(LayoutKind.Sequential)]
     class TimelineInfo
@@ -38,6 +39,9 @@ public class noteShooter : MonoBehaviour
 
     void Start()
     {
+        instance = this;
+
+
         //FMOD shit
         timelineInfo = new TimelineInfo();
 
@@ -58,7 +62,7 @@ public class noteShooter : MonoBehaviour
         musicInstance.start();
         //
 
-        beatLength = 60f / beatsPerMin;
+        //beatLength = 60f / beatsPerMin;
     }
 
     void OnDestroy()
@@ -149,5 +153,14 @@ public class noteShooter : MonoBehaviour
         nextSpawnTime = Time.time + beatLength;
         Instantiate(arrow, transform.position, Quaternion.identity);
         Debug.Log("fire");
+    }
+
+    public void noteHit()
+    {
+        Debug.Log("HIT !");
+    }
+    public void noteMissed()
+    {
+        Debug.Log("MISS !");
     }
 }

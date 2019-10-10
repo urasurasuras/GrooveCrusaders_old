@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 114314592110368476}
   StringsBanks:
   - {fileID: 114743115232692518}
-  stringsBankWriteTime: 637059064849288129
+  stringsBankWriteTime: 637061635479646636
   cacheVersion: 3
 --- !u!114 &114084221342861312
 MonoBehaviour:
@@ -38,6 +38,23 @@ MonoBehaviour:
   m_Name: parameter:/MainEvent/Player Health
   m_EditorClassIdentifier: 
   Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
+--- !u!114 &114086139634679678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BossHealth/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
   Min: 0
   Max: 100
   Default: 100
@@ -166,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: E:/Belgelerim/DERSLER/IT286/GCv2/GC2/healthscale/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637059064849228159
+  lastModified: 637061635479596532
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -322,7 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: E:/Belgelerim/DERSLER/IT286/GCv2/GC2/healthscale/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637059064849288129
+  lastModified: 637061635479646636
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -365,11 +382,28 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114536719872327728}
-  - {fileID: 114094599174193468}
+  - {fileID: 114905848377507220}
+  - {fileID: 114878816286479056}
   MinDistance: 0
   MaxDistance: 0
-  Length: 187596
+  Length: 193722
+--- !u!114 &114878816286479056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainEvent/Player Health
+  m_EditorClassIdentifier: 
+  Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114892529544160718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +417,23 @@ MonoBehaviour:
   m_Name: parameter:/New Event/Player Health
   m_EditorClassIdentifier: 
   Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
+--- !u!114 &114905848377507220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainEvent/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
   Min: 0
   Max: 100
   Default: 100
@@ -424,7 +475,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114325077421389460}
+  - {fileID: 114086139634679678}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
