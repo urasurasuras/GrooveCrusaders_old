@@ -86,11 +86,13 @@ public class PlayerControl : MonoBehaviour
     Vector2 litePos;
     public float fireRate = 0.5f;
     float nextFire = 0.0f;
+    public bool playerCanFire;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.RegisterPlayerControl(this);
         gameStarted = false;
         rb2d = GetComponent<Rigidbody2D>();
         facingRight = true;
@@ -131,11 +133,12 @@ public class PlayerControl : MonoBehaviour
         {
             transform.position += Vector3.down * speed * Time.deltaTime;
         }
-        /*if(Input.GetKey (KeyCode.Space)&& Time.time > nextFire)
+        if(Input.GetKey (KeyCode.Space)&& playerCanFire)
         {
-            nextFire = Time.time + fireRate;
+            //nextFire = Time.time + fireRate;
             fire();
-        }*/
+            playerCanFire = false;
+        }
     }
 
     //public bool charPickingUp;
@@ -181,9 +184,6 @@ public class PlayerControl : MonoBehaviour
 
     void fire()
     {
-        transform.localScale += new Vector3(+0.01F, +0.01F, 0);
-        size = size + 1;
-
         litePos = transform.position;
         if (facingRight)
         {
@@ -195,6 +195,5 @@ public class PlayerControl : MonoBehaviour
             litePos += new Vector2(-1.8f, 0f);
             Instantiate(liteToLeft, litePos, Quaternion.identity);
         }
-
     }
 }
