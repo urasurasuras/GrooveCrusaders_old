@@ -24,9 +24,8 @@ public class noteScroll : MonoBehaviour
         {
             if (canBePressed)
             {
-                gameObject.SetActive(false);
-
                 noteShooter.instance.noteHit();
+                gameObject.SetActive(false);
             }
         }
         transform.position -= new Vector3(notespeed * Time.deltaTime, 0, 0);
@@ -36,7 +35,7 @@ public class noteScroll : MonoBehaviour
     {
         if(other.tag == "Activator")
         {
-            Debug.Log("can be pressed");
+            //Debug.Log("can be pressed");
             canBePressed = true;
             GameManager.Instance.PlayerCanShoot(true);
         }

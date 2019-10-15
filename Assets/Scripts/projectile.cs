@@ -21,11 +21,10 @@ public class projectile : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.SetActive(false);
             Destroy(gameObject, 0f);
         }
     }

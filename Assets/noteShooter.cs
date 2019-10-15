@@ -153,15 +153,15 @@ public class noteShooter : MonoBehaviour
     void fireNote(){
         nextSpawnTime = Time.time + beatLength;
         Instantiate(arrow, transform.position, Quaternion.identity);
-        Debug.Log("fire");
+        //Debug.Log("fire");
     }
 
     public void noteHit()
     {
-        Debug.Log("HIT !");
+        //Debug.Log("HIT !");
     }
     public void noteMissed()
     {
-        Debug.Log("MISS !");
+        //Debug.Log("MISS !");
     }
 }

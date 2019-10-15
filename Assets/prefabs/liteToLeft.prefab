@@ -411,4 +411,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velX: -15
-  direction: 180
+  direction: 0
