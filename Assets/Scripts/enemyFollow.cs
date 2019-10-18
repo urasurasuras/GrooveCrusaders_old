@@ -20,10 +20,19 @@ public class enemyFollow : MonoBehaviour
     public bool charLosing;
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("enemy triggered?");
+        Destroy(gameObject, 0f);
+
+        if (other.gameObject.tag == "Proectile")
+        {
+            Debug.Log("projectiel hit enemy");
+            Destroy(gameObject, 0f);
+        }
+        /*
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.SetActive(false);
-        }
+        }*/
     }
     // Update is called once per frame
     void Update()

@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using EZCameraShake;
-
+using UnityEngine.Events;
 public class noteShooter : MonoBehaviour
 {
     public static noteShooter instance;
     public bool playerCanAttack;
     public bool gameStarted = false;
     //public float beatsPerMin;   //better if determined by FMOD
+
+    public static UnityEvent markerEvent;
+    public static UnityEvent barEvent;
 
     [StructLayout(LayoutKind.Sequential)]
     class TimelineInfo
@@ -37,9 +40,14 @@ public class noteShooter : MonoBehaviour
     private float beatLength;
     public static string marker;
     public string latestMarker;
+    public static int bar;
+    public int latestBar;
 
     void Start()
     {
+        markerEvent = new UnityEvent();
+        barEvent = new UnityEvent();
+        markerEvent.AddListener(fireNote);
         instance = this;
 
 
@@ -110,6 +118,7 @@ public class noteShooter : MonoBehaviour
                     {
                         var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
                         timelineInfo.currentMusicBar = parameter.bar;
+                        bar = timelineInfo.currentMusicBar;
                         //Debug.Log("bedug 1");
                     }
                     break;
@@ -118,6 +127,7 @@ public class noteShooter : MonoBehaviour
                         var parameter = (FMOD.Studio.TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_MARKER_PROPERTIES));
                         timelineInfo.lastMarker = parameter.name;
                         marker = timelineInfo.lastMarker;
+                        //markerEvent.Invoke();
                         //Debug.Log("bedug 2");
 
                     }
@@ -131,18 +141,16 @@ public class noteShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!gameStarted)
-        //{
-        //    if (Input.anyKeyDown) { gameStarted = true; }
-        //}
-        //if (shouldSpawn())
-        //{
-            if (latestMarker != marker) {
-                fireNote();
+        if (latestMarker != marker) {
             CameraShaker.Instance.ShakeOnce(1f, 1f, .1f, .1f);
-                latestMarker = marker;
-            }
-        //}
+            latestMarker = marker;
+            markerEvent.Invoke();
+        }
+        if (latestBar != bar)
+        {
+            latestBar = bar;
+            barEvent.Invoke();
+        }
     }
 
     private bool shouldSpawn()
