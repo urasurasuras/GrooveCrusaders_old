@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Input;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float playerHealth =100;
+    public static UnityEvent playerTouchingEnemy;
+    public double playerHealth =100;
     public bool gameStarted;
 
     //CONTROLS
@@ -93,6 +95,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerTouchingEnemy = new UnityEvent();
         GameManager.Instance.RegisterPlayerControl(this);
         gameStarted = false;
         rb2d = GetComponent<Rigidbody2D>();
@@ -112,7 +115,7 @@ public class PlayerControl : MonoBehaviour
 
         //7. Instead of adding force (like above) we use -/+ position to make more responsive movement while also implementing the "speed" variable
 
-
+        playerTouchingEnemy.Invoke();
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -167,6 +170,10 @@ public class PlayerControl : MonoBehaviour
                 gameStarted = true;
             }
         }
+        if (playerHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
         //countText.text = "Count: " + count.ToString();
         //sizeText.text = "Size: " + size.ToString();
         //if (count >= 13)
@@ -183,20 +190,25 @@ public class PlayerControl : MonoBehaviour
         
     }
 
+    private void dmgOverTime()
+    {
+        playerHealth -= 0.02;
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
-        StartCoroutine(dmgOverTime(10f, 50f));
-    }
-    IEnumerator dmgOverTime(float dmgAmount, float duration)
-    {
-        float dmgDealt = 0;
-        float dmgPerLoop = dmgAmount / duration;
-        while (dmgAmount > dmgDealt)
+        if (other.gameObject.tag == "Enemy")
         {
-            playerHealth -= dmgPerLoop;
-            Debug.Log(playerHealth);
-            dmgDealt += dmgPerLoop;
-            yield return new WaitForSeconds(1f);
+            Debug.Log("touching boss");
+            playerTouchingEnemy.AddListener(dmgOverTime);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Debug.Log("not touching enemy anymore");
+            playerTouchingEnemy.RemoveListener(dmgOverTime);
         }
     }
 
