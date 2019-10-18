@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
+    public float playerHealth =100;
     public bool gameStarted;
 
     //CONTROLS
@@ -180,6 +181,23 @@ public class PlayerControl : MonoBehaviour
         //    winSound.Play();
         //}
         
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        StartCoroutine(dmgOverTime(10f, 50f));
+    }
+    IEnumerator dmgOverTime(float dmgAmount, float duration)
+    {
+        float dmgDealt = 0;
+        float dmgPerLoop = dmgAmount / duration;
+        while (dmgAmount > dmgDealt)
+        {
+            playerHealth -= dmgPerLoop;
+            Debug.Log(playerHealth);
+            dmgDealt += dmgPerLoop;
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     void fire()

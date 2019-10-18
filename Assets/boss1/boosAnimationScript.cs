@@ -91,6 +91,5 @@ public class boosAnimationScript : MonoBehaviour
     void Update()
     {
         Boss1HealthSlider.value = boss1Health;
-        
     }
 }
