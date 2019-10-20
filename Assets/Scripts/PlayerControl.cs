@@ -124,23 +124,23 @@ public class PlayerControl : MonoBehaviour
 
         playerTouchingEnemy.Invoke();
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && !isDrummerStationary)
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
             transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
             facingRight = false;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && !isDrummerStationary)
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
             transform.eulerAngles = new Vector3(0, 0, 0); // Normal
             facingRight = true;
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && !isDrummerStationary)
         {
             transform.position += Vector3.up * speed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && !isDrummerStationary)
         {
             transform.position += Vector3.down * speed * Time.deltaTime;
         }

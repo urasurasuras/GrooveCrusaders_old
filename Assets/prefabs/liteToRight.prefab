@@ -410,5 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e38119d656a97a419f33a1b654f10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerControl: {fileID: 0}
   velX: 15
+  rb: {fileID: 643602350668238402}
   direction: 180
