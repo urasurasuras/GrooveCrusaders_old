@@ -11,6 +11,9 @@ public class PlayerControl : MonoBehaviour
     public static UnityEvent playerTouchingEnemy;
     public double playerHealth =100;
     public bool gameStarted;
+    Animator drummerAnimationController;
+
+    private bool isDrummerStationary;
 
 
     //CONTROLS
@@ -105,6 +108,9 @@ public class PlayerControl : MonoBehaviour
         size = 0;
         //winText.text = "";
         //loseText.text = "";
+        isDrummerStationary = false;
+        drummerAnimationController = GetComponent<Animator>();
+
     }
 
     void FixedUpdate()
@@ -139,6 +145,25 @@ public class PlayerControl : MonoBehaviour
             transform.position += Vector3.down * speed * Time.deltaTime;
         }
 
+
+
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            //Debug.Log("drummer toggle key pressed");
+            if (!isDrummerStationary)
+            {
+                //Debug.Log("inside if stationary");
+
+                setDrummerStationary();
+            }
+            else if (isDrummerStationary)
+            {
+                //Debug.Log("inside if walking");
+
+                setDrummerWalking();
+            }
+        }
+
     }
 
     //public bool charPickingUp;
@@ -159,7 +184,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(playerCanFire);
+        //Debug.Log(playerCanFire);
         if (!gameStarted)
         {
             if (Input.anyKeyDown)
@@ -171,6 +196,8 @@ public class PlayerControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+
         //countText.text = "Count: " + count.ToString();
         //sizeText.text = "Size: " + size.ToString();
         //if (count >= 13)
@@ -186,7 +213,23 @@ public class PlayerControl : MonoBehaviour
         //}
         
     }
+    public void setDrummerStationary()
+    {
+        //Debug.Log("Stationary: " + drummerAnimationController.GetBool("isStationary"));
 
+        drummerAnimationController.SetBool("isStationary", true);
+        isDrummerStationary = true;
+        Debug.Log(isDrummerStationary);
+    }
+    public void setDrummerWalking()
+    {
+        //Debug.Log("Stationary: " + drummerAnimationController.GetBool("isStationary"));
+
+        drummerAnimationController.SetBool("isStationary", false);
+        isDrummerStationary = false;
+        Debug.Log(isDrummerStationary);
+
+    }
     private void dmgOverTime()
     {
         Debug.Log(playerHealth);

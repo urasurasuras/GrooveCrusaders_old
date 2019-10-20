@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class boosAnimationScript : MonoBehaviour
 {
-    [SerializeField] Animator bossAnimationController;
+    Animator bossAnimationController;
     public BoxCollider2D centerCollider;
     public BoxCollider2D rightSideCollider;
     public BoxCollider2D leftSideCollider;

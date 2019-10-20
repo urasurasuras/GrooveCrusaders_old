@@ -8147,7 +8147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e87bad2a8f718249b738aa9702dda6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossAnimationController: {fileID: 0}
   centerCollider: {fileID: 2003192230}
   rightSideCollider: {fileID: 2003192229}
   leftSideCollider: {fileID: 2003192231}
