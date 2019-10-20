@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class projectile : MonoBehaviour
 {
-    public float velX = 15f;
-    Rigidbody2D rb;
+    public Transform PlayerControl;
+    public float velX;
+    public Rigidbody2D rb;
     public float direction;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        transform.eulerAngles = new Vector3(0, direction, 0); // Flipped
+        rb.velocity = transform.right * velX;
     }
 
     // Update is called once per frame
@@ -25,4 +25,8 @@ public class projectile : MonoBehaviour
     {
         Destroy(gameObject, 0f);
     }
+    //void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    Destroy(gameObject, 0f);
+    //}
 }

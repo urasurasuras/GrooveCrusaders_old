@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using EZCameraShake;
 using UnityEngine.Events;
+
 public class noteShooter : MonoBehaviour
 {
     public static noteShooter instance;

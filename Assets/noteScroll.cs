@@ -8,7 +8,7 @@ public class noteScroll : MonoBehaviour
     public bool canBePressed;
     public KeyCode keyToPress;
 
-    public int lifeTime = 10;
+    public int lifeTime = 5;
 
     void Awake() { Destroy(gameObject, lifeTime); }
     // Start is called before the first frame update

@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
         get
         {
             return _instance;
-
         }
     }
     private static GameManager _instance;

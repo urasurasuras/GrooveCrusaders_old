@@ -12,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     public double playerHealth =100;
     public bool gameStarted;
 
+
     //CONTROLS
     [SerializeField] private Player1controls _controls;
 
@@ -137,12 +138,7 @@ public class PlayerControl : MonoBehaviour
         {
             transform.position += Vector3.down * speed * Time.deltaTime;
         }
-        if(Input.GetKey (KeyCode.Space)&& playerCanFire)
-        {
-            //nextFire = Time.time + fireRate;
-            fire();
-            playerCanFire = false;
-        }
+
     }
 
     //public bool charPickingUp;
@@ -163,6 +159,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(playerCanFire);
         if (!gameStarted)
         {
             if (Input.anyKeyDown)
@@ -192,6 +189,7 @@ public class PlayerControl : MonoBehaviour
 
     private void dmgOverTime()
     {
+        Debug.Log(playerHealth);
         playerHealth -= 0.02;
     }
 
@@ -212,18 +210,4 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void fire()
-    {
-        litePos = transform.position;
-        if (facingRight)
-        {
-            litePos += new Vector2(+1.8f, 0f);
-            Instantiate(liteToRight, litePos, Quaternion.identity);
-        }
-        else if (!facingRight)
-        {
-            litePos += new Vector2(-1.8f, 0f);
-            Instantiate(liteToLeft, litePos, Quaternion.identity);
-        }
-    }
 }

@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class enemyFollow : MonoBehaviour
 {
     public float speed;
     public float stoppingDistance;
+    public static UnityEvent enemyExplodingOnPlayer;
 
     private Rigidbody2D rb2d;
 
