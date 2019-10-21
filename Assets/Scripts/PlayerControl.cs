@@ -176,21 +176,15 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    //public bool charPickingUp;
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.gameObject.CompareTag("PickUp"))
-    //    {
-    //        other.gameObject.SetActive(false);
-    //        count = count+1;
-    //        pickupSound.Play();//11. Added an audio source component to the “Player” object that plays a sound each time an OnTriggerEnter2D method is called
-    //        size = size -1;
-    //        transform.localScale += new Vector3(-0.01F, -0.01F, 0);//9. Made the player’s scale slightly smaller on each pickup
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Healing")
+        {
+            playerHealth += 10;
+        }
+    }
 
-    //    }
-    //}
 
-   
     // Update is called once per frame
     void Update()
     {
