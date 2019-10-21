@@ -8,9 +8,9 @@ using UnityEngine.Events;
 
 public class PlayerControl : MonoBehaviour
 {
-    
+
     public static UnityEvent playerTouchingEnemy;
-    public double playerHealth =100;
+    public double playerHealth = 100;
     public bool gameStarted;
     Animator drummerAnimationController;
 
@@ -74,25 +74,15 @@ public class PlayerControl : MonoBehaviour
 
 
     public float speed;
-    public Text countText;
-    public Text sizeText;
-    public Text winText;
-    public Text loseText;
-
-    public  AudioSource pickupSound, winSound, playSound, loseSound;
 
     private Rigidbody2D rb2d;
     private int count, size;
 
     private bool facingRight;
 
-    public bool winCondition;
 
-
-    
     public GameObject liteToRight, liteToLeft;
     Vector2 litePos;
-    public float fireRate = 0.5f;
     float nextFire = 0.0f;
     public bool playerCanFire;
 
@@ -104,6 +94,7 @@ public class PlayerControl : MonoBehaviour
     {
         weapon_guitar = GetComponent<weaponGuitar>();
         weapon_drumset = GetComponent<weaponDrumset>();
+
 
         playerTouchingEnemy = new UnityEvent();
         GameManager.Instance.RegisterPlayerControl(this);
@@ -127,6 +118,19 @@ public class PlayerControl : MonoBehaviour
         //rb2d.AddForce(movement*speed);
 
         //7. Instead of adding force (like above) we use -/+ position to make more responsive movement while also implementing the "speed" variable
+
+        if (!gameStarted)
+        {
+            if (Input.anyKeyDown)
+            {
+                gameStarted = true;
+            }
+        }
+        if (playerHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+
 
         playerTouchingEnemy.Invoke();
 
@@ -191,33 +195,6 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         weaponCanShoot(playerCanFire);
-        if (!gameStarted)
-        {
-            if (Input.anyKeyDown)
-            {
-                gameStarted = true;
-            }
-        }
-        if (playerHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-
-
-        //countText.text = "Count: " + count.ToString();
-        //sizeText.text = "Size: " + size.ToString();
-        //if (count >= 13)
-        //{
-        //    winText.text = "You Win !";
-        //    winCondition = true;
-        //}
-
-        //if (winCondition==true)
-        //{
-
-        //    winSound.Play();
-        //}
-        
     }
     public void setDrummerStationary()
     {
@@ -237,8 +214,10 @@ public class PlayerControl : MonoBehaviour
     }
     public void weaponCanShoot(bool pf)
     {
-       weapon_guitar.guitarCanFire = pf;
-       weapon_drumset.drumCanFire = pf;
+        //Debug.Log(weapon_guitar);
+        //Debug.Log(weapon_drumset);
+        weapon_guitar.guitarCanFire = pf;
+        weapon_drumset.drumCanFire = pf;
     }
     private void dmgOverTime()
     {

@@ -13,7 +13,7 @@ public class noteShooter : MonoBehaviour
     public bool gameStarted = false;
     //public float beatsPerMin;   //better if determined by FMOD
 
-    public static UnityEvent markerEvent;
+    public static UnityEvent markerOnEvent;
     public static UnityEvent barEvent;
 
     [StructLayout(LayoutKind.Sequential)]
@@ -46,9 +46,9 @@ public class noteShooter : MonoBehaviour
 
     void Start()
     {
-        markerEvent = new UnityEvent();
+        markerOnEvent = new UnityEvent();
         barEvent = new UnityEvent();
-        markerEvent.AddListener(fireNote);
+        markerOnEvent.AddListener(fireNote);
         instance = this;
 
 
@@ -145,7 +145,7 @@ public class noteShooter : MonoBehaviour
         if (latestMarker != marker) {
             CameraShaker.Instance.ShakeOnce(1f, 1f, .1f, .1f);
             latestMarker = marker;
-            markerEvent.Invoke();
+            markerOnEvent.Invoke();
         }
         if (latestBar != bar)
         {

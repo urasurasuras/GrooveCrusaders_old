@@ -6682,21 +6682,14 @@ MonoBehaviour:
   _controls:
     m_Asset: {fileID: 11400000, guid: 0152e72508b5eac498dc0e4f2a0b503c, type: 3}
   speed: 5
-  countText: {fileID: 0}
-  sizeText: {fileID: 0}
-  winText: {fileID: 0}
-  loseText: {fileID: 0}
-  pickupSound: {fileID: 0}
-  winSound: {fileID: 0}
-  playSound: {fileID: 0}
-  loseSound: {fileID: 0}
-  winCondition: 0
   liteToRight: {fileID: 643602350668238428, guid: 065696cb1fe0f51419e15e25caeb83bf,
     type: 3}
   liteToLeft: {fileID: 1936708947533573480, guid: c1c73a352bbc11e4c8ad65c73f5a4d4f,
     type: 3}
   fireRate: 0
   playerCanFire: 0
+  weapon_guitar: {fileID: 0}
+  weapon_drumset: {fileID: 0}
 --- !u!50 &792309493
 Rigidbody2D:
   serializedVersion: 4
@@ -7570,21 +7563,14 @@ MonoBehaviour:
   _controls:
     m_Asset: {fileID: 11400000, guid: 0152e72508b5eac498dc0e4f2a0b503c, type: 3}
   speed: 5
-  countText: {fileID: 0}
-  sizeText: {fileID: 0}
-  winText: {fileID: 0}
-  loseText: {fileID: 0}
-  pickupSound: {fileID: 0}
-  winSound: {fileID: 0}
-  playSound: {fileID: 0}
-  loseSound: {fileID: 0}
-  winCondition: 0
   liteToRight: {fileID: 643602350668238428, guid: 065696cb1fe0f51419e15e25caeb83bf,
     type: 3}
   liteToLeft: {fileID: 1936708947533573480, guid: c1c73a352bbc11e4c8ad65c73f5a4d4f,
     type: 3}
   fireRate: 0
   playerCanFire: 0
+  weapon_guitar: {fileID: 0}
+  weapon_drumset: {fileID: 0}
 --- !u!50 &1589021008
 Rigidbody2D:
   serializedVersion: 4
@@ -7678,10 +7664,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1589021004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33b325875572df743a9e78d2f63d7b7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 05b71ce2c3048104f9bd04986cecbd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drumPulseObject: {fileID: 7994685418802011169, guid: 1b717218ba5a09f4a9e58741110deaac,
+  drummerPulse: {fileID: 7994685418802011169, guid: 1b717218ba5a09f4a9e58741110deaac,
     type: 3}
   firePoint: {fileID: 2138343456}
   drumCanFire: 0

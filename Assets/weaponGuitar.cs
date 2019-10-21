@@ -11,6 +11,7 @@ public class weaponGuitar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(guitarCanFire);
         if (Input.GetKey(KeyCode.Space) && guitarCanFire)
         {
             fire();
