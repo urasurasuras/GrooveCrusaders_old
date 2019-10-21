@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public class PlayerControl : MonoBehaviour
 {
+    
     public static UnityEvent playerTouchingEnemy;
     public double playerHealth =100;
     public bool gameStarted;
@@ -99,6 +100,9 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        weaponGuitar weapon_guitar = GetComponent<weaponGuitar>();
+        weaponDrumset weapon_drumset = GetComponent<weaponDrumset>();
+
         playerTouchingEnemy = new UnityEvent();
         GameManager.Instance.RegisterPlayerControl(this);
         gameStarted = false;

@@ -45,7 +45,6 @@ public class noteScroll : MonoBehaviour
         if(other.tag == "Activator")
         {
             canBePressed = false;
-
             GameManager.Instance.PlayerCanShoot(false);
         }
     }

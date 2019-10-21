@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    public static UnityEvent onBeatEvent;
     List<PlayerControl> playerList;
     public static GameManager Instance
     {
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        onBeatEvent = new UnityEvent();
         playerList = new List<PlayerControl>();
         if (_instance == null)
         {
@@ -35,9 +38,9 @@ public class GameManager : MonoBehaviour
     {
         playerList.Add(pc);
     }
-    // Update is called once per frame
-    void Update()
+
+    void FixedUpdate()
     {
-        
+        onBeatEvent.Invoke();
     }
 }
