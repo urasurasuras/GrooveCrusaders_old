@@ -96,12 +96,14 @@ public class PlayerControl : MonoBehaviour
     float nextFire = 0.0f;
     public bool playerCanFire;
 
+    weaponGuitar weapon_guitar;
+    weaponDrumset weapon_drumset;
 
     // Start is called before the first frame update
     void Start()
     {
-        weaponGuitar weapon_guitar = GetComponent<weaponGuitar>();
-        weaponDrumset weapon_drumset = GetComponent<weaponDrumset>();
+        weapon_guitar = GetComponent<weaponGuitar>();
+        weapon_drumset = GetComponent<weaponDrumset>();
 
         playerTouchingEnemy = new UnityEvent();
         GameManager.Instance.RegisterPlayerControl(this);
@@ -188,7 +190,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(playerCanFire);
+        weaponCanShoot(playerCanFire);
         if (!gameStarted)
         {
             if (Input.anyKeyDown)
@@ -231,8 +233,12 @@ public class PlayerControl : MonoBehaviour
 
         drummerAnimationController.SetBool("isStationary", false);
         isDrummerStationary = false;
-        Debug.Log(isDrummerStationary);
-
+        //Debug.Log(isDrummerStationary);
+    }
+    public void weaponCanShoot(bool pf)
+    {
+       weapon_guitar.guitarCanFire = pf;
+       weapon_drumset.drumCanFire = pf;
     }
     private void dmgOverTime()
     {
