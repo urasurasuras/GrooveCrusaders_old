@@ -16,7 +16,7 @@ public class weaponBass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) /*&& bassCanFire*/)
+        if (Input.GetKeyDown(KeyCode.Space) /*&& bassCanFire*/)
         {
             fire();
             bassCanFire = false;

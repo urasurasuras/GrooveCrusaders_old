@@ -12,7 +12,7 @@ public class weaponGuitar : MonoBehaviour
     void Update()
     {
         //Debug.Log(guitarCanFire);
-        if (Input.GetKey(KeyCode.Space) && guitarCanFire)
+        if (Input.GetKeyDown(KeyCode.Space) && guitarCanFire)
         {
             fire();
             guitarCanFire = false;

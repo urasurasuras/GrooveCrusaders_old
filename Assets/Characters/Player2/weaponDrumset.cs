@@ -12,7 +12,7 @@ public class weaponDrumset : MonoBehaviour
     void Update()
     {
         Debug.Log(drumCanFire);
-        if (Input.GetKey(KeyCode.Space) && drumCanFire)
+        if (Input.GetKeyDown(KeyCode.Space) && drumCanFire)
         {
             fire();
             drumCanFire = false;

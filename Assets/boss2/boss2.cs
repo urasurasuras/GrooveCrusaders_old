@@ -16,24 +16,30 @@ public class boss2 : MonoBehaviour
 
     public bool moving;
 
+    public GameObject boss2adObject;   //ad prefab
+    public GameObject boss2adObjectX;   //ad prefab opposite direction
+    //boss2add boss2addRef;
+
     // Start is called before the first frame update
     void Start()
     {
         moving = false;
         targetPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        noteShooter.barEvent.AddListener(setTarget);
-        //noteShooter.barEvent.AddListener(chargeToPlayer);
+        //boss2addRef = GetComponent<boss2add>();
+        noteShooter.barEvent.AddListener(chargeToPlayer);
     }
 
     // Update is called once per frame
     void Update()
     {
+        noteShooter.barEvent.AddListener(setTarget);
+
         healtBar.value = bossHealth;
-        /*if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.F))
         {
             Debug.Log("pressed F");
-            setTarget();
-        }*/
+            splitBoss2();
+        }
         if (moving)
         {
             chargeToPlayer();
@@ -42,16 +48,15 @@ public class boss2 : MonoBehaviour
 
     public void setTarget()
     {
+        //Debug.Log("Set target: " + lastPlayerPos);
         lastPlayerPos = targetPlayer.position;
         moving = true;
     }
     public void chargeToPlayer()
     {
-
-        Debug.Log("in charge func");
-
-        Debug.Log(lastPlayerPos);
-        Debug.Log(this.transform);
+        //Debug.Log("in charge func");
+        //Debug.Log(lastPlayerPos);
+        //Debug.Log(transform.position);
 
         if (transform.position != lastPlayerPos)
         {
@@ -59,5 +64,14 @@ public class boss2 : MonoBehaviour
         }
     }
 
+    void splitBoss2()
+    {
+        Instantiate(boss2adObject, transform.position, transform.rotation);
+        //boss2addRef.diagonalDirection = 30;
+        Instantiate(boss2adObjectX, transform.position, transform.rotation);
+        //boss2addRef.diagonalDirection = -30;
 
+        Destroy(this, 0f);
+        gameObject.SetActive(false);
+    }
 }
