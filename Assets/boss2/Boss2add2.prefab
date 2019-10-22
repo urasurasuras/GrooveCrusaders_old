@@ -163,4 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7431638768368486877}
   speed: 20
-  boss2adObject: {fileID: 7431638768368486435}
+  diagonalDirection: 30
+  boss2ad2Object: {fileID: 7431638768368486435}
+  boss2ad2ObjectX: {fileID: 5048193030102970265, guid: 6c0280260d475784c8665ffeb6bc68c2,
+    type: 3}

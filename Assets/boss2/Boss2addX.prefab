@@ -164,5 +164,7 @@ MonoBehaviour:
   rb: {fileID: 1677134912198873819}
   speed: 20
   diagonalDirection: -30
-  boss2adObject: {fileID: 7431638768368486435, guid: 56a3f8757e595d240aba21aa0306638d,
+  boss2ad2Object: {fileID: 7431638768368486435, guid: 56a3f8757e595d240aba21aa0306638d,
+    type: 3}
+  boss2ad2ObjectX: {fileID: 5048193030102970265, guid: 6c0280260d475784c8665ffeb6bc68c2,
     type: 3}

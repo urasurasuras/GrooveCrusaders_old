@@ -7,7 +7,8 @@ public class boss2add : MonoBehaviour
     public Rigidbody2D rb;
     public float speed;
     public int diagonalDirection;
-    public GameObject boss2adObject;   //ad prefab
+    public GameObject boss2ad2Object;   //ad prefab
+    public GameObject boss2ad2ObjectX;   //ad prefab
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +22,14 @@ public class boss2add : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) )
         {
-            //splitBoss2();
+            splitBoss2();
         }
     }
     void splitBoss2()
     {
-        Instantiate(boss2adObject, transform.position, transform.rotation);
-        Instantiate(boss2adObject, transform.position, transform.rotation);
+        Instantiate(boss2ad2Object, transform.position, transform.rotation);
+        Instantiate(boss2ad2ObjectX, transform.position, transform.rotation);
         Destroy(this, 0f);
-
+        gameObject.SetActive(false);
     }
 }
