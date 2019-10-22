@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class boss2 : MonoBehaviour
@@ -10,26 +11,29 @@ public class boss2 : MonoBehaviour
     public Transform targetPlayer;
     private Vector3 currentBossPos;
     private Vector3 lastPlayerPos;
+    public Slider healtBar;
+    public int bossHealth = 100;
 
-    bool moving;
+    public bool moving;
 
     // Start is called before the first frame update
     void Start()
     {
         moving = false;
         targetPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        noteShooter.markerOnEvent.AddListener(setTarget);
-        noteShooter.markerOnEvent.AddListener(chargeToPlayer);
+        noteShooter.barEvent.AddListener(setTarget);
+        //noteShooter.barEvent.AddListener(chargeToPlayer);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.F))
+        healtBar.value = bossHealth;
+        /*if (Input.GetKey(KeyCode.F))
         {
             Debug.Log("pressed F");
             setTarget();
-        }
+        }*/
         if (moving)
         {
             chargeToPlayer();
