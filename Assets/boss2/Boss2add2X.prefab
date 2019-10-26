@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5048193030102969959}
   - component: {fileID: 5048193030102969958}
   - component: {fileID: 4832521626432092454}
+  - component: {fileID: 7784334295644446328}
   m_Layer: 0
   m_Name: Boss2add2X
   m_TagString: Enemy
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5048193030102970265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0dadcfb9d2048754db88fb84ddf6c4e7, type: 3}
   m_Name: 
@@ -167,3 +168,20 @@ MonoBehaviour:
   boss2ad2Object: {fileID: 7431638768368486435, guid: 56a3f8757e595d240aba21aa0306638d,
     type: 3}
   boss2ad2ObjectX: {fileID: 5048193030102970265}
+--- !u!114 &7784334295644446328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5048193030102970265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a899e10cb1b2bfb41841066d08b5319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 5048193030102969959}
+  speed: 20
+  diagonalDirection: -30
+  boss2ad2Object: {fileID: 0}
+  boss2ad2ObjectX: {fileID: 0}

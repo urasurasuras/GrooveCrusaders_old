@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour
     //CONTROLS
     [SerializeField] private Player1controls _controls;
 
-
+    /*
     private void OnEnable()
     {
         _controls.player1.South.performed += HandleSouth;
@@ -68,7 +68,7 @@ public class PlayerControl : MonoBehaviour
         _controls.player1.West.performed -= HandleWest;
         _controls.player1.West.Disable();
     }
-
+    */
 
 
 
@@ -85,15 +85,22 @@ public class PlayerControl : MonoBehaviour
     Vector2 litePos;
     float nextFire = 0.0f;
     public bool playerCanFire;
+    public string up;
+    public string down;
+    public string left;
+    public string right;
 
-    weaponGuitar weapon_guitar;
-    weaponDrumset weapon_drumset;
+    public int player1Number =0;
+    public int player2Number =1;
+    public int player3Number =2;
+    public int player4Number =3;
+
+    weapon weapon;
 
     // Start is called before the first frame update
     void Start()
     {
-        weapon_guitar = GetComponent<weaponGuitar>();
-        weapon_drumset = GetComponent<weaponDrumset>();
+        weapon = GetComponent<weapon>();
 
 
         playerTouchingEnemy = new UnityEvent();
@@ -107,6 +114,29 @@ public class PlayerControl : MonoBehaviour
         //loseText.text = "";
         isDrummerStationary = false;
         drummerAnimationController = GetComponent<Animator>();
+
+
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+            {
+                Debug.Log(Input.GetJoystickNames()[i]);
+
+                up = Input.GetJoystickNames()[i] + " button up";
+                Debug.Log(up);
+                down = Input.GetJoystickNames()[i] + " button down";
+                left = Input.GetJoystickNames()[i] + " button left";
+                right = Input.GetJoystickNames()[i] + " button right";
+            }
+        }
+        
+        //else
+        //{
+        //    up = "W";
+        //    down = "S";
+        //    left = "A";
+        //    right = "D";
+        //}
 
     }
 
@@ -131,31 +161,65 @@ public class PlayerControl : MonoBehaviour
             Destroy(gameObject);
         }
 
+        //
 
         playerTouchingEnemy.Invoke();
 
-        if (Input.GetKey(KeyCode.A) && !isDrummerStationary)
-        {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-            transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-            facingRight = false;
-        }
-        if (Input.GetKey(KeyCode.D) && !isDrummerStationary)
-        {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-            transform.eulerAngles = new Vector3(0, 0, 0); // Normal
-            facingRight = true;
-        }
-        if (Input.GetKey(KeyCode.W) && !isDrummerStationary)
-        {
-            transform.position += Vector3.up * speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S) && !isDrummerStationary)
-        {
-            transform.position += Vector3.down * speed * Time.deltaTime;
-        }
 
 
+
+        float verticalAxis = Input.GetAxis("Joy0X") * speed;
+        float horizontalAxis = Input.GetAxis("Joy0Y") * speed;
+
+        //if (Input.GetAxis("Joy" + i + "X") && !isDrummerStationary)
+        //{
+        //    transform.Translate(horizontalAxis,0,0);
+        //    //transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+        //    //facingRight = false;
+        //}
+        //if (Input.GetAxis("Joy" + i + "Y") && !isDrummerStationary)
+        //{
+        //    transform.Translate(0, verticalAxis, 0);
+        //    //transform.eulerAngles = new Vector3(0, 0, 0); // Normal
+        //    //facingRight = true;
+        //}
+        //if (Input.GetButton("J1a") || Input.GetButton("J1b"))
+        //{
+        //    Debug.Log("button");
+        //}
+        //if (Input.GetKey(up) && !isDrummerStationary)
+        //{
+        //    transform.position += Vector3.up * speed * Time.deltaTime;
+        //}
+        //if (Input.GetKey(down) && !isDrummerStationary)
+        //{
+        //    transform.position += Vector3.down * speed * Time.deltaTime;
+        //}
+
+        for (int i = 0; i < 1; i++)
+        {
+            if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2) {
+                float debugXaxis = Input.GetAxis("Joy" + i + "X");
+
+                Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
+            }
+            if(Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
+            {
+                float debugYaxis = Input.GetAxis("Joy" + i + "Y");
+
+                Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
+            }
+            if (Input.GetButtonDown("J" + i + "a"))
+            {
+                bool debA = Input.GetButtonDown("J" + i + "a");
+                Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
+            }
+            if (Input.GetButtonDown("J" + i + "b"))
+            {
+                bool debB = Input.GetButtonDown("J" + i + "b");
+                Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debB);
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.Keypad0))
         {
@@ -208,10 +272,7 @@ public class PlayerControl : MonoBehaviour
     }
     public void weaponCanShoot(bool pf)
     {
-        //Debug.Log(weapon_guitar);
-        //Debug.Log(weapon_drumset);
-        weapon_guitar.guitarCanFire = pf;
-        weapon_drumset.drumCanFire = pf;
+        weapon.canFire = pf;
     }
     private void dmgOverTime()
     {
@@ -234,6 +295,11 @@ public class PlayerControl : MonoBehaviour
             Debug.Log("not touching enemy anymore");
             playerTouchingEnemy.RemoveListener(dmgOverTime);
         }
+    }
+
+    void setControllerNumber (int number)
+    {
+        //horizontalAxis = "J" + number + "Horizontal";
     }
 
 }

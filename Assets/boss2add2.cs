@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class boss2add : MonoBehaviour
+public class boss2add2 : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float speed;
@@ -14,7 +14,8 @@ public class boss2add : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile")
         {
-            splitBoss2();
+            Destroy(this, 0f);
+            gameObject.SetActive(false);
         }
     }
     // Start is called before the first frame update
@@ -27,15 +28,13 @@ public class boss2add : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) )
+        if (Input.GetKeyDown(KeyCode.F))
         {
             splitBoss2();
         }
     }
     void splitBoss2()
     {
-        Instantiate(boss2ad2Object, transform.position, transform.rotation);
-        Instantiate(boss2ad2ObjectX, transform.position, transform.rotation);
         Destroy(this, 0f);
         gameObject.SetActive(false);
     }

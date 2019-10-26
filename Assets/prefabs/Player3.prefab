@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1679272955817912838}
   - component: {fileID: 1679272955817912836}
   - component: {fileID: 1679272955817912839}
-  - component: {fileID: 1679272955817912835}
+  - component: {fileID: 4526655076077494886}
   m_Layer: 0
   m_Name: Player3
   m_TagString: Player
@@ -151,12 +151,20 @@ MonoBehaviour:
   gameStarted: 0
   _controls:
     m_Asset: {fileID: 11400000, guid: 0152e72508b5eac498dc0e4f2a0b503c, type: 3}
-  speed: 5
+  speed: 1
   liteToRight: {fileID: 643602350668238428, guid: 065696cb1fe0f51419e15e25caeb83bf,
     type: 3}
   liteToLeft: {fileID: 1936708947533573480, guid: c1c73a352bbc11e4c8ad65c73f5a4d4f,
     type: 3}
   playerCanFire: 0
+  up: 
+  down: 
+  left: 
+  right: 
+  player1Number: 0
+  player2Number: 1
+  player3Number: 2
+  player4Number: 3
 --- !u!61 &1679272955817912839
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -183,7 +191,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.5, y: 8.65}
   m_EdgeRadius: 0
---- !u!114 &1679272955817912835
+--- !u!114 &4526655076077494886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,10 +200,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679272955817912837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ed552c8ca3f87747bcc61b3a74fdd34, type: 3}
+  m_Script: {fileID: 11500000, guid: 14a1124e2a4b5c140898ff12fbf5c31b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liteObject: {fileID: 643602350668238428, guid: 065696cb1fe0f51419e15e25caeb83bf,
+  liteObject: {fileID: 1936708947533573480, guid: c1c73a352bbc11e4c8ad65c73f5a4d4f,
     type: 3}
   firePoint: {fileID: 1679272955810210649}
-  guitarCanFire: 0
+  canFire: 0

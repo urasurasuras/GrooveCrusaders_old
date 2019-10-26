@@ -18,8 +18,18 @@ public class boss2 : MonoBehaviour
 
     public GameObject boss2adObject;   //ad prefab
     public GameObject boss2adObjectX;   //ad prefab opposite direction
-    //boss2add boss2addRef;
-
+                                        //boss2add boss2addRef;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Projectile")
+        {
+            if (bossHealth <= 0)
+            {
+                splitBoss2();
+            }
+            bossHealth -= 10;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +50,8 @@ public class boss2 : MonoBehaviour
             Debug.Log("pressed F");
             splitBoss2();
         }
+       
+        
         if (moving)
         {
             chargeToPlayer();

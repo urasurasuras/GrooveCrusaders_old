@@ -2,25 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weaponDrumset : MonoBehaviour
+public class weaponDrumset : weapon
 {
-    public GameObject drummerPulse;   //projectile prefab
-    public Transform firePoint;     //position from where to fire 
-    public bool drumCanFire;
-
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(drumCanFire);
-        if (Input.GetKeyDown(KeyCode.Space) && drumCanFire)
-        {
-            fire();
-            drumCanFire = false;
-        }
-    }
-
-    void fire()
-    {
-        Instantiate(drummerPulse, firePoint.position, firePoint.rotation);
-    }
+    
 }

@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4169116229269588438}
   - component: {fileID: 4169116229269588439}
   - component: {fileID: 4169116229269588436}
-  - component: {fileID: 4169116229269588426}
+  - component: {fileID: 3148637337902758795}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -152,12 +152,20 @@ MonoBehaviour:
   gameStarted: 0
   _controls:
     m_Asset: {fileID: 11400000, guid: 0152e72508b5eac498dc0e4f2a0b503c, type: 3}
-  speed: 5
+  speed: 0.5
   liteToRight: {fileID: 643602350668238428, guid: 065696cb1fe0f51419e15e25caeb83bf,
     type: 3}
   liteToLeft: {fileID: 1936708947533573480, guid: c1c73a352bbc11e4c8ad65c73f5a4d4f,
     type: 3}
   playerCanFire: 0
+  up: 
+  down: 
+  left: 
+  right: 
+  player1Number: 0
+  player2Number: 1
+  player3Number: 2
+  player4Number: 3
 --- !u!61 &4169116229269588439
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -203,7 +211,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4169116229269588426
+--- !u!114 &3148637337902758795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,10 +220,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4169116229269588437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b71ce2c3048104f9bd04986cecbd42, type: 3}
+  m_Script: {fileID: 11500000, guid: 14a1124e2a4b5c140898ff12fbf5c31b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drummerPulse: {fileID: 7994685418802011169, guid: 1b717218ba5a09f4a9e58741110deaac,
+  liteObject: {fileID: 7994685418802011169, guid: 1b717218ba5a09f4a9e58741110deaac,
     type: 3}
   firePoint: {fileID: 4169116228736780473}
-  drumCanFire: 0
+  canFire: 0
