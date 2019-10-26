@@ -16,6 +16,11 @@ public class PlayerControl : MonoBehaviour
 
     private bool isDrummerStationary;
 
+    public GameObject char0;
+    public GameObject char1;
+    public GameObject char2;
+
+    string charID;
 
     //CONTROLS
     [SerializeField] private Player1controls _controls;
@@ -85,6 +90,8 @@ public class PlayerControl : MonoBehaviour
     Vector2 litePos;
     float nextFire = 0.0f;
     public bool playerCanFire;
+
+    /*
     public string up;
     public string down;
     public string left;
@@ -94,12 +101,16 @@ public class PlayerControl : MonoBehaviour
     public int player2Number =1;
     public int player3Number =2;
     public int player4Number =3;
+    */
 
     weapon weapon;
 
     // Start is called before the first frame update
     void Start()
     {
+        char0 = GameObject.Find("char0");
+        char1 = GameObject.Find("char1");
+        char2 = GameObject.Find("char2");
         weapon = GetComponent<weapon>();
 
 
@@ -122,11 +133,13 @@ public class PlayerControl : MonoBehaviour
             {
                 Debug.Log(Input.GetJoystickNames()[i]);
 
+                /*
                 up = Input.GetJoystickNames()[i] + " button up";
                 Debug.Log(up);
                 down = Input.GetJoystickNames()[i] + " button down";
                 left = Input.GetJoystickNames()[i] + " button left";
                 right = Input.GetJoystickNames()[i] + " button right";
+                */
             }
         }
         
@@ -168,8 +181,6 @@ public class PlayerControl : MonoBehaviour
 
 
 
-        float verticalAxis = Input.GetAxis("Joy0X") * speed;
-        float horizontalAxis = Input.GetAxis("Joy0Y") * speed;
 
         //if (Input.GetAxis("Joy" + i + "X") && !isDrummerStationary)
         //{
@@ -198,46 +209,85 @@ public class PlayerControl : MonoBehaviour
 
         for (int i = 0; i < 1; i++)
         {
-            if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2) {
+            if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2)
+            {
+
+                float horizontalAxis = Input.GetAxis("Joy" + i + "X") * speed;
+
+                //charID = "char" + i;
+
+                if (i == 0)
+                {
+                    char0.transform.Translate(horizontalAxis, 0, 0);
+                }
+                else if (i == 2)
+                {
+                    char1.transform.Translate(horizontalAxis, 0, 0);
+                }
+                if (i == 3)
+                {
+                    char2.transform.Translate(horizontalAxis, 0, 0);
+                }
+                Debug.Log("controller number " + i);
+                if (horizontalAxis > 0)
+                {
+                    //transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                }
+                if (horizontalAxis < 0)
+                {
+                    //transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                }
+
+
                 float debugXaxis = Input.GetAxis("Joy" + i + "X");
 
                 Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
             }
-            if(Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
+            if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
             {
+                float verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed;
+                if (i == 0)
+                {
+                    char0.transform.Translate(0, -verticalAxis, 0);
+                }
+                else if (i == 2)
+                {
+                    char1.transform.Translate(0, -verticalAxis, 0);
+                }
+                if (i == 3)
+                {
+                    char2.transform.Translate(0, -verticalAxis, 0);
+                }
+
                 float debugYaxis = Input.GetAxis("Joy" + i + "Y");
 
                 Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
             }
             if (Input.GetButtonDown("J" + i + "a"))
             {
+                weaponCanShoot(playerCanFire);
+
                 bool debA = Input.GetButtonDown("J" + i + "a");
                 Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
             }
             if (Input.GetButtonDown("J" + i + "b"))
             {
                 bool debB = Input.GetButtonDown("J" + i + "b");
+                if (!isDrummerStationary)
+                {
+                    //Debug.Log("inside if stationary");
+
+                    setDrummerStationary();
+                }
+                else if (isDrummerStationary)
+                {
+                    //Debug.Log("inside if walking");
+
+                    setDrummerWalking();
+                }
                 Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debB);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            //Debug.Log("drummer toggle key pressed");
-            if (!isDrummerStationary)
-            {
-                //Debug.Log("inside if stationary");
-
-                setDrummerStationary();
-            }
-            else if (isDrummerStationary)
-            {
-                //Debug.Log("inside if walking");
-
-                setDrummerWalking();
-            }
-        }
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -252,7 +302,6 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        weaponCanShoot(playerCanFire);
     }
     public void setDrummerStationary()
     {

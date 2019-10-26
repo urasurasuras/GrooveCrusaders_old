@@ -16,7 +16,7 @@ public class weapon : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canFire)
+        if (/*Input.GetKeyDown(KeyCode.Space) && */canFire)
         {
             fire();
             canFire = false;
