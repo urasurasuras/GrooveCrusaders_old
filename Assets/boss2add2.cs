@@ -10,12 +10,15 @@ public class boss2add2 : MonoBehaviour
     public GameObject boss2ad2Object;   //ad prefab
     public GameObject boss2ad2ObjectX;   //ad prefab
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("hit add");
+
         if (collision.gameObject.tag == "Projectile")
         {
-            Destroy(this, 0f);
-            gameObject.SetActive(false);
+            Destroy(collision.gameObject);
+            splitBoss2();
+            Debug.Log("with projectile");
         }
     }
     // Start is called before the first frame update

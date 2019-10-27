@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7431638768368486879}
   - component: {fileID: 7431638768368486877}
   - component: {fileID: 7431638768368486876}
-  - component: {fileID: 7078572388738358940}
   - component: {fileID: 2081865970556854363}
   m_Layer: 0
   m_Name: Boss2add2
@@ -150,24 +149,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 33.78, y: 13.69}
   m_EdgeRadius: 0
---- !u!114 &7078572388738358940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7431638768368486435}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dadcfb9d2048754db88fb84ddf6c4e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 7431638768368486877}
-  speed: 20
-  diagonalDirection: 30
-  boss2ad2Object: {fileID: 7431638768368486435}
-  boss2ad2ObjectX: {fileID: 5048193030102970265, guid: 6c0280260d475784c8665ffeb6bc68c2,
-    type: 3}
 --- !u!114 &2081865970556854363
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,6 @@ public class healingLite : MonoBehaviour
     void Start()
     {
         rb.velocity = transform.right * velX;
-
     }
 
     // Update is called once per frame

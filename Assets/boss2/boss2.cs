@@ -23,6 +23,8 @@ public class boss2 : MonoBehaviour
     {
         if (other.gameObject.tag == "Projectile")
         {
+            Destroy(other.gameObject);
+
             if (bossHealth <= 0)
             {
                 splitBoss2();

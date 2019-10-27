@@ -20,7 +20,7 @@ public class projectile : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -28,8 +28,11 @@ public class projectile : MonoBehaviour
         if (other.gameObject.tag == "Proectile")
         {
         }
-        Destroy(gameObject, 0f);
-    }
+        else
+        {
+            Destroy(gameObject, 0f);
+        }
+    }*/
     //void OnCollisionEnter2D(Collision2D other)
     //{
     //    Destroy(gameObject, 0f);

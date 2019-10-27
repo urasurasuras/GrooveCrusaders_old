@@ -131,7 +131,7 @@ public class PlayerControl : MonoBehaviour
         {
             for (int i = 0; i < Input.GetJoystickNames().Length; i++)
             {
-                Debug.Log(Input.GetJoystickNames()[i]);
+                //Debug.Log(Input.GetJoystickNames()[i]);
 
                 /*
                 up = Input.GetJoystickNames()[i] + " button up";
@@ -224,7 +224,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     char2.transform.Translate(horizontalAxis, 0, 0);
                 }
-                Debug.Log("controller number " + i);
+                //Debug.Log("controller number " + i);
                 if (horizontalAxis > 0)
                 {
                     //transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
@@ -237,7 +237,7 @@ public class PlayerControl : MonoBehaviour
 
                 float debugXaxis = Input.GetAxis("Joy" + i + "X");
 
-                Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
+                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
             }
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
             {
@@ -257,7 +257,7 @@ public class PlayerControl : MonoBehaviour
 
                 float debugYaxis = Input.GetAxis("Joy" + i + "Y");
 
-                Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
+                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
             }
             if (Input.GetButtonDown("J" + i + "a"))
             {
@@ -275,7 +275,7 @@ public class PlayerControl : MonoBehaviour
                 }
 
                 bool debA = Input.GetButtonDown("J" + i + "a");
-                Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
+                //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
             }
             if (Input.GetButtonDown("J" + i + "b"))
             {
@@ -292,7 +292,7 @@ public class PlayerControl : MonoBehaviour
 
                     setDrummerWalking();
                 }
-                Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debB);
+                //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debB);
             }
         }
     }
@@ -302,6 +302,7 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.tag == "Healing")
         {
             playerHealth += 10;
+            Destroy(other.gameObject);
         }
     }
 

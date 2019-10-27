@@ -276,7 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCanAttack: 0
   gameStarted: 0
-  LevelStateEvent: event:/MainEvent
+  LevelStateEvent: event:/GameEvent - Local Forecast
   arrow: {fileID: 4035329070204420088, guid: ff6dad4f6bca8fc49b07d602ffdc1552, type: 3}
   beatLength: 0
   latestMarker: 
@@ -607,7 +607,7 @@ PrefabInstance:
     - target: {fileID: 4169116229269588437, guid: 1e2f06fa76644be479e47414cbda4239,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4169116229269588427, guid: 1e2f06fa76644be479e47414cbda4239,
         type: 3}
@@ -2158,7 +2158,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1943801074
 MonoBehaviour:
