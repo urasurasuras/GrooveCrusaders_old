@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2827104366749895965}
   - component: {fileID: 5011610641914443215}
   m_Layer: 0
-  m_Name: Player1
+  m_Name: char0
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,6 +119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 100
   gameStarted: 0
+  char0: {fileID: 0}
+  char1: {fileID: 0}
+  char2: {fileID: 0}
   _controls:
     m_Asset: {fileID: 11400000, guid: 0152e72508b5eac498dc0e4f2a0b503c, type: 3}
   speed: 0.5
@@ -127,14 +130,6 @@ MonoBehaviour:
   liteToLeft: {fileID: 1936708947533573480, guid: c1c73a352bbc11e4c8ad65c73f5a4d4f,
     type: 3}
   playerCanFire: 0
-  up: 119
-  down: 115
-  left: 97
-  right: 100
-  player1Number: 0
-  player2Number: 1
-  player3Number: 2
-  player4Number: 3
 --- !u!61 &2827104366749895965
 BoxCollider2D:
   m_ObjectHideFlags: 0

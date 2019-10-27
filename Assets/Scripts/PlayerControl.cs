@@ -178,10 +178,6 @@ public class PlayerControl : MonoBehaviour
 
         playerTouchingEnemy.Invoke();
 
-
-
-
-
         //if (Input.GetAxis("Joy" + i + "X") && !isDrummerStationary)
         //{
         //    transform.Translate(horizontalAxis,0,0);
@@ -207,12 +203,12 @@ public class PlayerControl : MonoBehaviour
         //    transform.position += Vector3.down * speed * Time.deltaTime;
         //}
 
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
         {
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2)
             {
 
-                float horizontalAxis = Input.GetAxis("Joy" + i + "X") * speed;
+                float horizontalAxis = Input.GetAxis("Joy" + i + "X") * speed *0.5f;
 
                 //charID = "char" + i;
 
@@ -220,7 +216,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     char0.transform.Translate(horizontalAxis, 0, 0);
                 }
-                else if (i == 2)
+                if (i == 2 && !isDrummerStationary)
                 {
                     char1.transform.Translate(horizontalAxis, 0, 0);
                 }
@@ -245,12 +241,12 @@ public class PlayerControl : MonoBehaviour
             }
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
             {
-                float verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed;
+                float verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed * 0.5f;
                 if (i == 0)
                 {
                     char0.transform.Translate(0, -verticalAxis, 0);
                 }
-                else if (i == 2)
+                if (i == 2 && !isDrummerStationary)
                 {
                     char1.transform.Translate(0, -verticalAxis, 0);
                 }
@@ -265,7 +261,18 @@ public class PlayerControl : MonoBehaviour
             }
             if (Input.GetButtonDown("J" + i + "a"))
             {
-                weaponCanShoot(playerCanFire);
+                if(i == 0)  //players can fire each other's weapons
+                {
+                    weaponCanShoot(playerCanFire);
+                }
+                if (i == 2 && isDrummerStationary)
+                {
+                    weaponCanShoot(playerCanFire);
+                }
+                if (i == 3)
+                {
+                    weaponCanShoot(playerCanFire);
+                }
 
                 bool debA = Input.GetButtonDown("J" + i + "a");
                 Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);

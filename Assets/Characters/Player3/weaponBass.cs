@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weaponBass : MonoBehaviour
+public class weaponBass : weapon
 {
     public GameObject liteObject;   //projectile prefab
     public Transform firePoint;     //position from where to fire 
@@ -16,7 +16,7 @@ public class weaponBass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) /*&& bassCanFire*/)
+        if (bassCanFire)
         {
             fire();
             bassCanFire = false;

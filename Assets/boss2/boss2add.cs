@@ -15,6 +15,7 @@ public class boss2add : MonoBehaviour
         if (collision.gameObject.tag == "Projectile")
         {
             splitBoss2();
+            Debug.Log("hit add");
         }
     }
     // Start is called before the first frame update
