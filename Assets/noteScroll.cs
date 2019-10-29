@@ -9,12 +9,14 @@ public class noteScroll : MonoBehaviour
     public bool noteCanBePressed;
     public KeyCode keyToPress;
 
+    buttonController buttonControllerScript;
     public int lifeTime = 5;
 
     void Awake() { Destroy(gameObject, lifeTime); }
     // Start is called before the first frame update
     void Start()
     {
+        buttonControllerScript = GameObject.Find("Buttons_Red").GetComponent<buttonController>();
     }
 
     // Update is called once per frame
@@ -35,15 +37,14 @@ public class noteScroll : MonoBehaviour
     {
         if(other.tag == "Activator")
         {
-            //Debug.Log("can be pressed");
-            noteCanBePressed = true;
+            buttonControllerScript.noteCanBePressed = true;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.tag == "Activator")
         {
-            noteCanBePressed = false;
+            buttonControllerScript.noteCanBePressed = false;
         }
     }
     public bool learnIfCanAttack()
