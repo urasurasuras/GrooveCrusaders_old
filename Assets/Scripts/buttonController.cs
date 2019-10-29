@@ -31,15 +31,18 @@ public class buttonController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) /*&& redButtonCanBePressed*/)
         {
             redButtonBeingPressed = true;
-            Debug.Log(redButtonBeingPressed);
+            //Debug.Log(redButtonBeingPressed);
             Invoke("setBoolBack",0.5f);
             theSR.sprite = pressedImage;
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            redButtonBeingPressed = false;
+            //redButtonBeingPressed = false;
             theSR.sprite = defaultImage;
         }
+        GameManager.Instance.redButtonCanPress(redButtonBeingPressed);
+        //if(!redButtonBeingPressed)
+        //    GameManager.Instance.redButtonCanPress(false);
 
     }
     private void setBoolBack()

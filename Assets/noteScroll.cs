@@ -37,7 +37,6 @@ public class noteScroll : MonoBehaviour
         {
             //Debug.Log("can be pressed");
             noteCanBePressed = true;
-            GameManager.Instance.redButtonCanPress(true);
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -45,7 +44,6 @@ public class noteScroll : MonoBehaviour
         if(other.tag == "Activator")
         {
             noteCanBePressed = false;
-            GameManager.Instance.redButtonCanPress(false);
         }
     }
     public bool learnIfCanAttack()

@@ -37,14 +37,32 @@ public class GameManager : MonoBehaviour
     public void redButtonCanPress(bool canShoot)
     {
         buttonControllerScript.redButtonCanBePressed = canShoot;
-
+        Debug.Log("red button can press: " + canShoot);
         if (buttonControllerScript.redButtonBeingPressed)
         {
             foreach (PlayerControl pc in playerList)
             {
                 pc.playerCanFire = canShoot;
+
+                Debug.Log("players can press: " + canShoot);
+
+                //Invoke("setBoolBack(canShoot)", 0.5f);
+
             }
         }
+        if (!buttonControllerScript.redButtonBeingPressed)
+        {
+            foreach (PlayerControl pc in playerList)
+            {
+                pc.playerCanFire = false;
+
+                Debug.Log("players can press: " + canShoot);
+
+                //Invoke("setBoolBack(canShoot)", 0.5f);
+
+            }
+        }
+        
     }
 
     public void RegisterPlayerControl(PlayerControl pc)
