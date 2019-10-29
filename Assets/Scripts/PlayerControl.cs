@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour
     string charID;
 
     //CONTROLS
-    [SerializeField] private Player1controls _controls;
+    //[SerializeField] private Player1controls _controls;
 
     /*
     private void OnEnable()
@@ -131,7 +131,7 @@ public class PlayerControl : MonoBehaviour
         {
             for (int i = 0; i < Input.GetJoystickNames().Length; i++)
             {
-                //Debug.Log(Input.GetJoystickNames()[i]);
+                Debug.Log(Input.GetJoystickNames()[i]);
 
                 /*
                 up = Input.GetJoystickNames()[i] + " button up";
@@ -216,11 +216,11 @@ public class PlayerControl : MonoBehaviour
                 {
                     char0.transform.Translate(horizontalAxis, 0, 0);
                 }
-                if (i == 2 && !isDrummerStationary)
+                if (i == 1 && !isDrummerStationary)
                 {
                     char1.transform.Translate(horizontalAxis, 0, 0);
                 }
-                if (i == 3)
+                if (i == 2)
                 {
                     char2.transform.Translate(horizontalAxis, 0, 0);
                 }
@@ -237,7 +237,7 @@ public class PlayerControl : MonoBehaviour
 
                 float debugXaxis = Input.GetAxis("Joy" + i + "X");
 
-                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
+                Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
             }
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
             {
@@ -246,18 +246,18 @@ public class PlayerControl : MonoBehaviour
                 {
                     char0.transform.Translate(0, -verticalAxis, 0);
                 }
-                if (i == 2 && !isDrummerStationary)
+                if (i == 1 && !isDrummerStationary)
                 {
                     char1.transform.Translate(0, -verticalAxis, 0);
                 }
-                if (i == 3)
+                if (i == 2)
                 {
                     char2.transform.Translate(0, -verticalAxis, 0);
                 }
 
                 float debugYaxis = Input.GetAxis("Joy" + i + "Y");
 
-                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
+                Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
             }
             if (Input.GetButtonDown("J" + i + "a"))
             {
@@ -275,7 +275,7 @@ public class PlayerControl : MonoBehaviour
                 }
 
                 bool debA = Input.GetButtonDown("J" + i + "a");
-                //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
+                Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
             }
             if (Input.GetButtonDown("J" + i + "b"))
             {

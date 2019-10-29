@@ -8,26 +8,43 @@ public class buttonController : MonoBehaviour
     public Sprite defaultImage;
     public Sprite pressedImage;
 
+    public bool redButtonCanBePressed;
+    public bool redButtonBeingPressed;
+
+    public static buttonController instance;
+
+
     public KeyCode keyToPress;
 
     // Start is called before the first frame update
     void Start()
     {
-        theSR = GetComponent<SpriteRenderer>();        
+        redButtonBeingPressed = false;
+        theSR = GetComponent<SpriteRenderer>();
+        //GameManager.Instance.registerRedButton(this);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("J1a"))
+        if (Input.GetKeyDown(KeyCode.Space) /*&& redButtonCanBePressed*/)
         {
+            redButtonBeingPressed = true;
+            Debug.Log(redButtonBeingPressed);
+            Invoke("setBoolBack",0.5f);
             theSR.sprite = pressedImage;
         }
-        if (Input.GetButtonUp("J1a"))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
+            redButtonBeingPressed = false;
             theSR.sprite = defaultImage;
         }
 
+    }
+    private void setBoolBack()
+    {
+        redButtonBeingPressed = false;
     }
 
     

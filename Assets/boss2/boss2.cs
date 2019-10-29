@@ -8,7 +8,7 @@ public class boss2 : MonoBehaviour
 {
     public float speed;
 
-    public Transform targetPlayer;
+    public Transform targetCharLocation;
     private Vector3 currentBossPos;
     private Vector3 lastPlayerPos;
     public Slider healtBar;
@@ -36,7 +36,7 @@ public class boss2 : MonoBehaviour
     void Start()
     {
         moving = false;
-        targetPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        targetCharLocation = GameObject.Find("char0").GetComponent<Transform>();
         //boss2addRef = GetComponent<boss2add>();
         noteShooter.barEvent.AddListener(chargeToPlayer);
     }
@@ -63,7 +63,7 @@ public class boss2 : MonoBehaviour
     public void setTarget()
     {
         //Debug.Log("Set target: " + lastPlayerPos);
-        lastPlayerPos = targetPlayer.position;
+        lastPlayerPos = targetCharLocation.position;
         moving = true;
     }
     public void chargeToPlayer()

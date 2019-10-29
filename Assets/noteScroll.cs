@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class noteScroll : MonoBehaviour
 {
     public float notespeed;
-    public bool canBePressed;
+    public bool noteCanBePressed;
     public KeyCode keyToPress;
 
     public int lifeTime = 5;
@@ -14,7 +15,6 @@ public class noteScroll : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class noteScroll : MonoBehaviour
     {
         if (Input.GetKeyDown(keyToPress))
         {
-            if (canBePressed)
+            if (noteCanBePressed)
             {
                 noteShooter.instance.noteHit();
                 gameObject.SetActive(false);
@@ -36,20 +36,20 @@ public class noteScroll : MonoBehaviour
         if(other.tag == "Activator")
         {
             //Debug.Log("can be pressed");
-            canBePressed = true;
-            GameManager.Instance.PlayerCanShoot(true);
+            noteCanBePressed = true;
+            GameManager.Instance.redButtonCanPress(true);
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.tag == "Activator")
         {
-            canBePressed = false;
-            GameManager.Instance.PlayerCanShoot(false);
+            noteCanBePressed = false;
+            GameManager.Instance.redButtonCanPress(false);
         }
     }
     public bool learnIfCanAttack()
     {
-        return canBePressed;
+        return noteCanBePressed;
     }
 }

@@ -6,7 +6,13 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static UnityEvent onBeatEvent;
+    public static UnityEvent redButtonCanPressEvent;
     List<PlayerControl> playerList;
+    List<buttonController> buttonList;
+
+    buttonController buttonControllerScript;
+
+
     public static GameManager Instance
     {
         get
@@ -19,18 +25,25 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         onBeatEvent = new UnityEvent();
+        redButtonCanPressEvent = new UnityEvent();
         playerList = new List<PlayerControl>();
         if (_instance == null)
         {
             _instance = this;
         }
+        buttonControllerScript = GameObject.Find("Buttons_Red").GetComponent<buttonController>();
     }
 
-    public void PlayerCanShoot(bool canShoot)
+    public void redButtonCanPress(bool canShoot)
     {
-        foreach(PlayerControl pc in playerList)
+        buttonControllerScript.redButtonCanBePressed = canShoot;
+
+        if (buttonControllerScript.redButtonBeingPressed)
         {
-            pc.playerCanFire = canShoot;
+            foreach (PlayerControl pc in playerList)
+            {
+                pc.playerCanFire = canShoot;
+            }
         }
     }
 
@@ -38,9 +51,10 @@ public class GameManager : MonoBehaviour
     {
         playerList.Add(pc);
     }
-
+   
     void FixedUpdate()
     {
+        redButtonCanPressEvent.Invoke();
         onBeatEvent.Invoke();
     }
 }

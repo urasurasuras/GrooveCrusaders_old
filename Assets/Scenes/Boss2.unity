@@ -124,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: char0
       objectReference: {fileID: 0}
+    - target: {fileID: 2827104366749895967, guid: a0d2f15bbe31d594a8f93ff40c0feccc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2827104366749895962, guid: a0d2f15bbe31d594a8f93ff40c0feccc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -607,7 +612,7 @@ PrefabInstance:
     - target: {fileID: 4169116229269588437, guid: 1e2f06fa76644be479e47414cbda4239,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4169116229269588427, guid: 1e2f06fa76644be479e47414cbda4239,
         type: 3}
@@ -2158,7 +2163,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1943801074
 MonoBehaviour:
@@ -2174,6 +2179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: 1bbda9210988dfd4db252a09838d254f, type: 3}
   pressedImage: {fileID: 21300000, guid: cacc39dd2a4e88a43aadeddd73e9b1e2, type: 3}
+  redButtonCanBePressed: 0
+  redButtonBeingPressed: 0
   keyToPress: 32
 --- !u!212 &1943801075
 SpriteRenderer:
@@ -7726,7 +7733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  targetPlayer: {fileID: 0}
+  targetCharLocation: {fileID: 0}
   healtBar: {fileID: 2063155323}
   bossHealth: 100
   moving: 0
