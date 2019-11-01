@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class boss2 : MonoBehaviour
 {
-    public float speed;
+    public float speed=15;
 
     public Transform targetCharLocation;
     private Vector3 currentBossPos;

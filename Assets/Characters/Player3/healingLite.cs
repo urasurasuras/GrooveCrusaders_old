@@ -6,6 +6,7 @@ public class healingLite : MonoBehaviour
 {
     public float velX;
     public Rigidbody2D rb;
+    public float healingAmount = 10;
 
     // Start is called before the first frame update
     void Start()

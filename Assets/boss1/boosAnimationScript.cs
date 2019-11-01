@@ -12,8 +12,10 @@ public class boosAnimationScript : MonoBehaviour
     public BoxCollider2D finalPhaseCollider;
 
     public GameObject enemyAdd;
-    public int boss1Health = 100;
+    public float boss1Health = 100;
     public Slider Boss1HealthSlider;
+
+    public float dmgTaken = 10;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -36,7 +38,7 @@ public class boosAnimationScript : MonoBehaviour
             }
             //Debug.Log("boss Hit!!");
 
-            boss1Health -= 10;
+            boss1Health -= dmgTaken;
 
             bossAnimationController.SetTrigger("RightFight");
         }

@@ -12,6 +12,8 @@ public class buttonController : MonoBehaviour
     public bool redButtonCanBePressed;
     public bool redButtonBeingPressed;
 
+    public float noteLength = 0.5f;
+
     public static buttonController instance;
     noteScroll noteScript;
 
@@ -31,8 +33,8 @@ public class buttonController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && noteCanBePressed)
         {
             redButtonBeingPressed = true;
-            Debug.Log("note can be pressed: "+noteCanBePressed);
-            Invoke("setBoolBack",0.5f);
+            //Debug.Log("note can be pressed: "+noteCanBePressed);
+            Invoke("setBoolBack",noteLength);
             theSR.sprite = pressedImage;
         }
         if (Input.GetKeyUp(KeyCode.Space))

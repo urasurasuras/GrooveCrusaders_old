@@ -14,6 +14,8 @@ public class PlayerControl : MonoBehaviour
     public bool gameStarted;
     Animator drummerAnimationController;
 
+    healingLite healingProj;
+
     private bool isDrummerStationary;
 
     public GameObject char0;
@@ -21,6 +23,10 @@ public class PlayerControl : MonoBehaviour
     public GameObject char2;
 
     string charID;
+
+    tutorialTexts tutorialText;
+    public bool playerFiredTut;
+    public bool playerHitTut;
 
     //CONTROLS
     //[SerializeField] private Player1controls _controls;
@@ -78,7 +84,7 @@ public class PlayerControl : MonoBehaviour
 
 
 
-    public float speed;
+    public float speed = 0.5f;
 
     private Rigidbody2D rb2d;
     private int count, size;
@@ -104,6 +110,7 @@ public class PlayerControl : MonoBehaviour
     */
 
     weapon weapon;
+    public float healingAmount = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -126,6 +133,7 @@ public class PlayerControl : MonoBehaviour
         isDrummerStationary = false;
         drummerAnimationController = GetComponent<Animator>();
 
+        tutorialText = GameObject.Find("Tutorial Text").GetComponent<tutorialTexts>();
 
         if (Input.GetJoystickNames().Length > 0)
         {
@@ -142,7 +150,7 @@ public class PlayerControl : MonoBehaviour
                 */
             }
         }
-        
+
         //else
         //{
         //    up = "W";
@@ -207,7 +215,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2)
             {
-
+                tutorialText.objComp_HasMoved = true;
                 float horizontalAxis = Input.GetAxis("Joy" + i + "X") * speed *0.5f;
 
                 //charID = "char" + i;
@@ -241,6 +249,8 @@ public class PlayerControl : MonoBehaviour
             }
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
             {
+                tutorialText.objComp_HasMoved = true;
+
                 float verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed * 0.5f;
                 if (i == 0)
                 {
@@ -301,7 +311,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (other.gameObject.tag == "Healing")
         {
-            playerHealth += 10;
+            playerHealth += healingAmount ;
             Destroy(other.gameObject);
         }
     }
@@ -330,6 +340,8 @@ public class PlayerControl : MonoBehaviour
     public void weaponCanShoot(bool pf)
     {
         weapon.canFire = pf;
+        if(pf)
+            tutorialText.objComp_FiredNote = true;
     }
     private void dmgOverTime()
     {
