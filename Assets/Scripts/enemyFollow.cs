@@ -17,7 +17,7 @@ public class enemyFollow : MonoBehaviour
     void Start()
     {
         //rb2d = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        target = GameObject.Find("char0").GetComponent<Transform>();
     }
 
     public bool charLosing;
@@ -40,6 +40,13 @@ public class enemyFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target!=target)
+        {
+            target = GameObject.Find("char1").GetComponent<Transform>();
+        }else if (target!=target)
+        {
+            target = GameObject.Find("char2").GetComponent<Transform>();
+        }
         if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
         {
             //rb2d.AddForce(target.position - transform.position);

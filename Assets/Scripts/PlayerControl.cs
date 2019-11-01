@@ -215,7 +215,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2)
             {
-                tutorialText.objComp_HasMoved = true;
+                //tutorialText.objComp_HasMoved = true;
                 float horizontalAxis = Input.GetAxis("Joy" + i + "X") * speed *0.5f;
 
                 //charID = "char" + i;
@@ -249,7 +249,7 @@ public class PlayerControl : MonoBehaviour
             }
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
             {
-                tutorialText.objComp_HasMoved = true;
+                //tutorialText.objComp_HasMoved = true;
 
                 float verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed * 0.5f;
                 if (i == 0)

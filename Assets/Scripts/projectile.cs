@@ -20,6 +20,13 @@ public class projectile : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject, 0f);
+        }
+    }
     /*void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")

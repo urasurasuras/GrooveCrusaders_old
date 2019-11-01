@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679272955817912837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -12, y: 2, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 1679272955810210649}
@@ -160,6 +160,7 @@ MonoBehaviour:
   liteToLeft: {fileID: 1936708947533573480, guid: c1c73a352bbc11e4c8ad65c73f5a4d4f,
     type: 3}
   playerCanFire: 0
+  healingAmount: 10
 --- !u!61 &1679272955817912839
 BoxCollider2D:
   m_ObjectHideFlags: 0
