@@ -154,7 +154,7 @@ MonoBehaviour:
   char2: {fileID: 0}
   playerFiredTut: 0
   playerHitTut: 0
-  speed: 0.5
+  speed: 0.2
   liteToRight: {fileID: 643602350668238428, guid: 065696cb1fe0f51419e15e25caeb83bf,
     type: 3}
   liteToLeft: {fileID: 1936708947533573480, guid: c1c73a352bbc11e4c8ad65c73f5a4d4f,

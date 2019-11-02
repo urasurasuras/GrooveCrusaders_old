@@ -87,7 +87,7 @@ public class boosAnimationScript : MonoBehaviour
 
     void spawnEnemyAdd()
     {
-        Instantiate(enemyAdd, transform.position, Quaternion.identity);
+        Instantiate(enemyAdd);
     }
     // Update is called once per frame
     void Update()

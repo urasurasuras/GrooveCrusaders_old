@@ -9,6 +9,8 @@ public class noteScroll : MonoBehaviour
     public bool noteCanBePressed;
     public KeyCode keyToPress;
 
+    private static GameObject currentNote;
+
     buttonController buttonControllerScript;
     public int lifeTime = 5;
 
@@ -24,10 +26,13 @@ public class noteScroll : MonoBehaviour
     {
         if (Input.GetKeyDown(keyToPress))
         {
-            if (noteCanBePressed)
+            if (buttonControllerScript.noteCanBePressed)
             {
                 noteShooter.instance.noteHit();
-                gameObject.SetActive(false);
+                if (currentNote == gameObject)
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
         transform.position -= new Vector3(notespeed * Time.deltaTime, 0, 0);
@@ -37,7 +42,9 @@ public class noteScroll : MonoBehaviour
     {
         if(other.tag == "Activator")
         {
+            currentNote = gameObject;
             buttonControllerScript.noteCanBePressed = true;
+            //Debug.Log(noteCanBePressed);
         }
     }
     private void OnTriggerExit2D(Collider2D other)

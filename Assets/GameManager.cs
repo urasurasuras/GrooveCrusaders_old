@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +15,9 @@ public class GameManager : MonoBehaviour
     buttonController buttonControllerScript;
     boosAnimationScript boss1;
     boss2 boss2;
+
+    public SpriteRenderer theSR;
+
 
     bool healBuff = false;
     bool speedBuff = false;
@@ -31,6 +36,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        theSR.enabled = false;
+        theSR.color = Color.red;
         onBeatEvent = new UnityEvent();
         redButtonCanPressEvent = new UnityEvent();
         playerList = new List<PlayerControl>();
@@ -41,21 +48,22 @@ public class GameManager : MonoBehaviour
 
         //reference initializations
         buttonControllerScript = GameObject.Find("Buttons_Red").GetComponent<buttonController>();
-        boss1 = GameObject.Find("Boss1").GetComponent<boosAnimationScript>();
-        boss2 = GameObject.Find("Boss2").GetComponent<boss2>();
+        GameObject boss1 = GameObject.Find("Boss1");
+        GameObject boss2 = GameObject.Find("Boss2");
     }
 
     public void redButtonCanPress(bool canShoot)
     {
         buttonControllerScript.redButtonCanBePressed = canShoot;
-        Debug.Log("red button can press: " + canShoot);
+        //Debug.Log("red button can press: " + canShoot);
         if (buttonControllerScript.redButtonBeingPressed)
         {
+            theSR.enabled = true;
             foreach (PlayerControl pc in playerList)
             {
                 pc.playerCanFire = canShoot;
 
-                Debug.Log("players can press: " + canShoot);
+                //Debug.Log("players can press: " + canShoot);
 
                 //Invoke("setBoolBack(canShoot)", 0.5f);
 
@@ -63,16 +71,23 @@ public class GameManager : MonoBehaviour
         }
         if (!buttonControllerScript.redButtonBeingPressed)
         {
+            theSR.enabled = false;
+
             foreach (PlayerControl pc in playerList)
             {
                 pc.playerCanFire = false;
 
-                Debug.Log("players can press: " + canShoot);
+                //Debug.Log("players can press: " + canShoot);
 
                 //Invoke("setBoolBack(canShoot)", 0.5f);
 
             }
         }
+    }
+
+    private void conductorFlashed()
+    {
+        throw new NotImplementedException();
     }
 
     public void RegisterPlayerControl(PlayerControl pc)
@@ -135,7 +150,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log(buttonControllerScript.noteLength);
             }else if (beatBuff)
             {
-                buttonControllerScript.noteLength = 1;
+                buttonControllerScript.noteLength = .5f;
                 beatBuff = false;
                 Debug.Log(buttonControllerScript.noteLength);
             }
@@ -159,7 +174,7 @@ public class GameManager : MonoBehaviour
         {
             if (!boss2Debuff)
             {
-                boss2.speed = 10;
+                boss2.speed = 5;
                 boss2Debuff = true;
                 Debug.Log(boss2.speed);
             }else if (boss2Debuff)

@@ -153,14 +153,15 @@ MonoBehaviour:
   char0: {fileID: 0}
   char1: {fileID: 0}
   char2: {fileID: 0}
-  _controls:
-    m_Asset: {fileID: 11400000, guid: 0152e72508b5eac498dc0e4f2a0b503c, type: 3}
-  speed: 0.5
+  playerFiredTut: 0
+  playerHitTut: 0
+  speed: 0.2
   liteToRight: {fileID: 643602350668238428, guid: 065696cb1fe0f51419e15e25caeb83bf,
     type: 3}
   liteToLeft: {fileID: 1936708947533573480, guid: c1c73a352bbc11e4c8ad65c73f5a4d4f,
     type: 3}
   playerCanFire: 0
+  healingAmount: 10
 --- !u!61 &4169116229269588439
 BoxCollider2D:
   m_ObjectHideFlags: 0

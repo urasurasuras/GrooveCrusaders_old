@@ -87,14 +87,14 @@ public class PlayerControl : MonoBehaviour
     public float speed = 0.5f;
 
     private Rigidbody2D rb2d;
-    private int count, size;
+    //private int count, size;
 
-    private bool facingRight;
+    //private bool facingRight;
 
 
     public GameObject liteToRight, liteToLeft;
     Vector2 litePos;
-    float nextFire = 0.0f;
+    //float nextFire = 0.0f;
     public bool playerCanFire;
 
     /*
@@ -115,9 +115,9 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        char0 = GameObject.Find("char0");
-        char1 = GameObject.Find("char1");
-        char2 = GameObject.Find("char2");
+        GameObject char0 = GameObject.Find("char0");
+        GameObject char1 = GameObject.Find("char1");
+        GameObject char2 = GameObject.Find("char2");
         weapon = GetComponent<weapon>();
 
 
@@ -125,21 +125,21 @@ public class PlayerControl : MonoBehaviour
         GameManager.Instance.RegisterPlayerControl(this);
         gameStarted = false;
         rb2d = GetComponent<Rigidbody2D>();
-        facingRight = true;
-        count = 0;
-        size = 0;
+        //facingRight = true;
+        //count = 0;
+        //size = 0;
         //winText.text = "";
         //loseText.text = "";
         isDrummerStationary = false;
         drummerAnimationController = GetComponent<Animator>();
 
-        tutorialText = GameObject.Find("Tutorial Text").GetComponent<tutorialTexts>();
+        GameObject tutorialText = GameObject.Find("Tutorial Text");
 
         if (Input.GetJoystickNames().Length > 0)
         {
             for (int i = 0; i < Input.GetJoystickNames().Length; i++)
             {
-                Debug.Log(Input.GetJoystickNames()[i]);
+                //Debug.Log(Input.GetJoystickNames()[i]);
 
                 /*
                 up = Input.GetJoystickNames()[i] + " button up";

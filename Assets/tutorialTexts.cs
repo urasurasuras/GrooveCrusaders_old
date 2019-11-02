@@ -51,10 +51,10 @@ public class tutorialTexts : MonoBehaviour
         {
             tutText.text = "Good job conductor, now musicians fire your weapons !";
         }
-        else if (objComp_HasMoved)
+        /*else if (objComp_HasMoved)
         {
             tutText.text = "Oh yeah, also move using your left stick.";
-        }
+        }*/
         else if (objComp_FiredNote)
         {
             tutText.text = "Good job musicians, now hit the enemies !";

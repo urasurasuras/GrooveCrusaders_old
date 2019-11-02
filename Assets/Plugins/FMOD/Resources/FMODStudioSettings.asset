@@ -30,8 +30,6 @@ MonoBehaviour:
   - Platform: 20
     Value: 3
   SampleRateSettings:
-  - Platform: 1
-    Value: 48000
   - Platform: 2
     Value: 0
   - Platform: 20

@@ -13,20 +13,22 @@ public class enemyFollow : MonoBehaviour
     private Rigidbody2D rb2d;
 
     private Transform target;
+    public GameObject targetPlayer;
     // Start is called before the first frame update
     void Start()
     {
         //rb2d = GetComponent<Rigidbody2D>();
-        target = GameObject.Find("char0").GetComponent<Transform>();
+        GameObject targetPlayer = GameObject.Find("char0");
     }
 
     public bool charLosing;
     void OnTriggerEnter2D(Collider2D other)
     {
         //Debug.Log("enemy triggered?");
-        Destroy(gameObject, 0f);
+        //Destroy(gameObject, 0f);
 
-        if (other.gameObject.tag == "Proectile")
+        if(other.gameObject.tag == "Enemy") { }     //do nothing if triggered by enemy
+        if (other.gameObject.tag == "Proectile" || other.gameObject.tag == "Player")
         {
             Debug.Log("projectiel hit enemy");
             Destroy(gameObject, 0f);
@@ -40,17 +42,22 @@ public class enemyFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target!=target)
+        Debug.Log(target);
+        Debug.Log(targetPlayer);
+        if(targetPlayer == null)
+        {
+            target = GameObject.Find("char0").GetComponent<Transform>();
+        }
+        else if (targetPlayer == null)
         {
             target = GameObject.Find("char1").GetComponent<Transform>();
-        }else if (target!=target)
+        }else if (targetPlayer == null)
         {
             target = GameObject.Find("char2").GetComponent<Transform>();
         }
         if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
         {
-            //rb2d.AddForce(target.position - transform.position);
-
+            Debug.Log(target);
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
     }
