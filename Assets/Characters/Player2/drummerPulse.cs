@@ -30,7 +30,7 @@ public float z = 0.1f;
         }
         else
         {
-            Debug.Log("circle collided with: "+other.gameObject.tag);
+            //Debug.Log("circle collided with: "+other.gameObject.tag);
             gameObject.SetActive(false);
             Destroy(this);
         }

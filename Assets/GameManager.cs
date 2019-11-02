@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     public SpriteRenderer theSR;
 
-
     bool healBuff = false;
     bool speedBuff = false;
     bool beatBuff = false;

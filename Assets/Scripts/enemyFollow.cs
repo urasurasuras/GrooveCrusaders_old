@@ -42,8 +42,8 @@ public class enemyFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(target);
-        Debug.Log(targetPlayer);
+        //Debug.Log(target);
+        //Debug.Log(targetPlayer);
         if(targetPlayer == null)
         {
             target = GameObject.Find("char0").GetComponent<Transform>();
@@ -57,7 +57,7 @@ public class enemyFollow : MonoBehaviour
         }
         if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
         {
-            Debug.Log(target);
+            //Debug.Log(target);
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
     }

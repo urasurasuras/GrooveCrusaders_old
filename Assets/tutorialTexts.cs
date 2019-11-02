@@ -11,20 +11,19 @@ public class tutorialTexts : MonoBehaviour
 
     buttonController buttonControllerScript;
     //PlayerControl playerControlScript; 
-
-    public GameObject enemyAdd;
-
-
+    public GameObject tutEnemy;
     public bool objComp_pressedRedButton;
     public bool objComp_FiredNote;
     public bool objComp_HitEnemy;
     public bool objComp_END;
-    private bool isCreated;
+    private bool isCreated =false;
     public bool objComp_HasMoved;
 
     // Start is called before the first frame update
     void Start()
     {
+        tutEnemy.SetActive(false);
+        //tutEnemy.gameObject.SetActive = false;
         buttonControllerScript = GameObject.Find("Buttons_Red").GetComponent<buttonController>();
         //playerControlScript = GameObject.Find("char0").GetComponent<PlayerControl>();
 
@@ -57,10 +56,11 @@ public class tutorialTexts : MonoBehaviour
         }*/
         else if (objComp_FiredNote)
         {
+            //Debug.Log(isCreated);
             tutText.text = "Good job musicians, now hit the enemies !";
             if (!isCreated)
             {
-                Instantiate(enemyAdd);
+                tutEnemy.SetActive(true);
                 isCreated = true;
             }
         }

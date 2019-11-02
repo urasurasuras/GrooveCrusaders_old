@@ -115,9 +115,9 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject char0 = GameObject.Find("char0");
-        GameObject char1 = GameObject.Find("char1");
-        GameObject char2 = GameObject.Find("char2");
+        char0 = GameObject.Find("char0");
+        char1 = GameObject.Find("char1");
+        char2 = GameObject.Find("char2");
         weapon = GetComponent<weapon>();
 
 
@@ -133,7 +133,7 @@ public class PlayerControl : MonoBehaviour
         isDrummerStationary = false;
         drummerAnimationController = GetComponent<Animator>();
 
-        GameObject tutorialText = GameObject.Find("Tutorial Text");
+        tutorialText = GameObject.Find("Tutorial Text").GetComponent<tutorialTexts>();
 
         if (Input.GetJoystickNames().Length > 0)
         {
@@ -285,7 +285,7 @@ public class PlayerControl : MonoBehaviour
                 }
 
                 bool debA = Input.GetButtonDown("J" + i + "a");
-                Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
+                //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
             }
             if (Input.GetButtonDown("J" + i + "b"))
             {
