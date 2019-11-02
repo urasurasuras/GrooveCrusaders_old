@@ -10,6 +10,8 @@ public class enemyFollow : MonoBehaviour
     public float stoppingDistance;
     public static UnityEvent enemyExplodingOnPlayer;
 
+    public bool isAlive = true;
+
     private Rigidbody2D rb2d;
 
     private Transform target;
@@ -28,9 +30,10 @@ public class enemyFollow : MonoBehaviour
         //Destroy(gameObject, 0f);
 
         if(other.gameObject.tag == "Enemy") { }     //do nothing if triggered by enemy
-        if (other.gameObject.tag == "Proectile" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Projectile" || other.gameObject.tag == "Player")
         {
-            Debug.Log("projectiel hit enemy");
+            isAlive = false;
+            Debug.Log("enemy is alive: " + isAlive);
             Destroy(gameObject, 0f);
         }
         /*

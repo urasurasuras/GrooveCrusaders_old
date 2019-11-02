@@ -10,8 +10,9 @@ public class tutorialTexts : MonoBehaviour
     Animator textAnimator;
 
     buttonController buttonControllerScript;
+    public enemyFollow enemyScript;
     //PlayerControl playerControlScript; 
-    public GameObject tutEnemy;
+    //public GameObject tutEnemy;
     public bool objComp_pressedRedButton;
     public bool objComp_FiredNote;
     public bool objComp_HitEnemy;
@@ -22,9 +23,10 @@ public class tutorialTexts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tutEnemy.SetActive(false);
-        //tutEnemy.gameObject.SetActive = false;
         buttonControllerScript = GameObject.Find("Buttons_Red").GetComponent<buttonController>();
+        //enemyFollow enemyScript = GameObject.Find("Enemy").GetComponent<enemyFollow>();
+        enemyScript.gameObject.SetActive(false);
+
         //playerControlScript = GameObject.Find("char0").GetComponent<PlayerControl>();
 
         textAnimator = GetComponent<Animator>();
@@ -48,7 +50,8 @@ public class tutorialTexts : MonoBehaviour
         }
         else if (objComp_HitEnemy)
         {
-            tutText.text = "Good job conductor, now musicians fire your weapons !";
+            objComp_END = true;
+            
         }
         /*else if (objComp_HasMoved)
         {
@@ -60,8 +63,13 @@ public class tutorialTexts : MonoBehaviour
             tutText.text = "Good job musicians, now hit the enemies !";
             if (!isCreated)
             {
-                tutEnemy.SetActive(true);
+                enemyScript.gameObject.SetActive(true);
+                //tutEnemy.SetActive(true);
                 isCreated = true;
+            }
+            if (!enemyScript.isAlive)
+            {
+                objComp_HitEnemy = true;
             }
         }
         else if (objComp_pressedRedButton)

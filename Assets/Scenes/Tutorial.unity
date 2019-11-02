@@ -5588,7 +5588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutText: {fileID: 181605629}
-  tutEnemy: {fileID: 348858931}
+  enemyScript: {fileID: 348858933}
   objComp_pressedRedButton: 0
   objComp_FiredNote: 0
   objComp_HitEnemy: 0
@@ -5761,12 +5761,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &348858931 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4648928590584992695, guid: 28c66931c5859d94cb020e392fcb0b1a,
+--- !u!114 &348858933 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4648928590584992688, guid: 28c66931c5859d94cb020e392fcb0b1a,
     type: 3}
   m_PrefabInstance: {fileID: 779623536}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f8f744c659721439f70736085ca2c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &474733655
 GameObject:
   m_ObjectHideFlags: 0
