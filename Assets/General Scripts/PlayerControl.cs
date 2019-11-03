@@ -132,7 +132,8 @@ public class PlayerControl : MonoBehaviour
         isDrummerStationary = false;
         drummerAnimationController = GetComponent<Animator>();
 
-        tutorialText = GameObject.Find("Tutorial Text").GetComponent<tutorialTexts>();
+
+        //tutorialText = GameObject.Find("Tutorial Text").GetComponent<tutorialTexts>();
 
         if (Input.GetJoystickNames().Length > 0)
         {
