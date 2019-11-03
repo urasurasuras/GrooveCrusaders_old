@@ -6579,6 +6579,11 @@ PrefabInstance:
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 1058886420}
+    - target: {fileID: 1245340098849938624, guid: 1e2f06fa76644be479e47414cbda4239,
+        type: 3}
+      propertyPath: angleTarget
+      value: 
+      objectReference: {fileID: 1058886420}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e2f06fa76644be479e47414cbda4239, type: 3}
 --- !u!1 &1211660235
@@ -8145,6 +8150,11 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 326587419, guid: 2d76e88b9b0430e41be2eaf3ae414b36, type: 3}
+      propertyPath: angleTarget
+      value: 
+      objectReference: {fileID: 1058886420}
+    - target: {fileID: 8650108602367197598, guid: 2d76e88b9b0430e41be2eaf3ae414b36,
+        type: 3}
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 1058886420}
