@@ -245,7 +245,7 @@ public class PlayerControl : MonoBehaviour
 
                 float debugXaxis = Input.GetAxis("Joy" + i + "X");
 
-                Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
+                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
             }
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
             {
@@ -267,7 +267,7 @@ public class PlayerControl : MonoBehaviour
 
                 float debugYaxis = Input.GetAxis("Joy" + i + "Y");
 
-                Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
+                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
             }
             if (Input.GetButtonDown("J" + i + "a"))
             {
