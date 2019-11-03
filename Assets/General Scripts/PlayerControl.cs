@@ -351,7 +351,7 @@ public class PlayerControl : MonoBehaviour
     }
     private void dmgOverTime()
     {
-        Debug.Log(playerHealth);
+        //Debug.Log(playerHealth);
         playerHealth -= 0.02;
     }
 
