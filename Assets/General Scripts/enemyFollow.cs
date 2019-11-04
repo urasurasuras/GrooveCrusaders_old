@@ -47,17 +47,17 @@ public class enemyFollow : MonoBehaviour
     {
         //Debug.Log(target);
         //Debug.Log(targetPlayer);
-        if(targetPlayer == null)
-        {
-            target = GameObject.Find("char0").GetComponent<Transform>();
-        }
-        else if (targetPlayer == null)
+        
+        target = GameObject.Find("char0").GetComponent<Transform>();
+        
+        if (target == null)
         {
             target = GameObject.Find("char1").GetComponent<Transform>();
-        }else if (targetPlayer == null)
+        }else if (target == null)
         {
             target = GameObject.Find("char2").GetComponent<Transform>();
         }
+        else { }
         if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
         {
             //Debug.Log(target);

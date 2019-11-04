@@ -21,6 +21,7 @@ public class boosAnimationScript : MonoBehaviour
     {
         if (other.gameObject.tag =="Projectile")
         {
+            Debug.Log(this + " hit by "+other);
             if(boss1Health < 100)
             {
                 bossAnimationController.SetTrigger("RightFight");
