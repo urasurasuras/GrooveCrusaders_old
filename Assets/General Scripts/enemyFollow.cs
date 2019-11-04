@@ -7,14 +7,14 @@ using UnityEngine.Events;
 public class enemyFollow : MonoBehaviour
 {
     public float speed;
-    public float stoppingDistance;
+    public float stoppingDistance=.01f;
     public static UnityEvent enemyExplodingOnPlayer;
 
     public bool isAlive = true;
 
     private Rigidbody2D rb2d;
 
-    private Transform target;
+    private Transform targetPosition;
     public GameObject targetPlayer;
     // Start is called before the first frame update
     void Start()
@@ -45,23 +45,24 @@ public class enemyFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(target);
-        //Debug.Log(targetPlayer);
-        
-        target = GameObject.Find("char0").GetComponent<Transform>();
-        
-        if (target == null)
+        if (GameObject.Find("char0") != null)
         {
-            target = GameObject.Find("char1").GetComponent<Transform>();
-        }else if (target == null)
+            targetPlayer = GameObject.Find("char0");
+            targetPosition = targetPlayer.GetComponent<Transform>();
+        }else if(GameObject.Find("char1") != null)
         {
-            target = GameObject.Find("char2").GetComponent<Transform>();
+            targetPlayer = GameObject.Find("char1");
+            targetPosition = targetPlayer.GetComponent<Transform>();
+        }else if(GameObject.Find("char2") != null)
+        {
+            targetPlayer = GameObject.Find("char2");
+            targetPosition = targetPlayer.GetComponent<Transform>();
         }
-        else { }
-        if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
+
+        if (Vector2.Distance(transform.position, targetPosition.position) > stoppingDistance)
         {
             //Debug.Log(target);
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition.position, speed * Time.deltaTime);
         }
     }
 }

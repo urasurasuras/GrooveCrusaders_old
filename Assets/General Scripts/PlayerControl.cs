@@ -352,7 +352,7 @@ public class PlayerControl : MonoBehaviour
     private void dmgOverTime()
     {
         //Debug.Log(playerHealth);
-        playerHealth -= 0.02;
+        playerHealth -= 0.002;
     }
 
     private void OnTriggerStay2D(Collider2D other)
