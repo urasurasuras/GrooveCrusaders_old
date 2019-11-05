@@ -346,7 +346,7 @@ public class PlayerControl : MonoBehaviour
     public void weaponCanShoot(bool pf)
     {
         weapon.canFire = pf;
-        if(pf)
+        if(pf && tutorialText!=null)
             tutorialText.objComp_FiredNote = true;
     }
     private void dmgOverTime()

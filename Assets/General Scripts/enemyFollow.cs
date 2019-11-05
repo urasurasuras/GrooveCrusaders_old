@@ -59,10 +59,13 @@ public class enemyFollow : MonoBehaviour
             targetPosition = targetPlayer.GetComponent<Transform>();
         }
 
-        if (Vector2.Distance(transform.position, targetPosition.position) > stoppingDistance)
-        {
-            //Debug.Log(target);
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition.position, speed * Time.deltaTime);
+        if (targetPlayer != null){
+            if (Vector2.Distance(transform.position, targetPosition.position) > 0)
+            {
+                //Debug.Log(target);
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition.position, speed * Time.deltaTime);
+            }
         }
+        
     }
 }
