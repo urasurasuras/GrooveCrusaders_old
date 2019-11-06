@@ -16,6 +16,7 @@ public class noteShooter : MonoBehaviour
     public static UnityEvent markerOnEvent;
     public static UnityEvent barEvent;
 
+    boosAnimationScript boss1Script;
     [StructLayout(LayoutKind.Sequential)]
     class TimelineInfo
     {
@@ -71,8 +72,6 @@ public class noteShooter : MonoBehaviour
 
         musicInstance.start();
         //
-
-        //beatLength = 60f / beatsPerMin;
     }
 
     void OnDestroy()
@@ -152,6 +151,12 @@ public class noteShooter : MonoBehaviour
             //Debug.Log("Bar changed to: "+latestBar);
             latestBar = bar;
             barEvent.Invoke();
+        }
+        if (GameObject.Find("Boss1") != null)   //set boss at Start, then set FMOD param
+        {
+            boss1Script = GameObject.Find("Boss1").GetComponent<boosAnimationScript>();
+            musicInstance.setParameterByName("Boss Health", boss1Script.boss1Health);
+            print(boss1Script.boss1Health);
         }
     }
 
