@@ -41,6 +41,7 @@ public class TwitchController : MonoBehaviour
         writer.WriteLine("USER " + username + " 8 * :" + username);
         writer.WriteLine("JOIN #" + channelname);
         writer.Flush();
+        //Debug.Log(twitchClient.Connected);
     }
 
     private void ReadChat()
@@ -48,6 +49,7 @@ public class TwitchController : MonoBehaviour
         if(twitchClient.Available > 0)
         {
             var message = reader.ReadLine();
+            //Debug.Log(message);
 
             if (message.Contains("PRIVMSG"))
             {

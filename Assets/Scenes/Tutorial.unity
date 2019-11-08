@@ -8164,9 +8164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a616ad60954250449ad946485ea0174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  username: uras
-  password: oauth:2px54p4il2rw9gksrkphe9fbk7wtfn
-  channelname: leMetallicat
+  username: lemetallicat
+  password: oauth:sylsc6dgve6c6b1x1tfknqdsbefbkx
+  channelname: lemetallicat
 --- !u!4 &1904446392
 Transform:
   m_ObjectHideFlags: 0

@@ -16,7 +16,6 @@ MonoBehaviour:
   - {fileID: 114743115232692518}
   - {fileID: 114314592110368476}
   EditorEvents:
-  - {fileID: 114949061946928512}
   - {fileID: 114800767410059980}
   - {fileID: 114668326013872436}
   EditorParameters: []
@@ -24,7 +23,7 @@ MonoBehaviour:
   - {fileID: 114314592110368476}
   StringsBanks:
   - {fileID: 114743115232692518}
-  stringsBankWriteTime: 637082363235165249
+  stringsBankWriteTime: 637085896434929837
   cacheVersion: 3
 --- !u!114 &114005271641230940
 MonoBehaviour:
@@ -179,6 +178,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 1
+--- !u!114 &114131884148946784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/Player Health
+  m_EditorClassIdentifier: 
+  Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114145409466282674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +212,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &114157200658126032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainEvent/Player Health
+  m_EditorClassIdentifier: 
+  Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114190655693770664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,11 +336,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: E:/Belgelerim/DERSLER/IT286/GCv2/GC2/healthscale/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637082363235105279
+  lastModified: 637085896434879866
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 4860416
+    Value: 4860704
   Exists: 1
 --- !u!114 &114323365487755248
 MonoBehaviour:
@@ -337,6 +370,23 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/BossHealth/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
+--- !u!114 &114336924224262260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/Boss Health
   m_EditorClassIdentifier: 
   Name: Boss Health
   Min: 0
@@ -462,6 +512,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &114660333660507000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainEvent/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114668326013872436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,7 +548,9 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 114336924224262260}
+  - {fileID: 114131884148946784}
   MinDistance: 0
   MaxDistance: 0
   Length: 167164
@@ -550,11 +619,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: E:/Belgelerim/DERSLER/IT286/GCv2/GC2/healthscale/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637082363235165249
+  lastModified: 637085896434929837
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 954
+    Value: 912
   Exists: 1
 --- !u!114 &114797292124072554
 MonoBehaviour:
@@ -593,8 +662,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114005271641230940}
-  - {fileID: 114595332926904602}
+  - {fileID: 114660333660507000}
+  - {fileID: 114157200658126032}
   MinDistance: 0
   MaxDistance: 0
   Length: 193722
