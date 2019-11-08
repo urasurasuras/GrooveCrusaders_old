@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
     boosAnimationScript boss1;
     boss2 boss2;
 
-    public SpriteRenderer theSR;
-
     bool healBuff = false;
     bool speedBuff = false;
     bool beatBuff = false;
@@ -35,8 +33,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        theSR.enabled = false;
-        theSR.color = Color.red;
         onBeatEvent = new UnityEvent();
         redButtonCanPressEvent = new UnityEvent();
         playerList = new List<PlayerControl>();
@@ -57,29 +53,18 @@ public class GameManager : MonoBehaviour
         //Debug.Log("red button can press: " + canShoot);
         if (buttonControllerScript.redButtonBeingPressed)
         {
-            theSR.enabled = true;
+
             foreach (PlayerControl pc in playerList)
             {
                 pc.playerCanFire = canShoot;
-
-                //Debug.Log("players can press: " + canShoot);
-
-                //Invoke("setBoolBack(canShoot)", 0.5f);
-
             }
         }
         if (!buttonControllerScript.redButtonBeingPressed)
         {
-            theSR.enabled = false;
 
             foreach (PlayerControl pc in playerList)
             {
                 pc.playerCanFire = false;
-
-                //Debug.Log("players can press: " + canShoot);
-
-                //Invoke("setBoolBack(canShoot)", 0.5f);
-
             }
         }
     }

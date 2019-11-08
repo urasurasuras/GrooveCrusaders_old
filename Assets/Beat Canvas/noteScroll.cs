@@ -44,7 +44,6 @@ public class noteScroll : MonoBehaviour
         {
             currentNote = gameObject;
             buttonControllerScript.noteCanBePressed = true;
-            //Debug.Log(noteCanBePressed);
         }
     }
     private void OnTriggerExit2D(Collider2D other)

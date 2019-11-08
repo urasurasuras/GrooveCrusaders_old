@@ -158,7 +158,7 @@ public class noteShooter : MonoBehaviour
         {
             boss1Script = GameObject.Find("Boss1").GetComponent<boosAnimationScript>();
             musicInstance.setParameterByName("Boss Health", boss1Script.boss1Health);
-            print(boss1Script.boss1Health);
+            //print(boss1Script.boss1Health);
         }
     }
 

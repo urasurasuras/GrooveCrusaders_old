@@ -8,6 +8,9 @@ public class buttonController : MonoBehaviour
     public Sprite defaultImage;
     public Sprite pressedImage;
 
+    public SpriteRenderer flashSripte;
+    public GameObject flash;
+
     public bool noteCanBePressed;
     public bool redButtonCanBePressed;
     public bool redButtonBeingPressed;
@@ -24,18 +27,29 @@ public class buttonController : MonoBehaviour
     {
         redButtonBeingPressed = false;
         theSR = GetComponent<SpriteRenderer>();
+
+        //flash = GameObject.Find("Beat Flash");
+        //flash.SetActive(false);
+        flashSripte = GameObject.Find("Beat Flash").GetComponent<SpriteRenderer>();
+        flashSripte.color = Color.red;
+        flashSripte.enabled = false;
+        Debug.Log(flashSripte);
         //GameManager.Instance.registerRedButton(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && noteCanBePressed)
+        if (Input.GetKeyDown(KeyCode.Space) )
         {
-            redButtonBeingPressed = true;
-            //Debug.Log("note can be pressed: "+noteCanBePressed);
-            Invoke("setBoolBack",noteLength);
             theSR.sprite = pressedImage;
+
+            if (noteCanBePressed)
+            {
+                redButtonBeingPressed = true;
+                //Debug.Log("note can be pressed: "+noteCanBePressed);
+                Invoke("setBoolBack", noteLength);
+            }
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -47,10 +61,36 @@ public class buttonController : MonoBehaviour
         //    GameManager.Instance.redButtonCanPress(false);
 
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Note")
+        {
+            flashSripte.enabled = true;
+            flash.SetActive(true);
+
+            Debug.Log(flashSripte.enabled);
+        }
+    }
+    //private void OnTriggerStay2D(Collider2D other)
+    //{
+    //    if (other.tag == "Note")
+    //    {
+    //        flashSripte.enabled = true;
+    //        Debug.Log(flashSripte.enabled);
+    //    }
+    //}
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Note")
+        {
+            flashSripte.enabled = false;
+            flash.SetActive(false);
+
+            Debug.Log(flashSripte.enabled);
+        }
+    }
     private void setBoolBack()
     {
         redButtonBeingPressed = false;
     }
-
-    
-}
+ }
