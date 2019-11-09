@@ -27,6 +27,8 @@ public class PlayerControl : MonoBehaviour
     public bool playerFiredTut;
     public bool playerHitTut;
 
+    public float timeSinceAttackReq = 0;
+    public float attackCheck = 0.2f;
     //CONTROLS
     //[SerializeField] private Player1controls _controls;
 
@@ -163,6 +165,7 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
+        timeSinceAttackReq += Time.deltaTime;
         //float horMove = Input.GetAxis("Horizontal");
         //float verMove = Input.GetAxis("Vertical");
         //Vector2 movement = new Vector2(horMove, verMove);
@@ -283,6 +286,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     weaponCanShoot(playerCanFire);
                 }
+                timeSinceAttackReq = 0;
 
                 bool debA = Input.GetButtonDown("J" + i + "a");
                 //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);

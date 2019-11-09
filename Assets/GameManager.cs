@@ -49,24 +49,7 @@ public class GameManager : MonoBehaviour
 
     public void redButtonCanPress(bool canShoot)
     {
-        buttonControllerScript.redButtonCanBePressed = canShoot;
-        //Debug.Log("red button can press: " + canShoot);
-        if (buttonControllerScript.redButtonBeingPressed)
-        {
-
-            foreach (PlayerControl pc in playerList)
-            {
-                pc.playerCanFire = canShoot;
-            }
-        }
-        if (!buttonControllerScript.redButtonBeingPressed)
-        {
-
-            foreach (PlayerControl pc in playerList)
-            {
-                pc.playerCanFire = false;
-            }
-        }
+        
     }
 
     public void RegisterPlayerControl(PlayerControl pc)
@@ -76,6 +59,24 @@ public class GameManager : MonoBehaviour
    
     void FixedUpdate()
     {
+        //buttonControllerScript.redButtonCanBePressed = canShoot;
+        //Debug.Log("red button can press: " + canShoot);
+        if (buttonControllerScript.timeSinceLastNoteHit > buttonControllerScript.noteLength)
+        {
+            foreach (PlayerControl pc in playerList)
+            {
+                pc.playerCanFire = false;
+            }
+        }
+        else
+        {
+            foreach (PlayerControl pc in playerList)
+            {
+                pc.playerCanFire = true;
+            }
+        }
+
+
         redButtonCanPressEvent.Invoke();
         onBeatEvent.Invoke();
 

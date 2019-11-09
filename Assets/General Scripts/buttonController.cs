@@ -19,8 +19,8 @@ public class buttonController : MonoBehaviour
 
     public KeyCode keyToPress;
 
-    float timeSinceLastNoteHit = 0;
-    float noteLength = 0.2f;
+    public float timeSinceLastNoteHit = 0;
+    public float noteLength = 0.2f;
 
 
     // Start is called before the first frame update
@@ -42,8 +42,7 @@ public class buttonController : MonoBehaviour
     void Update()
     {
         timeSinceLastNoteHit += Time.deltaTime;
-        Debug.Log(timeSinceLastNoteHit);
-
+        
         if (Input.GetKey(KeyCode.Space) && flashSripte.enabled)
         {
             timeSinceLastNoteHit = 0;
