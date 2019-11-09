@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     List<PlayerControl> playerList;
 
     //other references
+    GameObject red_button;
     buttonController buttonControllerScript;
     boosAnimationScript boss1;
     boss2 boss2;
@@ -42,7 +43,9 @@ public class GameManager : MonoBehaviour
         }
 
         //reference initializations
-        buttonControllerScript = GameObject.Find("Buttons_Red").GetComponent<buttonController>();
+        red_button = GameObject.Find("Buttons_Red");
+        if(red_button!=null)
+        buttonControllerScript = red_button.GetComponent<buttonController>();
         GameObject boss1 = GameObject.Find("Boss1");
         GameObject boss2 = GameObject.Find("Boss2");
     }
@@ -61,21 +64,23 @@ public class GameManager : MonoBehaviour
     {
         //buttonControllerScript.redButtonCanBePressed = canShoot;
         //Debug.Log("red button can press: " + canShoot);
-        if (buttonControllerScript.timeSinceLastNoteHit < buttonControllerScript.noteLength)
+        if (buttonControllerScript != null)
         {
-            foreach (PlayerControl pc in playerList)
+            if (buttonControllerScript.timeSinceLastNoteHit < buttonControllerScript.noteLength)
             {
-                pc.playerCanFire = true;
+                foreach (PlayerControl pc in playerList)
+                {
+                    pc.playerCanFire = true;
+                }
+            }
+            else
+            {
+                foreach (PlayerControl pc in playerList)
+                {
+                    pc.playerCanFire = false;
+                }
             }
         }
-        else
-        {
-            foreach (PlayerControl pc in playerList)
-            {
-                pc.playerCanFire = false;
-            }
-        }
-
 
         redButtonCanPressEvent.Invoke();
         onBeatEvent.Invoke();

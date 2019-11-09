@@ -45,6 +45,7 @@ public class PlayerControl : MonoBehaviour
     public bool playerCanFire;
 
     weapon weapon;
+    GameObject red_button;
     public float healingAmount = 10;
 
     // Start is called before the first frame update
@@ -61,8 +62,9 @@ public class PlayerControl : MonoBehaviour
 
         weapon = GetComponent<weapon>();
 
-        ButtonController = GameObject.Find("Buttons_Red").GetComponent<buttonController>();
-
+        red_button = GameObject.Find("Buttons_Red");
+        if (red_button != null)
+            ButtonController = red_button.GetComponent<buttonController>();
         playerTouchingEnemy = new UnityEvent();
         GameManager.Instance.RegisterPlayerControl(this);
         gameStarted = false;
