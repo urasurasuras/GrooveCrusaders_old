@@ -82,7 +82,7 @@ public class buttonController : MonoBehaviour
         GameManager.Instance.redButtonCanPress(redButtonBeingPressed);
 
         char0lastAtt = char0.timeSinceAttackReq;
-        Debug.Log("Time since last attack request " + char0lastAtt);
+        //Debug.Log("Time since last attack request " + char0lastAtt);
 
 
     }

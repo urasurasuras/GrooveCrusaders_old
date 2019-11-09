@@ -208,12 +208,15 @@ MonoBehaviour:
   defaultImage: {fileID: 21300000, guid: 1bbda9210988dfd4db252a09838d254f, type: 3}
   pressedImage: {fileID: 21300000, guid: cacc39dd2a4e88a43aadeddd73e9b1e2, type: 3}
   flashSripte: {fileID: 119127665}
-  flash: {fileID: 119127664}
+  char0: {fileID: 0}
+  char1: {fileID: 0}
+  char2: {fileID: 0}
   noteCanBePressed: 0
   redButtonCanBePressed: 0
   redButtonBeingPressed: 0
-  noteLength: 0.5
   keyToPress: 32
+  timeSinceLastNoteHit: 0
+  noteLength: 0.5
 --- !u!212 &6748714
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1757,6 +1760,10 @@ PrefabInstance:
     - target: {fileID: 1180041122, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180041121, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}

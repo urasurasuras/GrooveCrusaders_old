@@ -51,8 +51,14 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         char0 = GameObject.Find("char0");
+        //char0.SetActive(false);
+
         char1 = GameObject.Find("char1");
+        ///char1.SetActive(false);
+
         char2 = GameObject.Find("char2");
+        //char2.SetActive(false);
+
         weapon = GetComponent<weapon>();
 
         ButtonController = GameObject.Find("Buttons_Red").GetComponent<buttonController>();
@@ -69,21 +75,6 @@ public class PlayerControl : MonoBehaviour
 
         //tutorialText = GameObject.Find("Tutorial Text").GetComponent<tutorialTexts>();
 
-        if (Input.GetJoystickNames().Length > 0)
-        {
-            for (int i = 0; i < Input.GetJoystickNames().Length; i++)
-            {
-                //Debug.Log(Input.GetJoystickNames()[i]);
-
-                /*
-                up = Input.GetJoystickNames()[i] + " button up";
-                Debug.Log(up);
-                down = Input.GetJoystickNames()[i] + " button down";
-                left = Input.GetJoystickNames()[i] + " button left";
-                right = Input.GetJoystickNames()[i] + " button right";
-                */
-            }
-        }
 
         //else
         //{
@@ -234,6 +225,24 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+ 
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+            {
+                
+
+                //Debug.Log(Input.GetJoystickNames()[i]);
+
+                /*
+                up = Input.GetJoystickNames()[i] + " button up";
+                Debug.Log(up);
+                down = Input.GetJoystickNames()[i] + " button down";
+                left = Input.GetJoystickNames()[i] + " button left";
+                right = Input.GetJoystickNames()[i] + " button right";
+                */
+            }
+        }
     }
     public void setDrummerStationary()
     {
