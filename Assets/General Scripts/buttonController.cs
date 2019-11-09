@@ -10,6 +10,10 @@ public class buttonController : MonoBehaviour
 
     public SpriteRenderer flashSripte;
 
+    public PlayerControl char0;
+    public PlayerControl char1;
+    public PlayerControl char2;
+
     public bool noteCanBePressed;
     public bool redButtonCanBePressed;
     public bool redButtonBeingPressed;
@@ -22,31 +26,37 @@ public class buttonController : MonoBehaviour
     public float timeSinceLastNoteHit = 0;
     public float noteLength = 0.2f;
 
+    weapon weaponGuitar;
+    weapon weaponDrumset;
+    weapon weaponBass;
+    private float char0lastAtt;
 
     // Start is called before the first frame update
     void Start()
     {
+        //reference to each object's script
+        char0 = GameObject.Find("char0").GetComponent<PlayerControl>();
+        char1 = GameObject.Find("char1").GetComponent<PlayerControl>();
+        char2 = GameObject.Find("char2").GetComponent<PlayerControl>();
+
+        weaponGuitar = char0.GetComponent<weapon>();    //store guitarist weapon
+        weaponDrumset = char1.GetComponent<weapon>();   //store drummer weapon
+        weaponBass = char2.GetComponent<weapon>();      //store bassist weapon
+
         redButtonBeingPressed = false;
         theSR = GetComponent<SpriteRenderer>();
 
-        //flash = GameObject.Find("Beat Flash");
-        //flash.SetActive(false);
         flashSripte = GameObject.Find("Beat Flash").GetComponent<SpriteRenderer>();
         flashSripte.color = Color.red;
         flashSripte.enabled = false;
         Debug.Log(flashSripte);
-        //GameManager.Instance.registerRedButton(this);
     }
 
-    // Update is called once per frame
     void Update()
     {
         timeSinceLastNoteHit += Time.deltaTime;
         
-        if (Input.GetKey(KeyCode.Space) && flashSripte.enabled)
-        {
-            timeSinceLastNoteHit = 0;
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.Space) )
         {
@@ -58,16 +68,22 @@ public class buttonController : MonoBehaviour
                 //Debug.Log("note can be pressed: "+noteCanBePressed);
                 //Invoke("setBoolBack", noteLength);
             }
+            if (flashSripte.enabled)
+            {
+                timeSinceLastNoteHit = 0;
+                makePlayersShoot();
+            }
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            //redButtonBeingPressed = false;
             theSR.sprite = defaultImage;
             redButtonBeingPressed = false;
         }
         GameManager.Instance.redButtonCanPress(redButtonBeingPressed);
-        //if(!redButtonBeingPressed)
-        //    GameManager.Instance.redButtonCanPress(false);
+
+        char0lastAtt = char0.timeSinceAttackReq;
+        Debug.Log("Time since last attack request " + char0lastAtt);
+
 
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -88,5 +104,18 @@ public class buttonController : MonoBehaviour
     private void setBoolBack()
     {
         redButtonBeingPressed = false;
+    }
+
+    public void makePlayersShoot()
+    {
+        if (char0lastAtt < noteLength )
+        {
+            //Debug.Log("Time since last attack request " + char0lastAtt);
+            //Debug.Log("Note length " + noteLength);
+            //FIX ME
+            weaponGuitar.canFire =true;
+            weaponDrumset.canFire =true;
+            weaponBass.canFire =true;
+        }
     }
 }

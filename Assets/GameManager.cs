@@ -61,18 +61,18 @@ public class GameManager : MonoBehaviour
     {
         //buttonControllerScript.redButtonCanBePressed = canShoot;
         //Debug.Log("red button can press: " + canShoot);
-        if (buttonControllerScript.timeSinceLastNoteHit > buttonControllerScript.noteLength)
+        if (buttonControllerScript.timeSinceLastNoteHit < buttonControllerScript.noteLength)
         {
             foreach (PlayerControl pc in playerList)
             {
-                pc.playerCanFire = false;
+                pc.playerCanFire = true;
             }
         }
         else
         {
             foreach (PlayerControl pc in playerList)
             {
-                pc.playerCanFire = true;
+                pc.playerCanFire = false;
             }
         }
 

@@ -21,6 +21,8 @@ public class PlayerControl : MonoBehaviour
     public GameObject char1;
     public GameObject char2;
 
+    public buttonController ButtonController;
+
     string charID;
 
     tutorialTexts tutorialText;
@@ -29,86 +31,18 @@ public class PlayerControl : MonoBehaviour
 
     public float timeSinceAttackReq = 0;
     public float attackCheck = 0.2f;
-    //CONTROLS
-    //[SerializeField] private Player1controls _controls;
-
-    /*
-    private void OnEnable()
-    {
-        _controls.player1.South.performed += HandleSouth;
-        _controls.player1.South.Enable();
-
-        _controls.player1.East.performed += HandleEast;
-        _controls.player1.East.Enable();
-
-        _controls.player1.North.performed += HandleNorth;
-        _controls.player1.North.Enable();
-
-        _controls.player1.West.performed += HandleWest;
-        _controls.player1.West.Enable();
-    }
-
-
-    private void HandleSouth(InputAction.CallbackContext context)
-    {
-        Debug.Log("South");
-    }
-    private void HandleWest(InputAction.CallbackContext obj)
-    {
-        Debug.Log("West");
-    }
-    private void HandleNorth(InputAction.CallbackContext obj)
-    {
-        Debug.Log("North");
-    }
-    private void HandleEast(InputAction.CallbackContext obj)
-    {
-        Debug.Log("East");
-    }
-
-    private void OnDisable()
-    {
-        _controls.player1.South.performed -= HandleSouth;
-        _controls.player1.South.Disable();
-
-        _controls.player1.East.performed -= HandleEast;
-        _controls.player1.East.Disable();
-
-        _controls.player1.North.performed -= HandleNorth;
-        _controls.player1.North.Disable();
-
-        _controls.player1.West.performed -= HandleWest;
-        _controls.player1.West.Disable();
-    }
-    */
-
-
-
 
     public float speed = 0.5f;
 
     private Rigidbody2D rb2d;
-    //private int count, size;
 
     //private bool facingRight;
 
-
+    
     public GameObject liteToRight, liteToLeft;
     Vector2 litePos;
     //float nextFire = 0.0f;
     public bool playerCanFire;
-
-    /*
-    public string up;
-    public string down;
-    public string left;
-    public string right;
-
-    public int player1Number =0;
-    public int player2Number =1;
-    public int player3Number =2;
-    public int player4Number =3;
-    */
 
     weapon weapon;
     public float healingAmount = 10;
@@ -121,16 +55,14 @@ public class PlayerControl : MonoBehaviour
         char2 = GameObject.Find("char2");
         weapon = GetComponent<weapon>();
 
+        ButtonController = GameObject.Find("Buttons_Red").GetComponent<buttonController>();
 
         playerTouchingEnemy = new UnityEvent();
         GameManager.Instance.RegisterPlayerControl(this);
         gameStarted = false;
         rb2d = GetComponent<Rigidbody2D>();
         //facingRight = true;
-        //count = 0;
-        //size = 0;
-        //winText.text = "";
-        //loseText.text = "";
+     
         isDrummerStationary = false;
         drummerAnimationController = GetComponent<Animator>();
 
@@ -165,15 +97,7 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        timeSinceAttackReq += Time.deltaTime;
-        //float horMove = Input.GetAxis("Horizontal");
-        //float verMove = Input.GetAxis("Vertical");
-        //Vector2 movement = new Vector2(horMove, verMove);
-        //rb2d.AddForce(movement*speed);
-
-        //7. Instead of adding force (like above) we use -/+ position to make more responsive movement while also implementing the "speed" variable
-
-        if (!gameStarted)
+         if (!gameStarted)
         {
             if (Input.anyKeyDown)
             {
@@ -188,31 +112,6 @@ public class PlayerControl : MonoBehaviour
         //
 
         playerTouchingEnemy.Invoke();
-
-        //if (Input.GetAxis("Joy" + i + "X") && !isDrummerStationary)
-        //{
-        //    transform.Translate(horizontalAxis,0,0);
-        //    //transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-        //    //facingRight = false;
-        //}
-        //if (Input.GetAxis("Joy" + i + "Y") && !isDrummerStationary)
-        //{
-        //    transform.Translate(0, verticalAxis, 0);
-        //    //transform.eulerAngles = new Vector3(0, 0, 0); // Normal
-        //    //facingRight = true;
-        //}
-        //if (Input.GetButton("J1a") || Input.GetButton("J1b"))
-        //{
-        //    Debug.Log("button");
-        //}
-        //if (Input.GetKey(up) && !isDrummerStationary)
-        //{
-        //    transform.position += Vector3.up * speed * Time.deltaTime;
-        //}
-        //if (Input.GetKey(down) && !isDrummerStationary)
-        //{
-        //    transform.position += Vector3.down * speed * Time.deltaTime;
-        //}
 
         for (int i = 0; i < Input.GetJoystickNames().Length; i++)
         {
@@ -272,8 +171,10 @@ public class PlayerControl : MonoBehaviour
 
                 //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
             }
+            timeSinceAttackReq += Time.deltaTime;
             if (Input.GetButtonDown("J" + i + "a"))
             {
+                
                 if(i == 0)  //players can fire each other's weapons
                 {
                     weaponCanShoot(playerCanFire);
@@ -286,7 +187,10 @@ public class PlayerControl : MonoBehaviour
                 {
                     weaponCanShoot(playerCanFire);
                 }
+                //ButtonController.makePlayersShoot();
+
                 timeSinceAttackReq = 0;
+
 
                 bool debA = Input.GetButtonDown("J" + i + "a");
                 //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
@@ -341,21 +245,20 @@ public class PlayerControl : MonoBehaviour
     }
     public void setDrummerWalking()
     {
-        //Debug.Log("Stationary: " + drummerAnimationController.GetBool("isStationary"));
-
         drummerAnimationController.SetBool("isStationary", false);
         isDrummerStationary = false;
-        //Debug.Log(isDrummerStationary);
     }
     public void weaponCanShoot(bool pf)
     {
         weapon.canFire = pf;
+
+        //for tut
         if(pf && tutorialText!=null)
             tutorialText.objComp_FiredNote = true;
+        //
     }
     private void dmgOverTime()
     {
-        //Debug.Log(playerHealth);
         playerHealth -= 0.002;
     }
 
