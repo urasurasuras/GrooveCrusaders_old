@@ -14,12 +14,14 @@ public class buttonController : MonoBehaviour
     public bool redButtonCanBePressed;
     public bool redButtonBeingPressed;
 
-    public float noteLength = 0.5f;
-
     public static buttonController instance;
     noteScroll noteScript;
 
     public KeyCode keyToPress;
+
+    float timeSinceLastNoteHit = 0;
+    float noteLength = 0.2f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,14 @@ public class buttonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeSinceLastNoteHit += Time.deltaTime;
+        Debug.Log(timeSinceLastNoteHit);
+
+        if (Input.GetKey(KeyCode.Space) && flashSripte.enabled)
+        {
+            timeSinceLastNoteHit = 0;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) )
         {
             theSR.sprite = pressedImage;
@@ -80,4 +90,4 @@ public class buttonController : MonoBehaviour
     {
         redButtonBeingPressed = false;
     }
- }
+}

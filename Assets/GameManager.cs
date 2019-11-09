@@ -69,11 +69,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void conductorFlashed()
-    {
-        throw new NotImplementedException();
-    }
-
     public void RegisterPlayerControl(PlayerControl pc)
     {
         playerList.Add(pc);
@@ -125,20 +120,20 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.F3))  //Characters have more time to fire each beat 
-        {
-            if (!beatBuff)
-            {
-                buttonControllerScript.noteLength = 1;
-                beatBuff = true;
-                Debug.Log(buttonControllerScript.noteLength);
-            }else if (beatBuff)
-            {
-                buttonControllerScript.noteLength = .5f;
-                beatBuff = false;
-                Debug.Log(buttonControllerScript.noteLength);
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.F3))  //Characters have more time to fire each beat 
+        //{
+        //    if (!beatBuff)
+        //    {
+        //        buttonControllerScript.noteLength = 1;
+        //        beatBuff = true;
+        //        Debug.Log(buttonControllerScript.noteLength);
+        //    }else if (beatBuff)
+        //    {
+        //        buttonControllerScript.noteLength = .5f;
+        //        beatBuff = false;
+        //        Debug.Log(buttonControllerScript.noteLength);
+        //    }
+        //}
         if (Input.GetKeyDown(KeyCode.F4))  //Boss1 takes more damage 
         {
             if (!boss1Debuff)
