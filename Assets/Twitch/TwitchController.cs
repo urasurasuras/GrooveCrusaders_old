@@ -8,11 +8,28 @@ using System.IO;
 
 public class TwitchController : MonoBehaviour
 {
+    public static TwitchController Instance;
+
     private TcpClient twitchClient;
     private StreamReader reader;
     private StreamWriter writer;
 
     public string username, password, channelname; //https://twitchapps.com/tmi/
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            GameObject.Destroy(Instance);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {

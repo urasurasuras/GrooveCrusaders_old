@@ -9,7 +9,6 @@ public class buttonController : MonoBehaviour
     public Sprite pressedImage;
 
     public SpriteRenderer flashSripte;
-    public GameObject flash;
 
     public bool noteCanBePressed;
     public bool redButtonCanBePressed;
@@ -48,13 +47,14 @@ public class buttonController : MonoBehaviour
             {
                 redButtonBeingPressed = true;
                 //Debug.Log("note can be pressed: "+noteCanBePressed);
-                Invoke("setBoolBack", noteLength);
+                //Invoke("setBoolBack", noteLength);
             }
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
             //redButtonBeingPressed = false;
             theSR.sprite = defaultImage;
+            redButtonBeingPressed = false;
         }
         GameManager.Instance.redButtonCanPress(redButtonBeingPressed);
         //if(!redButtonBeingPressed)
@@ -66,27 +66,14 @@ public class buttonController : MonoBehaviour
         if (other.tag == "Note")
         {
             flashSripte.enabled = true;
-            flash.SetActive(true);
-
-            Debug.Log(flashSripte.enabled);
         }
     }
-    //private void OnTriggerStay2D(Collider2D other)
-    //{
-    //    if (other.tag == "Note")
-    //    {
-    //        flashSripte.enabled = true;
-    //        Debug.Log(flashSripte.enabled);
-    //    }
-    //}
+    
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Note")
         {
             flashSripte.enabled = false;
-            flash.SetActive(false);
-
-            Debug.Log(flashSripte.enabled);
         }
     }
     private void setBoolBack()
