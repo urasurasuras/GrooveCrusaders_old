@@ -113,15 +113,15 @@ public class PlayerControl : MonoBehaviour
 
                 //charID = "char" + i;
 
-                if (i == 0)
+                if (i == 0 && char0!=null)
                 {
                     char0.transform.Translate(horizontalAxis, 0, 0);
                 }
-                if (i == 1 && !isDrummerStationary)
+                if (i == 1 && char1 != null && !isDrummerStationary)
                 {
                     char1.transform.Translate(horizontalAxis, 0, 0);
                 }
-                if (i == 2)
+                if (i == 2 && char2 != null)
                 {
                     char2.transform.Translate(horizontalAxis, 0, 0);
                 }
@@ -145,15 +145,15 @@ public class PlayerControl : MonoBehaviour
                 //tutorialText.objComp_HasMoved = true;
 
                 float verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed * 0.5f;
-                if (i == 0)
+                if (i == 0 && char0 != null)
                 {
                     char0.transform.Translate(0, -verticalAxis, 0);
                 }
-                if (i == 1 && !isDrummerStationary)
+                if (i == 1 && char1 != null && !isDrummerStationary)
                 {
                     char1.transform.Translate(0, -verticalAxis, 0);
                 }
-                if (i == 2)
+                if (i == 2 && char2 != null)
                 {
                     char2.transform.Translate(0, -verticalAxis, 0);
                 }
@@ -166,15 +166,15 @@ public class PlayerControl : MonoBehaviour
             if (Input.GetButtonDown("J" + i + "a"))
             {
                 
-                if(i == 0)  //players can fire each other's weapons
+                if(i == 0 && char0 != null)  //players can fire each other's weapons
                 {
                     weaponCanShoot(playerCanFire);
                 }
-                if (i == 2 && isDrummerStationary)
+                if (i == 1 && char1 != null && isDrummerStationary)
                 {
                     weaponCanShoot(playerCanFire);
                 }
-                if (i == 3)
+                if (i == 2 && char2 != null)
                 {
                     weaponCanShoot(playerCanFire);
                 }
