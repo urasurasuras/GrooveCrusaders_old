@@ -14,6 +14,7 @@ public class boosAnimationScript : MonoBehaviour
     public GameObject enemyAdd;
     public float boss1Health = 100;
     public float maxHealth = 200;
+    public float stage2health = 75;
     public Slider Boss1HealthSlider;
 
     public float dmgTaken = 10;
@@ -28,7 +29,7 @@ public class boosAnimationScript : MonoBehaviour
                 bossAnimationController.SetTrigger("RightFight");
                 activateRight();
             }
-            if (boss1Health <= 50)
+            if (boss1Health <= stage2health)
             {
                 bossAnimationController.SetTrigger("FinalFight");
                 activateFinal();
