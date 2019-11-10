@@ -73,6 +73,7 @@ public class buttonController : MonoBehaviour
             {
                 timeSinceLastNoteHit = 0;
                 GameManager.Instance.streak+=1;
+                flashSripte.enabled = false;
                 //Debug.Log("Streak: " + GameManager.Instance.streak);
 
                 makePlayersShoot();
