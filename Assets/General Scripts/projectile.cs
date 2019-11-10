@@ -6,6 +6,7 @@ public class projectile : MonoBehaviour
 {
     public float velX;
     public Rigidbody2D rb;
+    public GameObject particle;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class projectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            Instantiate(particle);
             Destroy(gameObject, 0f);
         }
     }

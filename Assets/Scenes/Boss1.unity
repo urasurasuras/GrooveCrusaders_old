@@ -1915,6 +1915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07eaec8a1e59444596f836233d22283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loss: 0
   streak: 0
 --- !u!4 &1088048939
 Transform:
@@ -7980,6 +7981,8 @@ MonoBehaviour:
   enemyAdd: {fileID: 4648928590584992695, guid: 28c66931c5859d94cb020e392fcb0b1a,
     type: 3}
   boss1Health: 200
+  maxHealth: 200
+  stage2health: 75
   Boss1HealthSlider: {fileID: 976956094}
   dmgTaken: 10
 --- !u!50 &2003192234

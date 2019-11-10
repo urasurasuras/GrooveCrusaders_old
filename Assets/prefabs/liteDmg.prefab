@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 643602350668238401}
   - component: {fileID: 643602350668238403}
   m_Layer: 0
-  m_Name: liteToRight
+  m_Name: liteDmg
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e38119d656a97a419f33a1b654f10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerControl: {fileID: 0}
   velX: 15
   rb: {fileID: 643602350668238402}
-  direction: 180
+  particle: {fileID: 7697065609039826740, guid: 94647eeaa7ff2a342891cba0430dabe3,
+    type: 3}
