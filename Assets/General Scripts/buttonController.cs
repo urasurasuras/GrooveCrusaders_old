@@ -8,6 +8,7 @@ public class buttonController : MonoBehaviour
     public Sprite defaultImage;
     public Sprite pressedImage;
 
+    public GameObject flashObject;
     public SpriteRenderer flashSripte;
 
     public PlayerControl char0;
@@ -45,8 +46,10 @@ public class buttonController : MonoBehaviour
 
         redButtonBeingPressed = false;
         theSR = GetComponent<SpriteRenderer>();
-
-        flashSripte = GameObject.Find("Beat Flash").GetComponent<SpriteRenderer>();
+        
+        flashObject = GameObject.Find("Beat Flash");
+        if (flashSripte != null)
+            flashSripte = flashObject.GetComponent<SpriteRenderer>();
         flashSripte.color = Color.red;
         flashSripte.enabled = false;
         Debug.Log(flashSripte);
@@ -55,9 +58,7 @@ public class buttonController : MonoBehaviour
     void Update()
     {
         timeSinceLastNoteHit += Time.deltaTime;
-        
-        
-
+               
         if (Input.GetKeyDown(KeyCode.Space) )
         {
             theSR.sprite = pressedImage;
@@ -71,6 +72,9 @@ public class buttonController : MonoBehaviour
             if (flashSripte.enabled)
             {
                 timeSinceLastNoteHit = 0;
+                GameManager.Instance.streak+=1;
+                //Debug.Log("Streak: " + GameManager.Instance.streak);
+
                 makePlayersShoot();
             }
         }
@@ -79,7 +83,6 @@ public class buttonController : MonoBehaviour
             theSR.sprite = defaultImage;
             redButtonBeingPressed = false;
         }
-        GameManager.Instance.redButtonCanPress(redButtonBeingPressed);
 
         char0lastAtt = char0.timeSinceAttackReq;
         //Debug.Log("Time since last attack request " + char0lastAtt);
@@ -99,6 +102,8 @@ public class buttonController : MonoBehaviour
         if (other.tag == "Note")
         {
             flashSripte.enabled = false;
+            GameManager.Instance.streak = 0;
+            //Debug.Log("Streak (0): " + GameManager.Instance.streak);
         }
     }
     private void setBoolBack()

@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 653280040}
   - component: {fileID: 653280039}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Beat Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -788,16 +788,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1245340098849938625, guid: 1e2f06fa76644be479e47414cbda4239,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1245340098849938624, guid: 1e2f06fa76644be479e47414cbda4239,
         type: 3}
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 2053031605}
+    - target: {fileID: 1245340098849938625, guid: 1e2f06fa76644be479e47414cbda4239,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e2f06fa76644be479e47414cbda4239, type: 3}
 --- !u!4 &1200178529 stripped
@@ -954,6 +954,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6005788668056646018, guid: a35bbbae5d69df442b6fe043e222c734,
+        type: 3}
+      propertyPath: positionTarget
+      value: 
+      objectReference: {fileID: 2305833939529081650}
+    - target: {fileID: 6005788668056646018, guid: a35bbbae5d69df442b6fe043e222c734,
+        type: 3}
+      propertyPath: angleTarget
+      value: 
+      objectReference: {fileID: 2053031605}
     - target: {fileID: 6005788668056646019, guid: a35bbbae5d69df442b6fe043e222c734,
         type: 3}
       propertyPath: m_Sprite
@@ -975,16 +985,6 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6005788668056646018, guid: a35bbbae5d69df442b6fe043e222c734,
-        type: 3}
-      propertyPath: positionTarget
-      value: 
-      objectReference: {fileID: 2305833939529081650}
-    - target: {fileID: 6005788668056646018, guid: a35bbbae5d69df442b6fe043e222c734,
-        type: 3}
-      propertyPath: angleTarget
-      value: 
-      objectReference: {fileID: 2053031605}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a35bbbae5d69df442b6fe043e222c734, type: 3}
 --- !u!1 &1375801255
@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07eaec8a1e59444596f836233d22283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theSR: {fileID: 653280039}
+  streak: 0
 --- !u!4 &1375801257
 Transform:
   m_ObjectHideFlags: 0
@@ -1178,16 +1178,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8650108602367197599, guid: 2d76e88b9b0430e41be2eaf3ae414b36,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8650108602367197598, guid: 2d76e88b9b0430e41be2eaf3ae414b36,
         type: 3}
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 2053031605}
+    - target: {fileID: 8650108602367197599, guid: 2d76e88b9b0430e41be2eaf3ae414b36,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d76e88b9b0430e41be2eaf3ae414b36, type: 3}
 --- !u!1 &1901930940
@@ -2334,11 +2334,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: 1bbda9210988dfd4db252a09838d254f, type: 3}
   pressedImage: {fileID: 21300000, guid: cacc39dd2a4e88a43aadeddd73e9b1e2, type: 3}
+  flashObject: {fileID: 653280038}
+  flashSripte: {fileID: 653280039}
+  char0: {fileID: 0}
+  char1: {fileID: 0}
+  char2: {fileID: 0}
   noteCanBePressed: 0
   redButtonCanBePressed: 0
   redButtonBeingPressed: 0
-  noteLength: 0.5
   keyToPress: 32
+  timeSinceLastNoteHit: 0
+  noteLength: 0.5
 --- !u!212 &1943801075
 SpriteRenderer:
   m_ObjectHideFlags: 0

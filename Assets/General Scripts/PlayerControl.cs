@@ -140,7 +140,7 @@ public class PlayerControl : MonoBehaviour
 
                 float debugXaxis = Input.GetAxis("Joy" + i + "X");
 
-                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
+                Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
             }
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
             {

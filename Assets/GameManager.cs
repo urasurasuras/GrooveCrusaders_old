@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     bool boss1Debuff = false;
     bool boss2Debuff = false;
 
+    public int streak=0;
+
     public static GameManager Instance
     {
         get
@@ -50,10 +52,10 @@ public class GameManager : MonoBehaviour
         GameObject boss2 = GameObject.Find("Boss2");
     }
 
-    public void redButtonCanPress(bool canShoot)
-    {
+    //public void redButtonCanPress(bool canShoot)
+    //{
         
-    }
+    //}
 
     public void RegisterPlayerControl(PlayerControl pc)
     {
@@ -170,5 +172,6 @@ public class GameManager : MonoBehaviour
             }
         }
         //
+        //GUI BOX DEBUG
     }
 }
