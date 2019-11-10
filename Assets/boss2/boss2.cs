@@ -49,46 +49,52 @@ public class boss2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        noteShooter.barEvent.AddListener(setTarget);
+        if (!GameManager.Instance.loss)
+        {
+            noteShooter.barEvent.AddListener(setTarget);
 
-        if (GameObject.Find("char0") != null)
-        {
-            targetPlayer = GameObject.Find("char0");
-            targetCharLocation = targetPlayer.GetComponent<Transform>();
-        }
-        else if (GameObject.Find("char1") != null)
-        {
-            targetPlayer = GameObject.Find("char1");
-            targetCharLocation = targetPlayer.GetComponent<Transform>();
-        }
-        else if (GameObject.Find("char2") != null)
-        {
-            targetPlayer = GameObject.Find("char2");
-            targetCharLocation = targetPlayer.GetComponent<Transform>();
-        }
-        else
-        {
-            GameManager.Instance.loss = true;
-        }
-        healtBar.value = bossHealth;
-        if (Input.GetKey(KeyCode.F))
-        {
-            Debug.Log("pressed F");
-            splitBoss2();
-        }
-       
-        
-        if (moving)
-        {
-            chargeToPlayer();
+            if (GameObject.Find("char0") != null)
+            {
+                targetPlayer = GameObject.Find("char0");
+                targetCharLocation = targetPlayer.GetComponent<Transform>();
+            }
+            else if (GameObject.Find("char1") != null)
+            {
+                targetPlayer = GameObject.Find("char1");
+                targetCharLocation = targetPlayer.GetComponent<Transform>();
+            }
+            else if (GameObject.Find("char2") != null)
+            {
+                targetPlayer = GameObject.Find("char2");
+                targetCharLocation = targetPlayer.GetComponent<Transform>();
+            }
+            else
+            {
+                GameManager.Instance.loss = true;
+            }
+            healtBar.value = bossHealth;
+            if (Input.GetKey(KeyCode.F))
+            {
+                Debug.Log("pressed F");
+                splitBoss2();
+            }
+
+
+            if (moving)
+            {
+                chargeToPlayer();
+            }
         }
     }
 
     public void setTarget()
     {
-        //Debug.Log("Set target: " + lastPlayerPos);
-        lastPlayerPos = targetCharLocation.position;
-        moving = true;
+        if (!GameManager.Instance.loss)
+        {
+            //Debug.Log("Set target: " + lastPlayerPos);
+            lastPlayerPos = targetCharLocation.position;
+            moving = true;
+        }
     }
     public void chargeToPlayer()
     {

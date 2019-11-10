@@ -176,4 +176,9 @@ public class GameManager : MonoBehaviour
         //
         //GUI BOX DEBUG
     }
+    private void Update()
+    {
+        //if (loss)
+        //    Debug.Log(loss);
+    }
 }
