@@ -8,7 +8,10 @@ public class boss2 : MonoBehaviour
 {
     public float speed=15;
 
+    public GameObject targetPlayer;
+
     public Transform targetCharLocation;
+
     private Vector3 currentBossPos;
     private Vector3 lastPlayerPos;
     public Slider healtBar;
@@ -36,7 +39,9 @@ public class boss2 : MonoBehaviour
     void Start()
     {
         moving = false;
-        targetCharLocation = GameObject.Find("char0").GetComponent<Transform>();
+
+        targetPlayer = GameObject.Find("char0");
+        targetCharLocation = targetPlayer.GetComponent<Transform>();
         //boss2addRef = GetComponent<boss2add>();
         noteShooter.barEvent.AddListener(chargeToPlayer);
     }
@@ -46,6 +51,25 @@ public class boss2 : MonoBehaviour
     {
         noteShooter.barEvent.AddListener(setTarget);
 
+        if (GameObject.Find("char0") != null)
+        {
+            targetPlayer = GameObject.Find("char0");
+            targetCharLocation = targetPlayer.GetComponent<Transform>();
+        }
+        else if (GameObject.Find("char1") != null)
+        {
+            targetPlayer = GameObject.Find("char1");
+            targetCharLocation = targetPlayer.GetComponent<Transform>();
+        }
+        else if (GameObject.Find("char2") != null)
+        {
+            targetPlayer = GameObject.Find("char2");
+            targetCharLocation = targetPlayer.GetComponent<Transform>();
+        }
+        else
+        {
+            GameManager.Instance.loss = true;
+        }
         healtBar.value = bossHealth;
         if (Input.GetKey(KeyCode.F))
         {

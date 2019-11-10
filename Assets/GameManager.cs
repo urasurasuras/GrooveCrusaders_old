@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     boosAnimationScript boss1;
     boss2 boss2;
 
+    public bool loss;
+
     bool healBuff = false;
     bool speedBuff = false;
     bool beatBuff = false;

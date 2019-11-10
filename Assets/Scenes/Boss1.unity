@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: 1bbda9210988dfd4db252a09838d254f, type: 3}
   pressedImage: {fileID: 21300000, guid: cacc39dd2a4e88a43aadeddd73e9b1e2, type: 3}
+  flashObject: {fileID: 0}
   flashSripte: {fileID: 119127665}
   char0: {fileID: 0}
   char1: {fileID: 0}
@@ -1914,6 +1915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07eaec8a1e59444596f836233d22283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  streak: 0
 --- !u!4 &1088048939
 Transform:
   m_ObjectHideFlags: 0
@@ -7977,7 +7979,7 @@ MonoBehaviour:
   finalPhaseCollider: {fileID: 2003192236}
   enemyAdd: {fileID: 4648928590584992695, guid: 28c66931c5859d94cb020e392fcb0b1a,
     type: 3}
-  boss1Health: 100
+  boss1Health: 200
   Boss1HealthSlider: {fileID: 976956094}
   dmgTaken: 10
 --- !u!50 &2003192234
