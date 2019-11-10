@@ -13,6 +13,7 @@ public class boosAnimationScript : MonoBehaviour
 
     public GameObject enemyAdd;
     public float boss1Health = 100;
+    public float maxHealth = 200;
     public Slider Boss1HealthSlider;
 
     public float dmgTaken = 10;
@@ -22,7 +23,7 @@ public class boosAnimationScript : MonoBehaviour
         if (other.gameObject.tag =="Projectile")
         {
             Debug.Log(this + " hit by "+other);
-            if(boss1Health < 100)
+            if(boss1Health < maxHealth)
             {
                 bossAnimationController.SetTrigger("RightFight");
                 activateRight();
