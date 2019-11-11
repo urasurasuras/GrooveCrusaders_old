@@ -124,113 +124,144 @@ public class PlayerControl : MonoBehaviour
                     weaponCanShoot(playerCanFire);
                 }
             }
-        }    
-            
-
-        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+        }
+        else//if (Input.GetJoystickNames().Length > 0)
         {
-            if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2)
+            for (int i = 0; i < Input.GetJoystickNames().Length; i++)
             {
-                //tutorialText.objComp_HasMoved = true;
-                horizontalAxis = Input.GetAxis("Joy" + i + "X") * speed *0.5f;
-
-                //charID = "char" + i;
-
-                if (i == 0 && char0!=null)
+                if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2)
                 {
+                    //tutorialText.objComp_HasMoved = true;
+                    horizontalAxis = Input.GetAxis("Joy" + i + "X") * speed * 0.5f;
+
+                    //charID = "char" + i;
+
+                    if (i == 0 && char0 != null)
+                    {
+                        if (horizontalAxis < 0)
+                        {
+                            char0.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                            char0.transform.Translate(-horizontalAxis, 0, 0);
+                            Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                        }
+                        else if (horizontalAxis > 0)
+                        {
+                            char0.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                            char0.transform.Translate(horizontalAxis, 0, 0);
+                            Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+
+                        }
+                    }
+                    if (i == 1 && char1 != null && !isDrummerStationary)
+                    {
+                        if (horizontalAxis < 0)
+                        {
+                            char1.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                            char1.transform.Translate(-horizontalAxis, 0, 0);
+                            Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                        }
+                        else if (horizontalAxis > 0)
+                        {
+                            char1.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                            char1.transform.Translate(horizontalAxis, 0, 0);
+                            Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+
+                        }
+                    }
+                    if (i == 2 && char2 != null)
+                    {
+                        if (horizontalAxis < 0)
+                        {
+                            char2.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                            char2.transform.Translate(-horizontalAxis, 0, 0);
+                            Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                        }
+                        else if (horizontalAxis > 0)
+                        {
+                            char2.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                            char2.transform.Translate(horizontalAxis, 0, 0);
+                            Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+
+                        }
+                    }
+                    //Debug.Log("controller number " + i);
+                    if (horizontalAxis > 0)
+                    {
+                        //transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                    }
                     if (horizontalAxis < 0)
-                        transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                    char0.transform.Translate(horizontalAxis, 0, 0);
-                }
-                if (i == 1 && char1 != null && !isDrummerStationary)
-                {
-                    if (horizontalAxis < 0)
-                        transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                    char1.transform.Translate(horizontalAxis, 0, 0);
-                }
-                if (i == 2 && char2 != null)
-                {
-                    if (horizontalAxis < 0)
-                        transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                    char2.transform.Translate(horizontalAxis, 0, 0);
-                }
-                //Debug.Log("controller number " + i);
-                if (horizontalAxis > 0)
-                {
-                    //transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                }
-                if (horizontalAxis < 0)
-                {
-                    //transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-                }
+                    {
+                        //transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                    }
 
 
-                float debugXaxis = Input.GetAxis("Joy" + i + "X");
+                    float debugXaxis = Input.GetAxis("Joy" + i + "X");
 
-                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
-            }
-            if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
-            {
-                //tutorialText.objComp_HasMoved = true;
-
-                verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed * 0.5f;
-                if (i == 0 && char0 != null)
-                {
-                    char0.transform.Translate(0, -verticalAxis, 0);
+                    //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
                 }
-                if (i == 1 && char1 != null && !isDrummerStationary)
+                if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
                 {
-                    char1.transform.Translate(0, -verticalAxis, 0);
+                    //tutorialText.objComp_HasMoved = true;
+
+                    verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed * 0.5f;
+                    if (i == 0 && char0 != null)
+                    {
+                        char0.transform.Translate(0, -verticalAxis, 0);
+                    }
+                    if (i == 1 && char1 != null && !isDrummerStationary)
+                    {
+                        char1.transform.Translate(0, -verticalAxis, 0);
+                    }
+                    if (i == 2 && char2 != null)
+                    {
+                        char2.transform.Translate(0, -verticalAxis, 0);
+                    }
+
+                    float debugYaxis = Input.GetAxis("Joy" + i + "Y");
+
+                    //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
                 }
-                if (i == 2 && char2 != null)
+                timeSinceAttackReq += Time.deltaTime;
+                if (Input.GetButtonDown("J" + i + "a"))
                 {
-                    char2.transform.Translate(0, -verticalAxis, 0);
+
+                    if (i == 0 && char0 != null)  //players can fire each other's weapons
+                    {
+                        weaponCanShoot(playerCanFire);
+                    }
+                    if (i == 1 && char1 != null && isDrummerStationary)
+                    {
+                        weaponCanShoot(playerCanFire);
+                    }
+                    if (i == 2 && char2 != null)
+                    {
+                        weaponCanShoot(playerCanFire);
+                    }
+                    //ButtonController.makePlayersShoot();
+
+                    timeSinceAttackReq = 0;
+
+
+                    bool debA = Input.GetButtonDown("J" + i + "a");
+                    //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
                 }
-
-                float debugYaxis = Input.GetAxis("Joy" + i + "Y");
-
-                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
-            }
-            timeSinceAttackReq += Time.deltaTime;
-            if (Input.GetButtonDown("J" + i + "a"))
-            {
-                
-                if(i == 0 && char0 != null)  //players can fire each other's weapons
+                if (Input.GetButtonDown("J" + i + "b"))
                 {
-                    weaponCanShoot(playerCanFire);
-                }
-                if (i == 1 && char1 != null && isDrummerStationary)
-                {
-                    weaponCanShoot(playerCanFire);
-                }
-                if (i == 2 && char2 != null)
-                {
-                    weaponCanShoot(playerCanFire);
-                }
-                //ButtonController.makePlayersShoot();
+                    bool debB = Input.GetButtonDown("J" + i + "b");
+                    if (!isDrummerStationary)
+                    {
+                        //Debug.Log("inside if stationary");
 
-                timeSinceAttackReq = 0;
+                        setDrummerStationary();
+                    }
+                    else if (isDrummerStationary)
+                    {
+                        //Debug.Log("inside if walking");
 
-
-                bool debA = Input.GetButtonDown("J" + i + "a");
-                //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
-            }
-            if (Input.GetButtonDown("J" + i + "b"))
-            {
-                bool debB = Input.GetButtonDown("J" + i + "b");
-                if (!isDrummerStationary)
-                {
-                    //Debug.Log("inside if stationary");
-
-                    setDrummerStationary();
+                        setDrummerWalking();
+                    }
+                    //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debB);
                 }
-                else if (isDrummerStationary)
-                {
-                    //Debug.Log("inside if walking");
-
-                    setDrummerWalking();
-                }
-                //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debB);
             }
         }
     }
