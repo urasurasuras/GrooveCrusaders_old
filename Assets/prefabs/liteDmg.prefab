@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 643602350668238403}
   m_Layer: 0
   m_Name: liteDmg
-  m_TagString: Projectile
+  m_TagString: f_damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,5 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velX: 15
   rb: {fileID: 643602350668238402}
-  particle: {fileID: 7697065609039826740, guid: 94647eeaa7ff2a342891cba0430dabe3,
+  liteDmgParticle: {fileID: 7697065609039826740, guid: 94647eeaa7ff2a342891cba0430dabe3,
+    type: 3}
+  liteHealParticle: {fileID: 4651598530892626867, guid: a1c941dff142e684fa2b306f1f3b65f9,
     type: 3}

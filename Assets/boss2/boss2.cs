@@ -24,7 +24,7 @@ public class boss2 : MonoBehaviour
                                         //boss2add boss2addRef;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Projectile")
+        if (other.gameObject.tag == "f_damage")
         {
             Destroy(other.gameObject);
 

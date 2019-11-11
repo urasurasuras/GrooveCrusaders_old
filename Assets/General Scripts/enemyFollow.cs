@@ -30,7 +30,7 @@ public class enemyFollow : MonoBehaviour
         //Destroy(gameObject, 0f);
 
         if(other.gameObject.tag == "Enemy") { }     //do nothing if triggered by enemy
-        if (other.gameObject.tag == "Projectile" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "f_damage" || other.gameObject.tag == "Player")
         {
             isAlive = false;
             Debug.Log("enemy is alive: " + isAlive);

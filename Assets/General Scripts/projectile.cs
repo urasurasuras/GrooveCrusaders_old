@@ -6,7 +6,8 @@ public class projectile : MonoBehaviour
 {
     public float velX;
     public Rigidbody2D rb;
-    public GameObject particle;
+    public GameObject liteDmgParticle;
+    public GameObject liteHealParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +24,14 @@ public class projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Enemy"&& this.gameObject.tag == "f_damage")
         {
-            Instantiate(particle);
+            Instantiate(liteDmgParticle);
+            Destroy(gameObject, 0f);
+        }
+        if (collision.gameObject.tag == "Player" && this.gameObject.tag == "f_healing")
+        {
+            Instantiate(liteHealParticle);
             Destroy(gameObject, 0f);
         }
     }

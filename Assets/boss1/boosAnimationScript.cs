@@ -21,7 +21,7 @@ public class boosAnimationScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag =="Projectile")
+        if (other.gameObject.tag =="f_damage")
         {
             Debug.Log(this + " hit by "+other);
             if(boss1Health < maxHealth)

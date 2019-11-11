@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Activator
-  - Projectile
   - Enemy
-  - Boss
-  - Healing
   - Note
+  - Healing
+  - Projectile
+  - f_damage
+  - f_healing
   layers:
   - Default
   - TransparentFX

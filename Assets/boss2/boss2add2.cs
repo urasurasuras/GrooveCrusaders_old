@@ -12,13 +12,13 @@ public class boss2add2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("hit add");
+        //Debug.Log("hit add");
 
-        if (collision.gameObject.tag == "Projectile")
+        if (collision.gameObject.tag == "f_damage")
         {
             Destroy(collision.gameObject);
             splitBoss2();
-            Debug.Log("with projectile");
+            //Debug.Log("with projectile");
         }
     }
     // Start is called before the first frame update

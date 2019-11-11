@@ -14,7 +14,7 @@ public class boss2add : MonoBehaviour
     {
         Debug.Log("hit add");
 
-        if (collision.gameObject.tag == "Projectile")
+        if (collision.gameObject.tag == "f_damage")
         {
             Destroy(collision.gameObject);
             splitBoss2();

@@ -210,7 +210,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Healing")
+        if (other.gameObject.tag == "f_healing")
         {
             playerHealth += healingAmount ;
             Destroy(other.gameObject);
