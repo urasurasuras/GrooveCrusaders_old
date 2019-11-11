@@ -47,6 +47,8 @@ public class PlayerControl : MonoBehaviour
     weapon weapon;
     GameObject red_button;
     public float healingAmount = 10;
+    private float horizontalAxis;
+    private float verticalAxis;
 
     // Start is called before the first frame update
     void Start()
@@ -76,16 +78,6 @@ public class PlayerControl : MonoBehaviour
 
 
         //tutorialText = GameObject.Find("Tutorial Text").GetComponent<tutorialTexts>();
-
-
-        //else
-        //{
-        //    up = "W";
-        //    down = "S";
-        //    left = "A";
-        //    right = "D";
-        //}
-
     }
 
     void FixedUpdate()
@@ -109,26 +101,38 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetJoystickNames().Length == 0)       //if there are no joysticks connected use WASD for char0
         {
             //Debug.Log("number of joysticks" + Input.GetJoystickNames().Length);
-            float horizontalAxis = Input.GetAxis("kyb_horizontal") * speed * 0.5f;
+            horizontalAxis = Input.GetAxis("kyb_horizontal") * speed * 0.5f;
             float verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
             if (char0 != null)
             {
                 if (horizontalAxis < 0)
-                    transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                char0.transform.Translate(horizontalAxis, 0, 0);
-            }
-            if (char0 != null)
-            {
+                {
+                    char0.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                    char0.transform.Translate(-horizontalAxis, 0, 0);
+                    Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                }
+                else if (horizontalAxis > 0)
+                {
+                    char0.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                    char0.transform.Translate(horizontalAxis, 0, 0);
+                    Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+
+                }
                 char0.transform.Translate(0, verticalAxis, 0);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    weaponCanShoot(playerCanFire);
+                }
             }
-        }
+        }    
+            
 
         for (int i = 0; i < Input.GetJoystickNames().Length; i++)
         {
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2)
             {
                 //tutorialText.objComp_HasMoved = true;
-                float horizontalAxis = Input.GetAxis("Joy" + i + "X") * speed *0.5f;
+                horizontalAxis = Input.GetAxis("Joy" + i + "X") * speed *0.5f;
 
                 //charID = "char" + i;
 
@@ -169,7 +173,7 @@ public class PlayerControl : MonoBehaviour
             {
                 //tutorialText.objComp_HasMoved = true;
 
-                float verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed * 0.5f;
+                verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed * 0.5f;
                 if (i == 0 && char0 != null)
                 {
                     char0.transform.Translate(0, -verticalAxis, 0);
