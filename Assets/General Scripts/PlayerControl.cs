@@ -106,6 +106,23 @@ public class PlayerControl : MonoBehaviour
 
         playerTouchingEnemy.Invoke();
 
+        if (Input.GetJoystickNames().Length == 0)       //if there are no joysticks connected use WASD for char0
+        {
+            //Debug.Log("number of joysticks" + Input.GetJoystickNames().Length);
+            float horizontalAxis = Input.GetAxis("kyb_horizontal") * speed * 0.5f;
+            float verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
+            if (char0 != null)
+            {
+                if (horizontalAxis < 0)
+                    transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                char0.transform.Translate(horizontalAxis, 0, 0);
+            }
+            if (char0 != null)
+            {
+                char0.transform.Translate(0, verticalAxis, 0);
+            }
+        }
+
         for (int i = 0; i < Input.GetJoystickNames().Length; i++)
         {
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2)
@@ -117,14 +134,20 @@ public class PlayerControl : MonoBehaviour
 
                 if (i == 0 && char0!=null)
                 {
+                    if (horizontalAxis < 0)
+                        transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
                     char0.transform.Translate(horizontalAxis, 0, 0);
                 }
                 if (i == 1 && char1 != null && !isDrummerStationary)
                 {
+                    if (horizontalAxis < 0)
+                        transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
                     char1.transform.Translate(horizontalAxis, 0, 0);
                 }
                 if (i == 2 && char2 != null)
                 {
+                    if (horizontalAxis < 0)
+                        transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
                     char2.transform.Translate(horizontalAxis, 0, 0);
                 }
                 //Debug.Log("controller number " + i);
