@@ -7,7 +7,9 @@ public class spriteFollow : MonoBehaviour
     //public GameObject objectOfSprite;
     public Transform positionTarget;    //used to follow gameObject
     public Transform angleTarget;       //used face the camera
-    float vertOffset;
+    [SerializeField]float vertOffset;
+    [SerializeField]float horizOffset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +19,11 @@ public class spriteFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        vertOffset = positionTarget.position.y;
-        vertOffset += 1;
+        //vertOffset = positionTarget.position.y;
+        //vertOffset += 1;
 
-        transform.position = positionTarget.position;
-        transform.position = new Vector3(positionTarget.position.x, vertOffset, positionTarget.position.z);
+        //transform.position = positionTarget.position;
+        transform.position = new Vector3(positionTarget.position.x + horizOffset, positionTarget.position.y + vertOffset, positionTarget.position.z);
         transform.rotation = angleTarget.rotation;
         transform.rotation = positionTarget.rotation;
     }

@@ -165,11 +165,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2827104366749895962}
     m_Modifications:
-    - target: {fileID: 6005788668056646017, guid: a35bbbae5d69df442b6fe043e222c734,
-        type: 3}
-      propertyPath: m_Name
-      value: Angled sprite
-      objectReference: {fileID: 0}
     - target: {fileID: 6005788668056646016, guid: a35bbbae5d69df442b6fe043e222c734,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -225,11 +220,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6005788668056646017, guid: a35bbbae5d69df442b6fe043e222c734,
+        type: 3}
+      propertyPath: m_Name
+      value: Angled sprite
+      objectReference: {fileID: 0}
     - target: {fileID: 6005788668056646018, guid: a35bbbae5d69df442b6fe043e222c734,
         type: 3}
       propertyPath: positionTarget
       value: 
       objectReference: {fileID: 2827104366749895962}
+    - target: {fileID: 6005788668056646018, guid: a35bbbae5d69df442b6fe043e222c734,
+        type: 3}
+      propertyPath: vertOffset
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6005788668056646019, guid: a35bbbae5d69df442b6fe043e222c734,
         type: 3}
       propertyPath: m_Sprite

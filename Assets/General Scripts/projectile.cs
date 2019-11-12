@@ -12,7 +12,7 @@ public class projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = transform.right * velX;
+        //rb.velocity = transform.right * velX;
     }
 
     // Update is called once per frame
