@@ -245,7 +245,7 @@ public class PlayerControl : MonoBehaviour
                     bool debA = Input.GetButtonDown("J" + i + "a");
                     //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
                 }
-                if (Input.GetButtonDown("J" + i + "b"))
+                if (Input.GetButtonDown("J" + i + "b") /*|| Input.GetKey(KeyCode.Keypad0)*/)
                 {
                     bool debB = Input.GetButtonDown("J" + i + "b");
                     if (!isDrummerStationary)
