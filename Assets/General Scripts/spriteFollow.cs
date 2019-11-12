@@ -24,7 +24,9 @@ public class spriteFollow : MonoBehaviour
         //vertOffset += 1;
 
         //transform.position = positionTarget.position;
+        if (positionTarget)
         transform.position = new Vector3(positionTarget.position.x + horizOffset, positionTarget.position.y + vertOffset, positionTarget.position.z);
+        if (angleTarget)
         transform.rotation = angleTarget.rotation;
         //transform.rotation = positionTarget.rotation;
     }

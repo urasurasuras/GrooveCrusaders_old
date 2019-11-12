@@ -94,7 +94,7 @@ public class buttonController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Note")
+        if (other.tag == "Note" && flashSripte)
         {
             flashSripte.enabled = true;
         }
@@ -102,7 +102,7 @@ public class buttonController : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Note")
+        if (other.tag == "Note" && flashSripte)
         {
             flashSripte.enabled = false;
             GameManager.Instance.streak = 0;

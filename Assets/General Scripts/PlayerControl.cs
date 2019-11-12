@@ -113,13 +113,13 @@ public class PlayerControl : MonoBehaviour
                 {
                     char0.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
                     char0.transform.Translate(-horizontalAxis, 0, 0);
-                    Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                    //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                 }
                 else if (horizontalAxis > 0)
                 {
                     char0.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
                     char0.transform.Translate(horizontalAxis, 0, 0);
-                    Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                    //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
                 }
                 char0.transform.Translate(0, verticalAxis, 0);
