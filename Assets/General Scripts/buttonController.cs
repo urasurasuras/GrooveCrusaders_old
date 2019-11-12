@@ -48,10 +48,12 @@ public class buttonController : MonoBehaviour
         theSR = GetComponent<SpriteRenderer>();
         
         flashObject = GameObject.Find("Beat Flash");
-        if (flashSripte != null)
+        if (flashObject != null)
+        {
             flashSripte = flashObject.GetComponent<SpriteRenderer>();
-        flashSripte.color = Color.red;
-        flashSripte.enabled = false;
+            flashSripte.color = Color.red;
+            flashSripte.enabled = false;
+        }
         //Debug.Log(flashSripte);
     }
 

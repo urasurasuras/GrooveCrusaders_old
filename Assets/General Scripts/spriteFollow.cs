@@ -13,7 +13,7 @@ public class spriteFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //angleTarget = GameObject.Find("CameraMan").GetComponent<Transform>();
+        angleTarget = GameObject.Find("CameraMan").GetComponent<Transform>();
         //posOfObj = objectOfSprite.GetComponent<Transform>();
     }
 
