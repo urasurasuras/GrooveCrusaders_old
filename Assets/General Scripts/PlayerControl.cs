@@ -9,7 +9,8 @@ public class PlayerControl : MonoBehaviour
 {
 
     public static UnityEvent playerTouchingEnemy;
-    public float playerHealth = 100;
+    public float maxHealth;
+    public float playerHealth;
     public bool gameStarted;
     Animator drummerAnimationController;
 
@@ -55,6 +56,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerHealth = maxHealth;
         char0 = GameObject.Find("char0");
         //char0.SetActive(false);
 
@@ -144,13 +146,13 @@ public class PlayerControl : MonoBehaviour
                         {
                             char0.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
                             char0.transform.Translate(-horizontalAxis, 0, 0);
-                            Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                            //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                         }
                         else if (horizontalAxis > 0)
                         {
                             char0.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
                             char0.transform.Translate(horizontalAxis, 0, 0);
-                            Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                            //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
                         }
                     }
@@ -287,7 +289,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerHealthBar.fillAmount = playerHealth;
+        playerHealthBar.fillAmount = playerHealth/maxHealth;
         if (Input.GetJoystickNames().Length > 0)
         {
             for (int i = 0; i < Input.GetJoystickNames().Length; i++)

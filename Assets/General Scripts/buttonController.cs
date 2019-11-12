@@ -52,7 +52,7 @@ public class buttonController : MonoBehaviour
             flashSripte = flashObject.GetComponent<SpriteRenderer>();
         flashSripte.color = Color.red;
         flashSripte.enabled = false;
-        Debug.Log(flashSripte);
+        //Debug.Log(flashSripte);
     }
 
     void Update()

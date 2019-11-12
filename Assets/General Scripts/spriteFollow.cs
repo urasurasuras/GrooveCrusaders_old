@@ -13,6 +13,7 @@ public class spriteFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //angleTarget = GameObject.Find("CameraMan").GetComponent<Transform>();
         //posOfObj = objectOfSprite.GetComponent<Transform>();
     }
 
@@ -25,6 +26,6 @@ public class spriteFollow : MonoBehaviour
         //transform.position = positionTarget.position;
         transform.position = new Vector3(positionTarget.position.x + horizOffset, positionTarget.position.y + vertOffset, positionTarget.position.z);
         transform.rotation = angleTarget.rotation;
-        transform.rotation = positionTarget.rotation;
+        //transform.rotation = positionTarget.rotation;
     }
 }

@@ -292,7 +292,7 @@ PrefabInstance:
     - target: {fileID: 1679272955817912837, guid: 2d76e88b9b0430e41be2eaf3ae414b36,
         type: 3}
       propertyPath: m_Name
-      value: char2
+      value: char2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1679272955817912832, guid: 2d76e88b9b0430e41be2eaf3ae414b36,
         type: 3}
@@ -362,6 +362,11 @@ PrefabInstance:
     - target: {fileID: 326587419, guid: 2d76e88b9b0430e41be2eaf3ae414b36, type: 3}
       propertyPath: angleTarget
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679272955817912836, guid: 2d76e88b9b0430e41be2eaf3ae414b36,
+        type: 3}
+      propertyPath: maxHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 326587418, guid: 2d76e88b9b0430e41be2eaf3ae414b36, type: 3}
       propertyPath: m_LocalRotation.x
