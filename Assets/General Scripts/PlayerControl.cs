@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour
 
     healingLite healingProj;
 
-    private bool isDrummerStationary;
+    public bool isDrummerStationary;
 
     public GameObject char0;
     public GameObject char1;
