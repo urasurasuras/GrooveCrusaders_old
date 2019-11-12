@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
 {
 
     public static UnityEvent playerTouchingEnemy;
-    public double playerHealth = 100;
+    public float playerHealth = 100;
     public bool gameStarted;
     Animator drummerAnimationController;
 
@@ -20,6 +20,8 @@ public class PlayerControl : MonoBehaviour
     public GameObject char0;
     public GameObject char1;
     public GameObject char2;
+
+    public Image playerHealthBar;
 
     public buttonController ButtonController;
 
@@ -285,13 +287,11 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
+        playerHealthBar.fillAmount = playerHealth;
         if (Input.GetJoystickNames().Length > 0)
         {
             for (int i = 0; i < Input.GetJoystickNames().Length; i++)
             {
-                
-
                 //Debug.Log(Input.GetJoystickNames()[i]);
 
                 /*
@@ -333,7 +333,7 @@ public class PlayerControl : MonoBehaviour
     }
     private void dmgOverTime()
     {
-        playerHealth -= 0.002;
+        playerHealth -= 0.002f;
     }
 
     private void OnTriggerStay2D(Collider2D other)
