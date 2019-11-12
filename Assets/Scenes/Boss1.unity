@@ -338,12 +338,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 326587419, guid: 2d76e88b9b0430e41be2eaf3ae414b36, type: 3}
+    - target: {fileID: 8650108602367197598, guid: 2d76e88b9b0430e41be2eaf3ae414b36,
+        type: 3}
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 1023060946}
-    - target: {fileID: 8650108602367197598, guid: 2d76e88b9b0430e41be2eaf3ae414b36,
-        type: 3}
+    - target: {fileID: 326587419, guid: 2d76e88b9b0430e41be2eaf3ae414b36, type: 3}
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 1023060946}
@@ -1749,6 +1749,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1180041121, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1180041123, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
       propertyPath: angleTarget
       value: 
@@ -1761,10 +1765,6 @@ PrefabInstance:
     - target: {fileID: 1180041122, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1180041121, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
@@ -1847,7 +1847,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 200
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -8120,12 +8120,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1611391704, guid: 1e2f06fa76644be479e47414cbda4239, type: 3}
+    - target: {fileID: 1245340098849938624, guid: 1e2f06fa76644be479e47414cbda4239,
+        type: 3}
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 1023060946}
-    - target: {fileID: 1245340098849938624, guid: 1e2f06fa76644be479e47414cbda4239,
-        type: 3}
+    - target: {fileID: 1611391704, guid: 1e2f06fa76644be479e47414cbda4239, type: 3}
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 1023060946}
