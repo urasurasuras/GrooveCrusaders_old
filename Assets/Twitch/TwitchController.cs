@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.ComponentModel;
 using System.Net.Sockets;
@@ -14,7 +15,12 @@ public class TwitchController : MonoBehaviour
     private StreamReader reader;
     private StreamWriter writer;
 
-    public string username, password, channelname; //https://twitchapps.com/tmi/
+    public InputField channelName;
+    public InputField authkey;
+
+    public static string username, password, channelname; //https://twitchapps.com/tmi/
+
+    bool loggedIn = false;
 
     void Awake()
     {
@@ -33,20 +39,32 @@ public class TwitchController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Connect();
+        //Connect();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!twitchClient.Connected)    //connect if not
+        if (loggedIn)
         {
-            Connect();
+            if (!twitchClient.Connected)    //connect if not
+            {
+                Connect();
+            }
+            ReadChat();
         }
-        ReadChat();
     }
 
-    private void Connect()
+    public void setCred()
+    {
+        username = channelName.text;
+        channelname = channelName.text;
+        password = authkey.text;
+
+        Connect();
+        loggedIn = true;
+    }
+    void Connect()
     {
         twitchClient = new TcpClient("irc.chat.twitch.tv", 6667);
 
