@@ -307,15 +307,20 @@ public class PlayerControl : MonoBehaviour
     public void setDrummerStationary()
     {
         //Debug.Log("Stationary: " + drummerAnimationController.GetBool("isStationary"));
-
-        drummerAnimationController.SetBool("isStationary", true);
-        isDrummerStationary = true;
-        Debug.Log(isDrummerStationary);
+        if (drummerAnimationController)
+        {
+            drummerAnimationController.SetBool("isStationary", true);
+            isDrummerStationary = true;
+            Debug.Log(isDrummerStationary);
+        }
     }
     public void setDrummerWalking()
     {
-        drummerAnimationController.SetBool("isStationary", false);
-        isDrummerStationary = false;
+        if (drummerAnimationController)
+        {
+            drummerAnimationController.SetBool("isStationary", false);
+            isDrummerStationary = false;
+        }
     }
     public void weaponCanShoot(bool pf)
     {
