@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f8f744c659721439f70736085ca2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   stoppingDistance: 1
   isAlive: 1
   targetPlayer: {fileID: 0}

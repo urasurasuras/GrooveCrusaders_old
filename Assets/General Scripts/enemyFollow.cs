@@ -26,16 +26,22 @@ public class enemyFollow : MonoBehaviour
     public bool charLosing;
     void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("enemy triggered?");
+        Debug.Log("enemy triggered by: "+other);
         //Destroy(gameObject, 0f);
 
-        if(other.gameObject.tag == "Enemy") { }     //do nothing if triggered by enemy
         if (other.gameObject.tag == "f_damage" || other.gameObject.tag == "Player")
         {
             isAlive = false;
-            Debug.Log("enemy is alive: " + isAlive);
+            //Debug.Log("enemy is alive: " + isAlive);
             Destroy(gameObject, 0f);
         }
+        if (other.gameObject.tag == "f_aoe")
+        {
+            speed = speed * 4/3;
+            Destroy(other, 0f);
+        }
+        else if (other.gameObject.tag == "Enemy") { }     //do nothing if triggered by another enemy
+
         /*
         if (other.gameObject.CompareTag("Player"))
         {

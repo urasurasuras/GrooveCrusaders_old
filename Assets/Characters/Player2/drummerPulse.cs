@@ -23,12 +23,4 @@ public float z = 0.1f;
         // Widen the object by x, y, and z values
         transform.localScale += new Vector3(growSpeed, growSpeed, growSpeed);
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            gameObject.SetActive(false);
-            Destroy(this);
-        }
-    }
 }
