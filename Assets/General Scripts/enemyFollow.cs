@@ -26,7 +26,7 @@ public class enemyFollow : MonoBehaviour
     public bool charLosing;
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("enemy triggered by: "+other);
+        //Debug.Log("enemy triggered by: "+other);
         //Destroy(gameObject, 0f);
 
         if (other.gameObject.tag == "f_damage" || other.gameObject.tag == "Player")

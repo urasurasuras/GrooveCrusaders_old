@@ -26,12 +26,12 @@ public class projectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && this.gameObject.tag == "f_damage")
         {
-            Instantiate(liteDmgParticle);
+            Instantiate(liteDmgParticle,transform.position,Quaternion.identity);
             Destroy(gameObject, 0f);
         }
         else if (collision.gameObject.tag == "Player" && this.gameObject.tag == "f_healing")
         {
-            Instantiate(liteHealParticle);
+            Instantiate(liteHealParticle,transform.position, Quaternion.identity);
             Destroy(gameObject, 0f);
         }
     }
