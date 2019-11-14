@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour
 
     public bool isDrummerStationary;
 
+    public GameObject currentChar;
     public GameObject char0;
     public GameObject char1;
     public GameObject char2;
@@ -56,6 +57,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentChar = gameObject;
         playerHealth = maxHealth;
         char0 = GameObject.Find("char0");
         //char0.SetActive(false);
@@ -111,18 +113,18 @@ public class PlayerControl : MonoBehaviour
             {
                 if (horizontalAxis < 0)
                 {
-                    char0.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-                    char0.transform.Translate(-horizontalAxis, 0, 0);
+                    gameObject.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                    gameObject.transform.Translate(-horizontalAxis, 0, 0);
                     //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                 }
                 else if (horizontalAxis > 0)
                 {
-                    char0.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                    char0.transform.Translate(horizontalAxis, 0, 0);
+                    gameObject.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                    gameObject.transform.Translate(horizontalAxis, 0, 0);
                     //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
                 }
-                char0.transform.Translate(0, verticalAxis, 0);
+                gameObject.transform.Translate(0, verticalAxis, 0);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     weaponCanShoot(playerCanFire);
