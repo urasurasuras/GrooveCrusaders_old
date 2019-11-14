@@ -25,12 +25,8 @@ public float z = 0.1f;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Enemy")
         {
-        }
-        else
-        {
-            //Debug.Log("circle collided with: "+other.gameObject.tag);
             gameObject.SetActive(false);
             Destroy(this);
         }

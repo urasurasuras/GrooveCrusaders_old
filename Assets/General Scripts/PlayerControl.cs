@@ -97,7 +97,7 @@ public class PlayerControl : MonoBehaviour
         }
         if (playerHealth <= 0)
         {
-            Destroy(gameObject);
+            Destroy(currentChar);
         }
 
         //
@@ -113,18 +113,18 @@ public class PlayerControl : MonoBehaviour
             {
                 if (horizontalAxis < 0)
                 {
-                    gameObject.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-                    gameObject.transform.Translate(-horizontalAxis, 0, 0);
+                    currentChar.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                    currentChar.transform.Translate(-horizontalAxis, 0, 0);
                     //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                 }
                 else if (horizontalAxis > 0)
                 {
-                    gameObject.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                    gameObject.transform.Translate(horizontalAxis, 0, 0);
+                    currentChar.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                    currentChar.transform.Translate(horizontalAxis, 0, 0);
                     //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
                 }
-                gameObject.transform.Translate(0, verticalAxis, 0);
+                currentChar.transform.Translate(0, verticalAxis, 0);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     weaponCanShoot(playerCanFire);
@@ -337,7 +337,7 @@ public class PlayerControl : MonoBehaviour
     }
     private void dmgOverTime()
     {
-        playerHealth -= 0.002f;
+        playerHealth -= 0.0015f;
     }
 
     private void OnTriggerStay2D(Collider2D other)

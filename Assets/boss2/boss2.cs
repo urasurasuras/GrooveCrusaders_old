@@ -34,6 +34,11 @@ public class boss2 : MonoBehaviour
             }
             bossHealth -= 10;
         }
+        if (other.gameObject.tag == "f_aeo")
+        {
+            moving = false;
+        }
+
     }
     // Start is called before the first frame update
     void Start()
