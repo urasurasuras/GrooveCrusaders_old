@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class weapon : MonoBehaviour
 {
-    public GameObject liteObject;   //projectile prefab
+    public GameObject attackPrefab;   //projectile prefab
+    GameObject attack;                //Current attack GameObject reference
     public Transform firePoint;     //position from where to fire 
     public bool canFire;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -24,6 +26,17 @@ public class weapon : MonoBehaviour
     }
     protected void fire()
     {
-        Instantiate(liteObject, firePoint.position, firePoint.rotation);
+        //Instantiate(attackPrefab, firePoint.position, firePoint.rotation);
+        attack = Instantiate(attackPrefab, firePoint.position, firePoint.rotation);
+        if (attack.GetComponent<projectile>())
+        {
+            attack.GetComponent<projectile>().owner = gameObject;
+        }
+        else if (attack.GetComponent<drummerPulse>())
+        {
+            attack.GetComponent<drummerPulse>().owner = gameObject;
+        }
+        //projectileScript.owner = gameObject;
+        //print(projectileScript.owner);
     }
 }

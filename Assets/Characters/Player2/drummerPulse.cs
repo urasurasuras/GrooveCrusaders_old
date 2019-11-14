@@ -9,6 +9,8 @@ public class drummerPulse : MonoBehaviour
     private CircleCollider2D drummerPulseCollider;
     private float circleScale;
 
+    public GameObject owner;
+
     /*
 public float x = 0.1f;
 public float y = 0.1f;
@@ -17,6 +19,7 @@ public float z = 0.1f;
     void Start()
     {
         this.drummerPulseCollider = GetComponent<CircleCollider2D>();
+        print("Owner: " + owner);
     }
     void Update()
     {

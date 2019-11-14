@@ -9,10 +9,13 @@ public class projectile : MonoBehaviour
     public GameObject liteDmgParticle;
     public GameObject liteHealParticle;
 
+    public GameObject owner;
+
     // Start is called before the first frame update
     void Start()
     {
         //rb.velocity = transform.right * velX;
+        print("Owner: " + owner);
     }
 
     // Update is called once per frame

@@ -343,15 +343,15 @@ PrefabInstance:
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 1023060946}
-    - target: {fileID: 326587419, guid: 2d76e88b9b0430e41be2eaf3ae414b36, type: 3}
-      propertyPath: angleTarget
-      value: 
-      objectReference: {fileID: 1023060946}
     - target: {fileID: 4227184747127452086, guid: 2d76e88b9b0430e41be2eaf3ae414b36,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1998601916}
+    - target: {fileID: 326587419, guid: 2d76e88b9b0430e41be2eaf3ae414b36, type: 3}
+      propertyPath: angleTarget
+      value: 
+      objectReference: {fileID: 1023060946}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d76e88b9b0430e41be2eaf3ae414b36, type: 3}
 --- !u!1 &119127664
@@ -1754,22 +1754,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1180041121, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1180041123, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 1023060946}
-    - target: {fileID: 1180041122, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 38c599492358b0742bf5ab9df969ab70,
-        type: 3}
-    - target: {fileID: 1180041122, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
+    - target: {fileID: 1180041121, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5094472594126390852, guid: a0d2f15bbe31d594a8f93ff40c0feccc,
         type: 3}
@@ -1844,6 +1835,15 @@ PrefabInstance:
     - target: {fileID: 2375785595664289863, guid: a0d2f15bbe31d594a8f93ff40c0feccc,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180041122, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 38c599492358b0742bf5ab9df969ab70,
+        type: 3}
+    - target: {fileID: 1180041122, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5270878710872805449, guid: a0d2f15bbe31d594a8f93ff40c0feccc,
@@ -8060,9 +8060,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerCollider: {fileID: 2003192230}
-  rightSideCollider: {fileID: 2003192229}
-  leftSideCollider: {fileID: 2003192231}
-  finalPhaseCollider: {fileID: 2003192236}
   enemyAdd: {fileID: 4648928590584992695, guid: 28c66931c5859d94cb020e392fcb0b1a,
     type: 3}
   boss1Health: 200
@@ -8210,10 +8207,6 @@ PrefabInstance:
       propertyPath: angleTarget
       value: 
       objectReference: {fileID: 1023060946}
-    - target: {fileID: 1611391704, guid: 1e2f06fa76644be479e47414cbda4239, type: 3}
-      propertyPath: angleTarget
-      value: 
-      objectReference: {fileID: 1023060946}
     - target: {fileID: 6540278891610464392, guid: 1e2f06fa76644be479e47414cbda4239,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -8229,5 +8222,9 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1998601916}
+    - target: {fileID: 1611391704, guid: 1e2f06fa76644be479e47414cbda4239, type: 3}
+      propertyPath: angleTarget
+      value: 
+      objectReference: {fileID: 1023060946}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e2f06fa76644be479e47414cbda4239, type: 3}

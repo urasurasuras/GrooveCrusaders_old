@@ -356,6 +356,7 @@ MonoBehaviour:
   playerHealth: 100
   gameStarted: 0
   isDrummerStationary: 0
+  currentChar: {fileID: 0}
   char0: {fileID: 0}
   char1: {fileID: 0}
   char2: {fileID: 0}
@@ -410,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a1124e2a4b5c140898ff12fbf5c31b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liteObject: {fileID: 643602350668238428, guid: 065696cb1fe0f51419e15e25caeb83bf,
+  attackPrefab: {fileID: 643602350668238428, guid: 065696cb1fe0f51419e15e25caeb83bf,
     type: 3}
   firePoint: {fileID: 2827104366775485507}
   canFire: 0

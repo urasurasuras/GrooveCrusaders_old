@@ -11,6 +11,7 @@ TagManager:
   - Projectile
   - f_damage
   - f_healing
+  - f_aoe
   layers:
   - Default
   - TransparentFX
