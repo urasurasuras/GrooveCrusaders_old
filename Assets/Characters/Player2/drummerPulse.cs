@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class drummerPulse : MonoBehaviour
 {
+    public int lifeTime;
     public float growSpeed;
     public Rigidbody2D rb;
     private CircleCollider2D drummerPulseCollider;
@@ -16,10 +17,12 @@ public float x = 0.1f;
 public float y = 0.1f;
 public float z = 0.1f;
 */
+    void Awake() { Destroy(gameObject, lifeTime); }
+
     void Start()
     {
         this.drummerPulseCollider = GetComponent<CircleCollider2D>();
-        print("Owner: " + owner);
+        //print("Owner: " + owner);
     }
     void Update()
     {

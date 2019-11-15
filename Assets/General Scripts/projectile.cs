@@ -15,7 +15,6 @@ public class projectile : MonoBehaviour
     void Start()
     {
         //rb.velocity = transform.right * velX;
-        print("Owner: " + owner);
     }
 
     // Update is called once per frame
@@ -27,13 +26,18 @@ public class projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if (collision.gameObject == owner && this.gameObject.tag == "f_healing")
+        //{
+        //    print("Owner: " + owner);
+        //}
         if (collision.gameObject.tag == "Enemy" && this.gameObject.tag == "f_damage")
         {
             Instantiate(liteDmgParticle,transform.position,Quaternion.identity);
             Destroy(gameObject, 0f);
         }
-        else if (collision.gameObject.tag == "Player" && this.gameObject.tag == "f_healing")
+        else if (collision.gameObject.tag == "Player" && this.gameObject.tag == "f_healing" && !collision.gameObject == owner)
         {
+            print("collided with: " + collision);
             Instantiate(liteHealParticle,transform.position, Quaternion.identity);
             Destroy(gameObject, 0f);
         }

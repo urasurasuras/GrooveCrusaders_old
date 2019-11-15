@@ -277,7 +277,7 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.tag == "f_healing")
         {
             playerHealth += healingAmount ;
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
