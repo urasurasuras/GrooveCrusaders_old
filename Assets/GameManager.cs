@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
-
+        
         //reference initializations
         red_button = GameObject.Find("Buttons_Red");
         if(red_button!=null)
@@ -83,6 +83,19 @@ public class GameManager : MonoBehaviour
                 {
                     pc.playerCanFire = false;
                 }
+            }
+        }
+        foreach (PlayerControl pc in playerList)
+        {
+            if (pc.horizontalAxis > 0)
+            {
+                pc.facingRight = true;
+                //print(pc + " is facing right " + pc.facingRight);
+            }
+            if (pc.horizontalAxis < 0)
+            {
+                pc.facingRight = false;
+                //print(pc + " is facing right " + pc.facingRight);
             }
         }
 
@@ -130,6 +143,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        
         //if (Input.GetKeyDown(KeyCode.F3))  //Characters have more time to fire each beat 
         //{
         //    if (!beatBuff)

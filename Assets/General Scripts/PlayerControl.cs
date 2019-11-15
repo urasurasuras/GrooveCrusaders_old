@@ -20,8 +20,12 @@ public class PlayerControl : MonoBehaviour
 
     public GameObject currentChar;
     public GameObject char0;
+    public PlayerControl char0script;
     public GameObject char1;
+    public PlayerControl char1script;
     public GameObject char2;
+    public PlayerControl char2script;
+
 
     public Image playerHealthBar;
 
@@ -40,7 +44,7 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody2D rb2d;
 
-    //private bool facingRight;
+    public bool facingRight = true;
 
     
     public GameObject liteToRight, liteToLeft;
@@ -51,8 +55,8 @@ public class PlayerControl : MonoBehaviour
     weapon weapon;
     GameObject red_button;
     public float healingAmount = 10;
-    private float horizontalAxis;
-    private float verticalAxis;
+    public float horizontalAxis;
+    public float verticalAxis;
 
     // Start is called before the first frame update
     void Start()
@@ -111,16 +115,18 @@ public class PlayerControl : MonoBehaviour
             float verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
             if (char0 != null)
             {
-                if (horizontalAxis < 0)
+                if (horizontalAxis < 0)             //facing left
                 {
-                    currentChar.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                    currentChar.transform.eulerAngles = new Vector3(0, 180, 0);
                     currentChar.transform.Translate(-horizontalAxis, 0, 0);
+                    //facingRight = false;
                     //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                 }
-                else if (horizontalAxis > 0)
+                else if (horizontalAxis > 0)        //facing right
                 {
-                    currentChar.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                    currentChar.transform.eulerAngles = new Vector3(0, 0, 0);
                     currentChar.transform.Translate(horizontalAxis, 0, 0);
+                    //facingRight = true;
                     //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
                 }
@@ -144,16 +150,18 @@ public class PlayerControl : MonoBehaviour
 
                     if (i == 0 && char0 != null)
                     {
-                        if (horizontalAxis < 0)
+                        if (horizontalAxis < 0)         //facing left
                         {
                             char0.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
                             char0.transform.Translate(-horizontalAxis, 0, 0);
+                            //char0.facingRight = false;
                             //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                         }
-                        else if (horizontalAxis > 0)
+                        else if (horizontalAxis > 0)    //facing right
                         {
                             char0.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
                             char0.transform.Translate(horizontalAxis, 0, 0);
+                            //facingRight = true;
                             //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
                         }

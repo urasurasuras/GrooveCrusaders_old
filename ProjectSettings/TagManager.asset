@@ -12,6 +12,7 @@ TagManager:
   - f_damage
   - f_healing
   - f_aoe
+  - mobile_healthbar
   layers:
   - Default
   - TransparentFX
