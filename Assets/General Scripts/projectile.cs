@@ -28,16 +28,17 @@ public class projectile : MonoBehaviour
     {
         //if (collision.gameObject == owner && this.gameObject.tag == "f_healing")
         //{
-        //    print("Owner: " + owner);
+        //print(owner+" hit " + collision + " with "+ this.gameObject.tag);
+
         //}
         if (collision.gameObject.tag == "Enemy" && this.gameObject.tag == "f_damage")
         {
             Instantiate(liteDmgParticle,transform.position,Quaternion.identity);
             Destroy(gameObject, 0f);
         }
-        else if (collision.gameObject.tag == "Player" && this.gameObject.tag == "f_healing" && !collision.gameObject == owner)
+        if (collision.gameObject.tag == "Player" && this.gameObject.tag == "f_healing" && collision.gameObject != owner)
         {
-            print("collided with: " + collision);
+            //print("proejectile: " + this.gameObject.tag + "hit: " + collision);
             Instantiate(liteHealParticle,transform.position, Quaternion.identity);
             Destroy(gameObject, 0f);
         }
