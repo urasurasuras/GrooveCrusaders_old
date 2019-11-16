@@ -85,19 +85,19 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        foreach (PlayerControl pc in playerList)
-        {
-            if (pc.horizontalAxis > 0)
-            {
-                pc.facingRight = true;
-                //print(pc + " is facing right " + pc.facingRight);
-            }
-            if (pc.horizontalAxis < 0)
-            {
-                pc.facingRight = false;
-                //print(pc + " is facing right " + pc.facingRight);
-            }
-        }
+        //for (int i = 0; i < playerList.Count; i++)
+        //{
+        //if (playerList[i].horizontalAxis > 0)
+        //    {
+        //        playerList[i].facingRight = true;
+        //        //print(pc + " is facing right " + pc.facingRight);
+        //    }
+        //if (playerList[i].horizontalAxis < 0)
+        //    {
+        //        playerList[i].facingRight = false;
+        //        //print(pc + " is facing right " + pc.facingRight);
+        //    }
+        //}
 
         redButtonCanPressEvent.Invoke();
         onBeatEvent.Invoke();

@@ -180,12 +180,7 @@ MonoBehaviour:
   gameStarted: 0
   isDrummerStationary: 0
   currentChar: {fileID: 0}
-  char0: {fileID: 0}
-  char0script: {fileID: 0}
-  char1: {fileID: 0}
-  char1script: {fileID: 0}
-  char2: {fileID: 0}
-  char2script: {fileID: 0}
+  controllerNum: 1
   playerHealthBar: {fileID: 6878211156317298105}
   ButtonController: {fileID: 0}
   playerFiredTut: 0

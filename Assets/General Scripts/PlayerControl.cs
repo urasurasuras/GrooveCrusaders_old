@@ -18,14 +18,9 @@ public class PlayerControl : MonoBehaviour
 
     public bool isDrummerStationary;
 
-    public GameObject currentChar;
-    public GameObject char0;
-    public PlayerControl char0script;
-    public GameObject char1;
-    public PlayerControl char1script;
-    public GameObject char2;
-    public PlayerControl char2script;
-
+    //public GameObject currentChar;
+    public int controllerNum;
+    float contDeadz = .2f;
 
     public Image playerHealthBar;
 
@@ -61,15 +56,15 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentChar = gameObject;
+        //currentChar = gameObject;
         playerHealth = maxHealth;
-        char0 = GameObject.Find("char0");
+        //char0 = GameObject.Find("char0");
         //char0.SetActive(false);
 
-        char1 = GameObject.Find("char1");
+        //char1 = GameObject.Find("char1");
         ///char1.SetActive(false);
 
-        char2 = GameObject.Find("char2");
+        //char2 = GameObject.Find("char2");
         //char2.SetActive(false);
 
         weapon = GetComponent<weapon>();
@@ -101,167 +96,90 @@ public class PlayerControl : MonoBehaviour
         }
         if (playerHealth <= 0)
         {
-            Destroy(currentChar);
+            Destroy(gameObject,0f);
         }
 
         //
 
         playerTouchingEnemy.Invoke();
 
+
+
         if (Input.GetJoystickNames().Length == 0)       //if there are no joysticks connected use WASD for char0
         {
             //Debug.Log("number of joysticks" + Input.GetJoystickNames().Length);
             horizontalAxis = Input.GetAxis("kyb_horizontal") * speed * 0.5f;
             float verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
-            if (char0 != null)
-            {
+            
                 if (horizontalAxis < 0)             //facing left
                 {
-                    currentChar.transform.eulerAngles = new Vector3(0, 180, 0);
-                    currentChar.transform.Translate(-horizontalAxis, 0, 0);
-                    //facingRight = false;
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                    transform.Translate(-horizontalAxis, 0, 0);
+                    facingRight = false;
                     //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                 }
                 else if (horizontalAxis > 0)        //facing right
                 {
-                    currentChar.transform.eulerAngles = new Vector3(0, 0, 0);
-                    currentChar.transform.Translate(horizontalAxis, 0, 0);
-                    //facingRight = true;
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    transform.Translate(horizontalAxis, 0, 0);
+                    facingRight = true;
                     //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
                 }
-                currentChar.transform.Translate(0, verticalAxis, 0);
+                transform.Translate(0, verticalAxis, 0);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     weaponCanShoot(playerCanFire);
                 }
-            }
+            
         }
+
+
         else//if (Input.GetJoystickNames().Length > 0)
         {
-            for (int i = 0; i < Input.GetJoystickNames().Length; i++)
-            {
-                if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2)
+            //for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+            //{
+                if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "X")) > contDeadz)
                 {
                     //tutorialText.objComp_HasMoved = true;
-                    horizontalAxis = Input.GetAxis("Joy" + i + "X") * speed * 0.5f;
+                    horizontalAxis = Input.GetAxis("Joy" + controllerNum + "X") * speed * 0.5f;
 
-                    //charID = "char" + i;
-
-                    if (i == 0 && char0 != null)
-                    {
                         if (horizontalAxis < 0)         //facing left
                         {
-                            char0.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-                            char0.transform.Translate(-horizontalAxis, 0, 0);
-                            //char0.facingRight = false;
+                            transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                            transform.Translate(-horizontalAxis, 0, 0);
+                            facingRight = false;
                             //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                         }
                         else if (horizontalAxis > 0)    //facing right
                         {
-                            char0.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                            char0.transform.Translate(horizontalAxis, 0, 0);
-                            //facingRight = true;
+                            transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                            transform.Translate(horizontalAxis, 0, 0);
+                            facingRight = true;
                             //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
-
                         }
-                    }
-                    if (i == 1 && char1 != null && !isDrummerStationary)
-                    {
-                        if (horizontalAxis < 0)
-                        {
-                            char1.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-                            char1.transform.Translate(-horizontalAxis, 0, 0);
-                            Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
-                        }
-                        else if (horizontalAxis > 0)
-                        {
-                            char1.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                            char1.transform.Translate(horizontalAxis, 0, 0);
-                            Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
-
-                        }
-                    }
-                    if (i == 2 && char2 != null)
-                    {
-                        if (horizontalAxis < 0)
-                        {
-                            char2.transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-                            char2.transform.Translate(-horizontalAxis, 0, 0);
-                            Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
-                        }
-                        else if (horizontalAxis > 0)
-                        {
-                            char2.transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                            char2.transform.Translate(horizontalAxis, 0, 0);
-                            Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
-
-                        }
-                    }
-                    //Debug.Log("controller number " + i);
-                    if (horizontalAxis > 0)
-                    {
-                        //transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                    }
-                    if (horizontalAxis < 0)
-                    {
-                        //transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-                    }
-
-
-                    float debugXaxis = Input.GetAxis("Joy" + i + "X");
-
+                    
                     //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
                 }
-                if (Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
+                if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "Y")) > contDeadz)
                 {
                     //tutorialText.objComp_HasMoved = true;
 
-                    verticalAxis = Input.GetAxis("Joy" + i + "Y") * speed * 0.5f;
-                    if (i == 0 && char0 != null)
-                    {
-                        char0.transform.Translate(0, -verticalAxis, 0);
-                    }
-                    if (i == 1 && char1 != null && !isDrummerStationary)
-                    {
-                        char1.transform.Translate(0, -verticalAxis, 0);
-                    }
-                    if (i == 2 && char2 != null)
-                    {
-                        char2.transform.Translate(0, -verticalAxis, 0);
-                    }
-
-                    float debugYaxis = Input.GetAxis("Joy" + i + "Y");
-
+                    verticalAxis = Input.GetAxis("Joy" + controllerNum + "Y") * speed * 0.5f;
+                    transform.Translate(0, -verticalAxis, 0);
+                    
                     //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
                 }
                 timeSinceAttackReq += Time.deltaTime;
-                if (Input.GetButtonDown("J" + i + "a"))
+                if (Input.GetButtonDown("J" + controllerNum + "a"))
                 {
-
-                    if (i == 0 && char0 != null)  //players can fire each other's weapons
-                    {
-                        weaponCanShoot(playerCanFire);
-                    }
-                    if (i == 1 && char1 != null && isDrummerStationary)
-                    {
-                        weaponCanShoot(playerCanFire);
-                    }
-                    if (i == 2 && char2 != null)
-                    {
-                        weaponCanShoot(playerCanFire);
-                    }
-                    //ButtonController.makePlayersShoot();
-
+                    weaponCanShoot(playerCanFire);
                     timeSinceAttackReq = 0;
-
-
-                    bool debA = Input.GetButtonDown("J" + i + "a");
                     //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
                 }
-                if (Input.GetButtonDown("J" + i + "b") /*|| Input.GetKey(KeyCode.Keypad0)*/)
+                if (Input.GetButtonDown("J" + controllerNum + "b") /*|| Input.GetKey(KeyCode.Keypad0)*/)
                 {
-                    bool debB = Input.GetButtonDown("J" + i + "b");
+                    bool debB = Input.GetButtonDown("J" + controllerNum + "b");
                     if (!isDrummerStationary)
                     {
                         //Debug.Log("inside if stationary");
@@ -276,7 +194,7 @@ public class PlayerControl : MonoBehaviour
                     }
                     //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debB);
                 }
-            }
+            //}
         }
     }
 
