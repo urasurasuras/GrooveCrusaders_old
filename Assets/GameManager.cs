@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Text combo;
     public static UnityEvent onBeatEvent;
     public static UnityEvent redButtonCanPressEvent;
     List<PlayerControl> playerList;
@@ -192,7 +193,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        //if (loss)
-        //    Debug.Log(loss);
+        combo.text = "COMBO: "+ streak.ToString();
     }
 }

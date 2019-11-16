@@ -9,16 +9,19 @@ public class PlayerControl : MonoBehaviour
 {
 
     public static UnityEvent playerTouchingEnemy;
+    public bool gameStarted;
+
+    //Char values
     public float maxHealth;
     public float playerHealth;
-    public bool gameStarted;
-    Animator drummerAnimationController;
+    public float speed = 0.5f;
+    public bool facingRight = true;
 
-    healingLite healingProj;
+    Animator drummerAnimationController;
 
     public bool isDrummerStationary;
 
-    //public GameObject currentChar;
+    //Controller values
     public int controllerNum;
     float contDeadz = .2f;
 
@@ -28,6 +31,7 @@ public class PlayerControl : MonoBehaviour
 
     string charID;
 
+    //Tutorial
     tutorialTexts tutorialText;
     public bool playerFiredTut;
     public bool playerHitTut;
@@ -35,19 +39,16 @@ public class PlayerControl : MonoBehaviour
     public float timeSinceAttackReq = 0;
     public float attackCheck = 0.2f;
 
-    public float speed = 0.5f;
-
+   
     private Rigidbody2D rb2d;
 
-    public bool facingRight = true;
-
     
-    public GameObject liteToRight, liteToLeft;
-    Vector2 litePos;
+    //public GameObject liteToRight, liteToLeft;
+    //Vector2 litePos;
     //float nextFire = 0.0f;
     public bool playerCanFire;
 
-    weapon weapon;
+    //public GameObject weapon;
     GameObject red_button;
     public float healingAmount = 10;
     public float horizontalAxis;
@@ -62,12 +63,12 @@ public class PlayerControl : MonoBehaviour
         //char0.SetActive(false);
 
         //char1 = GameObject.Find("char1");
-        ///char1.SetActive(false);
+        //char1.SetActive(false);
 
         //char2 = GameObject.Find("char2");
         //char2.SetActive(false);
 
-        weapon = GetComponent<weapon>();
+        //weapon = GetComponent<weapon>();
 
         red_button = GameObject.Find("Buttons_Red");
         if (red_button != null)
@@ -109,21 +110,22 @@ public class PlayerControl : MonoBehaviour
         {
             //Debug.Log("number of joysticks" + Input.GetJoystickNames().Length);
             horizontalAxis = Input.GetAxis("kyb_horizontal") * speed * 0.5f;
-            float verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
-            
+            verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
+
+            print(horizontalAxis);
                 if (horizontalAxis < 0)             //facing left
                 {
                     transform.eulerAngles = new Vector3(0, 180, 0);
                     transform.Translate(-horizontalAxis, 0, 0);
                     facingRight = false;
-                    //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                    Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                 }
                 else if (horizontalAxis > 0)        //facing right
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     transform.Translate(horizontalAxis, 0, 0);
                     facingRight = true;
-                    //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                    Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
                 }
                 transform.Translate(0, verticalAxis, 0);
@@ -254,7 +256,7 @@ public class PlayerControl : MonoBehaviour
     }
     public void weaponCanShoot(bool pf)
     {
-        weapon.canFire = pf;
+        gameObject.GetComponent<weapon>().canFire = pf;
 
         //for tut
         if(pf && tutorialText!=null)

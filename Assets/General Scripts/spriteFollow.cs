@@ -27,7 +27,7 @@ public class spriteFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.tag != "mobile_healthbar")
+        if (charScript)
         {
             if (/*cameraAngle && objectOfSprite &&*/ charScript.facingRight)
             {
