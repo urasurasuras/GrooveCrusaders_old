@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Text combo;
+    public Text gui_combo;
+    public Text gui_mult;
     public static UnityEvent onBeatEvent;
     public static UnityEvent redButtonCanPressEvent;
     List<PlayerControl> playerList;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     bool boss2Debuff = false;
 
     public int streak=0;
+    public double mult;
 
     public static GameManager Instance
     {
@@ -53,6 +55,12 @@ public class GameManager : MonoBehaviour
         buttonControllerScript = red_button.GetComponent<buttonController>();
         GameObject boss1 = GameObject.Find("Boss1");
         GameObject boss2 = GameObject.Find("Boss2");
+
+        if (red_button)
+        {
+            Text gui_combo = GameObject.Find("Combo").GetComponent<Text>();
+            Text gui_mult = GameObject.Find("Multiplier").GetComponent<Text>();
+        }
     }
 
     //public void redButtonCanPress(bool canShoot)
@@ -86,6 +94,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+
         //for (int i = 0; i < playerList.Count; i++)
         //{
         //if (playerList[i].horizontalAxis > 0)
@@ -193,6 +203,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        combo.text = "COMBO: "+ streak.ToString();
+        if (gui_combo && gui_mult)
+        {
+            gui_combo.text = "Combo: " + streak.ToString();
+            gui_mult.text = "x" + mult.ToString();
+        }
     }
 }
