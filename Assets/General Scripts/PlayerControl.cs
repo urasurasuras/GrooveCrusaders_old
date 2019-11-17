@@ -141,62 +141,62 @@ public class PlayerControl : MonoBehaviour
         {
             //for (int i = 0; i < Input.GetJoystickNames().Length; i++)
             //{
-                if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "X")) > contDeadz)
-                {
-                    //tutorialText.objComp_HasMoved = true;
-                    horizontalAxis = Input.GetAxis("Joy" + controllerNum + "X") * speed * 0.5f;
+            if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "X")) > contDeadz)
+            {
+                //tutorialText.objComp_HasMoved = true;
+                horizontalAxis = Input.GetAxis("Joy" + controllerNum + "X") * speed * 0.5f;
 
-                        if (horizontalAxis < 0)         //facing left
-                        {
-                            transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-                            transform.Translate(-horizontalAxis, 0, 0);
-                            facingRight = false;
-                            //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
-                        }
-                        else if (horizontalAxis > 0)    //facing right
-                        {
-                            transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                            transform.Translate(horizontalAxis, 0, 0);
-                            facingRight = true;
-                            //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
-                        }
-                    
-                    //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
-                }
-                if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "Y")) > contDeadz)
-                {
-                    //tutorialText.objComp_HasMoved = true;
-
-                    verticalAxis = Input.GetAxis("Joy" + controllerNum + "Y") * speed * 0.5f;
-                    transform.Translate(0, -verticalAxis, 0);
-                    
-                    //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
-                }
-                timeSinceAttackReq += Time.deltaTime;
-                if (Input.GetButtonDown("J" + controllerNum + "a"))
-                {
-                print("J" + controllerNum + "a");
-                    weaponCanShoot(playerCanFire);
-                    timeSinceAttackReq = 0;
-                    //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
-                }
-                if (Input.GetButtonDown("J" + controllerNum + "b") /*|| Input.GetKey(KeyCode.Keypad0)*/)
-                {
-                    bool debB = Input.GetButtonDown("J" + controllerNum + "b");
-                    if (!isDrummerStationary)
+                    if (horizontalAxis < 0)         //facing left
                     {
-                        //Debug.Log("inside if stationary");
-
-                        setDrummerStationary();
+                        transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                        transform.Translate(-horizontalAxis, 0, 0);
+                        facingRight = false;
+                        //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                     }
-                    else if (isDrummerStationary)
+                    else if (horizontalAxis > 0)    //facing right
                     {
-                        //Debug.Log("inside if walking");
-
-                        setDrummerWalking();
+                        transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                        transform.Translate(horizontalAxis, 0, 0);
+                        facingRight = true;
+                        //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
                     }
-                    //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debB);
+                    
+                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
+            }
+            if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "Y")) > contDeadz)
+            {
+                //tutorialText.objComp_HasMoved = true;
+
+                verticalAxis = Input.GetAxis("Joy" + controllerNum + "Y") * speed * 0.5f;
+                transform.Translate(0, -verticalAxis, 0);
+                    
+                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
+            }
+            timeSinceAttackReq += Time.deltaTime;
+            if (Input.GetButtonDown("J" + controllerNum + "a"))
+            {
+            print("J" + controllerNum + "a");
+                weaponCanShoot(playerCanFire);
+                timeSinceAttackReq = 0;
+                //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
+            }
+            if (Input.GetButtonDown("J" + controllerNum + "b") /*|| Input.GetKey(KeyCode.Keypad0)*/)
+            {
+                bool debB = Input.GetButtonDown("J" + controllerNum + "b");
+                if (!isDrummerStationary)
+                {
+                    //Debug.Log("inside if stationary");
+
+                    setDrummerStationary();
                 }
+                else if (isDrummerStationary)
+                {
+                    //Debug.Log("inside if walking");
+
+                    setDrummerWalking();
+                }
+                //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debB);
+            }
             //}
         }
     }
@@ -258,6 +258,7 @@ public class PlayerControl : MonoBehaviour
     public void weaponCanShoot(bool pf)
     {
         gameObject.GetComponent<weapon>().canFire = pf;
+        //gameObject.GetComponent<weapon>().canFire = false;
 
         //for tut
         if(pf && tutorialText!=null)
