@@ -216,11 +216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec3db397b8a278428cfca146bdaa91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStarted: 0
   maxHealth: 100
   playerHealth: 100
-  gameStarted: 0
+  speed: 0.2
+  facingRight: 1
   isDrummerStationary: 0
-  currentChar: {fileID: 0}
   controllerNum: 2
   playerHealthBar: {fileID: 7148913776703851691}
   ButtonController: {fileID: 0}
@@ -228,12 +229,6 @@ MonoBehaviour:
   playerHitTut: 0
   timeSinceAttackReq: 0
   attackCheck: 0.2
-  speed: 0.2
-  facingRight: 1
-  liteToRight: {fileID: 643602350668238428, guid: 065696cb1fe0f51419e15e25caeb83bf,
-    type: 3}
-  liteToLeft: {fileID: 1936708947533573480, guid: c1c73a352bbc11e4c8ad65c73f5a4d4f,
-    type: 3}
   playerCanFire: 0
   healingAmount: 10
   horizontalAxis: 0
@@ -523,6 +518,11 @@ PrefabInstance:
       propertyPath: objectOfSprite
       value: 
       objectReference: {fileID: 1679272955817912837}
+    - target: {fileID: 6005788668056646018, guid: a35bbbae5d69df442b6fe043e222c734,
+        type: 3}
+      propertyPath: charScript
+      value: 
+      objectReference: {fileID: 1679272955817912836}
     - target: {fileID: 6005788668056646019, guid: a35bbbae5d69df442b6fe043e222c734,
         type: 3}
       propertyPath: m_Color.r
