@@ -59,6 +59,8 @@ public class buttonController : MonoBehaviour
 
     void Update()
     {
+        GameManager.Instance.mult = (1 + GameManager.Instance.streak * 0.1);
+
         timeSinceLastNoteHit += Time.deltaTime;
                
         if (Input.GetKeyDown(KeyCode.Space) )

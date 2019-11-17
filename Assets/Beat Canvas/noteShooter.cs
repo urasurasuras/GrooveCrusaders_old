@@ -90,7 +90,6 @@ public class noteShooter : MonoBehaviour
         if (timelineInfo != null)
         {
             GUILayout.Box(String.Format("Current Bar = {0}{1}", timelineInfo.currentMusicBar, (string)timelineInfo.lastMarker));
-            GUILayout.Box(marker);
         }
     }
 
