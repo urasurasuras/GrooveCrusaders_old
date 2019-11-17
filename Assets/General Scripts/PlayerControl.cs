@@ -12,6 +12,8 @@ public class PlayerControl : MonoBehaviour
     public bool gameStarted;
 
     //Char values
+    GameObject currChar;
+    weapon currWeapon;
     public float maxHealth;
     public float playerHealth;
     public float speed = 0.5f;
@@ -28,8 +30,6 @@ public class PlayerControl : MonoBehaviour
     public Image playerHealthBar;
 
     public buttonController ButtonController;
-
-    string charID;
 
     //Tutorial
     tutorialTexts tutorialText;
@@ -112,20 +112,20 @@ public class PlayerControl : MonoBehaviour
             horizontalAxis = Input.GetAxis("kyb_horizontal") * speed * 0.5f;
             verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
 
-            print(horizontalAxis);
+            //print(horizontalAxis);
                 if (horizontalAxis < 0)             //facing left
                 {
                     transform.eulerAngles = new Vector3(0, 180, 0);
                     transform.Translate(-horizontalAxis, 0, 0);
                     facingRight = false;
-                    Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                    //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
                 }
                 else if (horizontalAxis > 0)        //facing right
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     transform.Translate(horizontalAxis, 0, 0);
                     facingRight = true;
-                    Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                    //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
                 }
                 transform.Translate(0, verticalAxis, 0);
@@ -175,6 +175,7 @@ public class PlayerControl : MonoBehaviour
                 timeSinceAttackReq += Time.deltaTime;
                 if (Input.GetButtonDown("J" + controllerNum + "a"))
                 {
+                print("J" + controllerNum + "a");
                     weaponCanShoot(playerCanFire);
                     timeSinceAttackReq = 0;
                     //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
@@ -272,7 +273,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Debug.Log("touching boss");
+            //Debug.Log("touching boss");
             playerTouchingEnemy.AddListener(dmgOverTime);
         }
     }
@@ -280,7 +281,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Debug.Log("not touching enemy anymore");
+            //Debug.Log("not touching enemy anymore");
             playerTouchingEnemy.RemoveListener(dmgOverTime);
         }
     }
