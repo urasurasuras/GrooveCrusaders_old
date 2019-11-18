@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 6}
+  m_AnchoredPosition: {x: -1, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4227184747127452086
@@ -221,6 +221,7 @@ MonoBehaviour:
   playerHealth: 100
   speed: 0.2
   facingRight: 1
+  power: 0
   isDrummerStationary: 0
   controllerNum: 2
   playerHealthBar: {fileID: 7148913776703851691}
@@ -461,7 +462,7 @@ PrefabInstance:
     - target: {fileID: 6005788668056646016, guid: a35bbbae5d69df442b6fe043e222c734,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6005788668056646016, guid: a35bbbae5d69df442b6fe043e222c734,
         type: 3}

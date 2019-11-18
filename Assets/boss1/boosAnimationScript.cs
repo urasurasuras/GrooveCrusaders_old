@@ -17,7 +17,7 @@ public class boosAnimationScript : MonoBehaviour
     public float stage2health = 75;
     public Slider Boss1HealthSlider;
 
-    public float dmgTaken = 10;
+    public float dmgTaken = 10; //CHANGE THIS TO BE A MULTIPLIER
 
     void Start()
     {
@@ -48,8 +48,8 @@ public class boosAnimationScript : MonoBehaviour
                 //onBossDefeat();
             }
             //Debug.Log("boss Hit!!");
-
-            boss1Health -= dmgTaken;
+            //print("Boss dmg taken: " + (float)other.gameObject.GetComponent<projectile>().base_value);
+            boss1Health -= (float)other.gameObject.GetComponent<projectile>().base_value;
 
             bossAnimationController.SetTrigger("RightFight");
         }

@@ -10,8 +10,8 @@ public class spriteFollow : MonoBehaviour
     //public Transform positionTarget;    //used to follow gameObject
     //public Transform cameraAngle;       //used face the camera
 
-    [SerializeField]float vertOffset;
-    [SerializeField]float horizOffset;
+    //[SerializeField]float vertOffset;
+    //[SerializeField]float horizOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,7 @@ public class spriteFollow : MonoBehaviour
                 //transform.rotation = new Quaternion(30, 0, 0, 0);
             }
         }
-        else if (gameObject.tag == "mobile_healthbar")
+        if (gameObject.tag == "mobile_healthbar")
         {
             //transform.position = new Vector3(0, vertOffset, 0);
             transform.eulerAngles = new Vector3(-30, 0, 0);

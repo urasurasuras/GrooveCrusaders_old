@@ -15,7 +15,7 @@ public class boss2 : MonoBehaviour
     private Vector3 currentBossPos;
     private Vector3 lastPlayerPos;
     public Slider healtBar;
-    public int bossHealth = 100;
+    public float bossHealth = 100;
 
     public bool moving;
 
@@ -32,7 +32,7 @@ public class boss2 : MonoBehaviour
             {
                 splitBoss2();
             }
-            bossHealth -= 10;
+            bossHealth -= (float)other.gameObject.GetComponent<projectile>().base_value;
         }
         if (other.gameObject.tag == "f_aeo")
         {

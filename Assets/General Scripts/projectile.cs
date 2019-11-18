@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class projectile : MonoBehaviour
 {
+    public GameObject owner;
+
     public float velX;
     public Rigidbody2D rb;
     public GameObject liteDmgParticle;
     public GameObject liteHealParticle;
 
-    public GameObject owner;
+    public double base_value=10;            //the base value of the projectiles healing or damage etc.
 
     // Start is called before the first frame update
     void Start()
     {
+        base_value *= owner.GetComponent<PlayerControl>().power;
+        if (!owner.GetComponent<PlayerControl>().facingRight)
+            velX *= -1;
         //rb.velocity = transform.right * velX;
     }
 

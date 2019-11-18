@@ -203,7 +203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 6}
+  m_AnchoredPosition: {x: -1, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5270878710872805449
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectOfSprite: {fileID: 2827104366749895967}
-  charScript: {fileID: 0}
+  charScript: {fileID: 2827104366749895966}
   vertOffset: 2.5
   horizOffset: -0.2
 --- !u!1 &2827104366749895967
@@ -357,6 +357,7 @@ MonoBehaviour:
   playerHealth: 100
   speed: 0.2
   facingRight: 1
+  power: 0
   isDrummerStationary: 0
   controllerNum: 0
   playerHealthBar: {fileID: 3149527633125181890}
@@ -461,7 +462,7 @@ PrefabInstance:
     - target: {fileID: 6005788668056646016, guid: a35bbbae5d69df442b6fe043e222c734,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6005788668056646016, guid: a35bbbae5d69df442b6fe043e222c734,
         type: 3}

@@ -1949,10 +1949,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1023060946}
     - target: {fileID: 1180041121, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1180041121, guid: a0d2f15bbe31d594a8f93ff40c0feccc, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}

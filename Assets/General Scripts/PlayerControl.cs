@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour
     public float playerHealth;
     public float speed = 0.5f;
     public bool facingRight = true;
+    public double power;    //current power of player, passed onto their attacks
 
     Animator drummerAnimationController;
 
@@ -220,6 +221,8 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        power = GameManager.Instance.mult;//we cache this value for each player individually
+
         playerHealthBar.fillAmount = playerHealth/maxHealth;
         if (Input.GetJoystickNames().Length > 0)
         {
