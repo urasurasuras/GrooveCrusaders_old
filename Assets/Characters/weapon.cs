@@ -7,7 +7,12 @@ public class weapon : MonoBehaviour
     public GameObject attackPrefab;   //projectile prefab
     GameObject attack;                //Current attack GameObject reference
     public Transform firePoint;     //position from where to fire 
-    public bool canFire;
+
+    public float timeSinceAttackReq;
+    public bool hasRequestedFire=false;
+
+    //public bool canFire=false;
+    public bool hasFired=true;
 
     // Start is called before the first frame update
     protected void Start()
@@ -18,15 +23,14 @@ public class weapon : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (/*Input.GetKeyDown(KeyCode.Space) && */canFire)
-        {
-            fire();
-            canFire = false;
-        }
+        //if (/*Input.GetKeyDown(KeyCode.Space) && */canFire&&!hasFired)
+        //{
+        //    fire();
+        //    hasFired = true;
+        //}
     }
-    protected void fire()
+    public void fire()
     {
-        //Instantiate(attackPrefab, firePoint.position, firePoint.rotation);
         attack = Instantiate(attackPrefab, firePoint.position, firePoint.rotation);
         if (attack.GetComponent<projectile>())
         {
@@ -36,7 +40,6 @@ public class weapon : MonoBehaviour
         {
             attack.GetComponent<drummerPulse>().owner = gameObject;
         }
-        //projectileScript.owner = gameObject;
-        //print(projectileScript.owner);
+        hasFired = true;
     }
 }

@@ -62,6 +62,9 @@ public class GameManager : MonoBehaviour
             Text gui_combo = GameObject.Find("Combo").GetComponent<Text>();
             Text gui_mult = GameObject.Find("Multiplier").GetComponent<Text>();
         }
+        if (buttonControllerScript) {
+            buttonControllerScript.endBeatEvent.AddListener(resetFires);
+        }
     }
 
     //public void redButtonCanPress(bool canShoot)
@@ -82,22 +85,40 @@ public class GameManager : MonoBehaviour
     {
         //buttonControllerScript.redButtonCanBePressed = canShoot;
         //Debug.Log("red button can press: " + canShoot);
+        //foreach (PlayerControl pc in playerList)
+        //{
+        //    if (pc.hasRequestedFire)
+
+        //}
+
         if (buttonControllerScript != null)
         {
-            if (buttonControllerScript.timeSinceLastNoteHit < buttonControllerScript.noteLength)
+            if (buttonControllerScript.redButtonBeingPressed)
             {
                 foreach (PlayerControl pc in playerList)
                 {
-                    pc.playerCanFire = true;
+                    if(pc.GetComponent<weapon>().timeSinceAttackReq<0.2 && !pc.GetComponent<weapon>().hasFired)
+                        pc.GetComponent<weapon>().fire();
                 }
             }
-            else
-            {
-                foreach (PlayerControl pc in playerList)
-                {
-                    pc.playerCanFire = false;
-                }
-            }
+            //if (buttonControllerScript.timeSinceLastNoteHit < buttonControllerScript.noteLength)
+            //{
+            //    foreach (PlayerControl pc in playerList)
+            //    {
+            //        pc.playerCanFire = true;
+            //    }
+            //}
+            //else
+            //{
+            //    foreach (PlayerControl pc in playerList)
+            //    {
+            //        pc.playerCanFire = false;
+            //    }
+            //}
+            //if (buttonControllerScript.playerFireReset)
+            //    foreach (PlayerControl pc in playerList)
+            //        pc.GetComponent<weapon>().hasFired = false;
+
         }
 
 
@@ -233,6 +254,12 @@ public class GameManager : MonoBehaviour
         foreach (PlayerControl pc in playerList)
             numPlayers += 1;
         return numPlayers;
+    }
+    public void resetFires() {
+        foreach (PlayerControl pc in playerList)
+        {
+            pc.GetComponent<weapon>().hasFired = false;
+        }
     }
     /*
         public static int findMinRec(List<PlayerControl> A, int n)

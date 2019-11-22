@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class buttonController : MonoBehaviour
 {
+    public UnityEvent endBeatEvent;      //resets weapon has fired
     private SpriteRenderer theSR;
     public Sprite defaultImage;
     public Sprite pressedImage;
@@ -32,9 +35,12 @@ public class buttonController : MonoBehaviour
     weapon weaponBass;
     private float char0lastAtt;
 
+    //public bool playerFireReset;
+
     // Start is called before the first frame update
     void Start()
     {
+        endBeatEvent.AddListener(endBeat);
         //reference to each object's script
         char0 = GameObject.Find("char0").GetComponent<PlayerControl>();
         char1 = GameObject.Find("char1").GetComponent<PlayerControl>();
@@ -80,8 +86,9 @@ public class buttonController : MonoBehaviour
                 flashSripte.enabled = false;
                 //Debug.Log("Streak: " + GameManager.Instance.streak);
 
-                makePlayersShoot();
+                //makePlayersShoot();
             }
+
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -89,7 +96,6 @@ public class buttonController : MonoBehaviour
             redButtonBeingPressed = false;
         }
 
-        char0lastAtt = char0.timeSinceAttackReq;
         //Debug.Log("Time since last attack request " + char0lastAtt);
 
 
@@ -107,25 +113,29 @@ public class buttonController : MonoBehaviour
         if (other.tag == "Note" && flashSripte)
         {
             flashSripte.enabled = false;
-            GameManager.Instance.streak = 0;
-            //Debug.Log("Streak (0): " + GameManager.Instance.streak);
+            endBeatEvent.Invoke();
         }
-    }
-    private void setBoolBack()
-    {
-        redButtonBeingPressed = false;
     }
 
-    public void makePlayersShoot()
+    private void endBeat()
     {
-        if (char0lastAtt < noteLength )
-        {
-            //Debug.Log("Time since last attack request " + char0lastAtt);
-            //Debug.Log("Note length " + noteLength);
-            //FIX ME
-            weaponGuitar.canFire =true;
-            weaponDrumset.canFire =true;
-            weaponBass.canFire =true;
-        }
+        GameManager.Instance.streak = 0;
     }
+    //private void setBoolBack()
+    //{
+    //    redButtonBeingPressed = false;
+    //}
+
+    //public void makePlayersShoot()
+    //{
+    //    if (char0lastAtt < noteLength )
+    //    {
+    //        //Debug.Log("Time since last attack request " + char0lastAtt);
+    //        //Debug.Log("Note length " + noteLength);
+    //        //FIX ME
+    //        weaponGuitar.canFire =true;
+    //        weaponDrumset.canFire =true;
+    //        weaponBass.canFire =true;
+    //    }
+    //}
 }

@@ -37,7 +37,6 @@ public class PlayerControl : MonoBehaviour
     public bool playerFiredTut;
     public bool playerHitTut;
 
-    public float timeSinceAttackReq = 0;
     public float attackCheck = 0.2f;
 
    
@@ -110,27 +109,27 @@ public class PlayerControl : MonoBehaviour
             verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
 
             //print(horizontalAxis);
-                if (horizontalAxis < 0)             //facing left
-                {
-                    transform.eulerAngles = new Vector3(0, 180, 0);
-                    transform.Translate(-horizontalAxis, 0, 0);
-                    facingRight = false;
-                    //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
-                }
-                else if (horizontalAxis > 0)        //facing right
-                {
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                    transform.Translate(horizontalAxis, 0, 0);
-                    facingRight = true;
-                    //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+            if (horizontalAxis < 0)             //facing left
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+                transform.Translate(-horizontalAxis, 0, 0);
+                facingRight = false;
+                //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+            }
+            else if (horizontalAxis > 0)        //facing right
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                transform.Translate(horizontalAxis, 0, 0);
+                facingRight = true;
+                //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
-                }
-                transform.Translate(0, verticalAxis, 0);
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    weaponCanShoot(playerCanFire);
-                }
-            
+            }
+            transform.Translate(0, verticalAxis, 0);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+                gameObject.GetComponent<weapon>().hasRequestedFire = true;
+            }            
         }
 
 
@@ -169,13 +168,11 @@ public class PlayerControl : MonoBehaviour
                     
                 //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
             }
-            timeSinceAttackReq += Time.deltaTime;
-            if (Input.GetButtonDown("J" + controllerNum + "a"))
+            gameObject.GetComponent<weapon>().timeSinceAttackReq += Time.deltaTime;
+            if (Input.GetButton("J" + controllerNum + "a"))
             {
-            print("J" + controllerNum + "a");
-                weaponCanShoot(playerCanFire);
-                timeSinceAttackReq = 0;
-                //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debA);
+                gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+                gameObject.GetComponent<weapon>().hasRequestedFire = true;
             }
             if (Input.GetButtonDown("J" + controllerNum + "b") /*|| Input.GetKey(KeyCode.Keypad0)*/)
             {
@@ -254,16 +251,17 @@ public class PlayerControl : MonoBehaviour
             isDrummerStationary = false;
         }
     }
-    public void weaponCanShoot(bool pf)
-    {
-        gameObject.GetComponent<weapon>().canFire = pf;
-        //gameObject.GetComponent<weapon>().canFire = false;
+    //public void weaponCanShoot(bool pf)
+    //{
+    //    if (!gameObject.GetComponent<weapon>().hasFired)
+    //        gameObject.GetComponent<weapon>().canFire = pf;
+    //    //gameObject.GetComponent<weapon>().canFire = false;
 
-        //for tut
-        if(pf && tutorialText!=null)
-            tutorialText.objComp_FiredNote = true;
-        //
-    }
+    //    //for tut
+    //    if(pf && tutorialText!=null)
+    //        tutorialText.objComp_FiredNote = true;
+    //    //
+    //}
     private void dmgOverTime()
     {
         playerHealth -= 0.0015f;
