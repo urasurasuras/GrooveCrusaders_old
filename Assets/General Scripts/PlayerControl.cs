@@ -26,7 +26,7 @@ public class PlayerControl : MonoBehaviour
 
     //Controller values
     public int controllerNum;
-    float contDeadz = .2f;
+    float contDeadz = .3f;
 
     public Image playerHealthBar;
 
