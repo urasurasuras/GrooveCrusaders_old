@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
             Text gui_mult = GameObject.Find("Multiplier").GetComponent<Text>();
         }
         if (buttonControllerScript) {
-            buttonControllerScript.endBeatEvent.AddListener(resetFires);
+            buttonControllerScript.endBeatEvent.AddListener(resetFireRates);
         }
     }
 
@@ -255,10 +255,11 @@ public class GameManager : MonoBehaviour
             numPlayers += 1;
         return numPlayers;
     }
-    public void resetFires() {
+    public void resetFireRates() {
         foreach (PlayerControl pc in playerList)
         {
             pc.GetComponent<weapon>().hasFired = false;
+            pc.GetComponent<weapon>().hasRequestedFire = false;
         }
     }
     /*

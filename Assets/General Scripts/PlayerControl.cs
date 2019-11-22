@@ -169,8 +169,10 @@ public class PlayerControl : MonoBehaviour
                 //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
             }
             gameObject.GetComponent<weapon>().timeSinceAttackReq += Time.deltaTime;
-            if (Input.GetButton("J" + controllerNum + "a"))
+            if (Input.GetButtonDown("J" + controllerNum + "a"))
             {
+                if (ButtonController.timeSinceLastNoteHit < 0.2)
+                    gameObject.GetComponent<weapon>().fire();
                 gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
                 gameObject.GetComponent<weapon>().hasRequestedFire = true;
             }
