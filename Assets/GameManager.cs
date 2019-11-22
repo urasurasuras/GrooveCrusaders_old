@@ -27,8 +27,9 @@ public class GameManager : MonoBehaviour
     bool boss1Debuff = false;
     bool boss2Debuff = false;
 
-    public int streak=0;
+    public int streak = 0;
     public double mult;
+    public double minPlayerHP = 100;
 
     public static GameManager Instance
     {
@@ -48,11 +49,11 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
-        
+
         //reference initializations
         red_button = GameObject.Find("Buttons_Red");
-        if(red_button!=null)
-        buttonControllerScript = red_button.GetComponent<buttonController>();
+        if (red_button != null)
+            buttonControllerScript = red_button.GetComponent<buttonController>();
         GameObject boss1 = GameObject.Find("Boss1");
         GameObject boss2 = GameObject.Find("Boss2");
 
@@ -65,14 +66,14 @@ public class GameManager : MonoBehaviour
 
     //public void redButtonCanPress(bool canShoot)
     //{
-        
+
     //}
 
     public void RegisterPlayerControl(PlayerControl pc)
     {
         playerList.Add(pc);
     }
-   
+
     void FixedUpdate()
     {
         //buttonControllerScript.redButtonCanBePressed = canShoot;
@@ -124,7 +125,8 @@ public class GameManager : MonoBehaviour
                     healBuff = true;
                     Debug.Log(pc.healingAmount);
                 }
-            }else if (healBuff)
+            }
+            else if (healBuff)
             {
                 foreach (PlayerControl pc in playerList)
                 {
@@ -133,8 +135,9 @@ public class GameManager : MonoBehaviour
                     Debug.Log(pc.healingAmount);
                 }
             }
-            
-        }if (Input.GetKeyDown(KeyCode.F2))  //Character have increased speed
+
+        }
+        if (Input.GetKeyDown(KeyCode.F2))  //Character have increased speed
         {
             if (!speedBuff)
             {
@@ -144,7 +147,8 @@ public class GameManager : MonoBehaviour
                     speedBuff = true;
                     Debug.Log(pc.speed);
                 }
-            }else if (speedBuff)
+            }
+            else if (speedBuff)
             {
                 foreach (PlayerControl pc in playerList)
                 {
@@ -154,7 +158,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+
         //if (Input.GetKeyDown(KeyCode.F3))  //Characters have more time to fire each beat 
         //{
         //    if (!beatBuff)
@@ -176,7 +180,8 @@ public class GameManager : MonoBehaviour
                 boss1.dmgTaken = 15;
                 boss1Debuff = true;
                 Debug.Log(boss1.dmgTaken);
-            }else if (boss1Debuff)
+            }
+            else if (boss1Debuff)
             {
                 boss1.dmgTaken = 10;
                 boss1Debuff = false;
@@ -191,7 +196,8 @@ public class GameManager : MonoBehaviour
                 boss2.speed = 5;
                 boss2Debuff = true;
                 Debug.Log(boss2.speed);
-            }else if (boss2Debuff)
+            }
+            else if (boss2Debuff)
             {
                 boss2.speed = 10;
                 boss2Debuff = false;
@@ -208,5 +214,31 @@ public class GameManager : MonoBehaviour
             gui_combo.text = "Combo: " + streak.ToString();
             gui_mult.text = "x" + mult.ToString();
         }
+        //findMinRec(playerList, getNumPlayers());
+        foreach (PlayerControl pc in playerList)
+        {
+            if (pc.playerHealth < minPlayerHP)
+                minPlayerHP = pc.playerHealth;
+        }
+        print(minPlayerHP);
     }
+
+    private int getNumPlayers()
+    {
+        int numPlayers = 0;
+        foreach (PlayerControl pc in playerList)
+            numPlayers += 1;
+        return numPlayers;
+    }
+    /*
+        public static int findMinRec(List<PlayerControl> A, int n)
+        {
+            // if size = 0 means whole array  
+            // has been traversed  
+            if (n == 1)
+                return A[0];
+
+            return Math.Min(A[n - 1], findMinRec(A, n - 1));
+        }
+    */
 }
