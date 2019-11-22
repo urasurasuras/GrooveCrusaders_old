@@ -73,6 +73,10 @@ public class GameManager : MonoBehaviour
     {
         playerList.Add(pc);
     }
+    public void deRegisterPlayerControl(PlayerControl pc)
+    {
+        playerList.Remove(pc);
+    }
 
     void FixedUpdate()
     {

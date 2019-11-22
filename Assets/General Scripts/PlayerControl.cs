@@ -99,14 +99,10 @@ public class PlayerControl : MonoBehaviour
         if (playerHealth <= 0)
         {
             Destroy(gameObject,0f);
+            GameManager.Instance.deRegisterPlayerControl(this);
         }
-
-        //
-
         playerTouchingEnemy.Invoke();
-
-
-
+        
         if (Input.GetJoystickNames().Length == 0)       //if there are no joysticks connected use WASD for char0
         {
             //Debug.Log("number of joysticks" + Input.GetJoystickNames().Length);
