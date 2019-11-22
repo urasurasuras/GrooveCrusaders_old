@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour
         //findMinRec(playerList, getNumPlayers());
         foreach (PlayerControl pc in playerList)
         {
-            if (pc.playerHealth < minPlayerHP)
+            if (pc.playerHealth < minPlayerHP || minPlayerHP<0)
                 minPlayerHP = pc.playerHealth;
         }
         print(minPlayerHP);
