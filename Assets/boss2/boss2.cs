@@ -34,7 +34,7 @@ public class boss2 : MonoBehaviour
             }
             bossHealth -= (float)other.gameObject.GetComponent<projectile>().base_value;
         }
-        if (other.gameObject.tag == "f_aeo")
+        if (other.gameObject.tag == "f_aoe")
         {
             moving = false;
         }
