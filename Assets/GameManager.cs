@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour
             if (pc.playerHealth < minPlayerHP || minPlayerHP<0)
                 minPlayerHP = pc.playerHealth;
         }
-        print(minPlayerHP);
+        //print(minPlayerHP);
     }
 
     private int getNumPlayers()

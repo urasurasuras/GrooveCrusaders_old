@@ -159,6 +159,7 @@ public class noteShooter : MonoBehaviour
             musicInstance.setParameterByName("Boss Health", boss1Script.boss1Health);
             //print(boss1Script.boss1Health);
         }
+        musicInstance.setParameterByName("Player Health", (float)GameManager.Instance.minPlayerHP);
     }
 
     private bool shouldSpawn()
