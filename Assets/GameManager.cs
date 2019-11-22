@@ -12,13 +12,14 @@ public class GameManager : MonoBehaviour
     public static UnityEvent onBeatEvent;
     public static UnityEvent redButtonCanPressEvent;
     List<PlayerControl> playerList;
-
+    //public noteShooter NoteShooterScript;
     //other references
     GameObject red_button;
     buttonController buttonControllerScript;
     boosAnimationScript boss1;
     boss2 boss2;
 
+    public bool game_paused = false;
     public bool loss;
 
     bool healBuff = false;
@@ -90,7 +91,7 @@ public class GameManager : MonoBehaviour
         //    if (pc.hasRequestedFire)
 
         //}
-
+        
         if (buttonControllerScript != null)
         {
             if (buttonControllerScript.redButtonBeingPressed)
@@ -234,6 +235,19 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!GameManager.Instance.game_paused)
+            {
+                Time.timeScale = 0f;
+                GameManager.Instance.game_paused = true;
+            }
+            else if (GameManager.Instance.game_paused)
+            {
+                Time.timeScale = 1;
+                GameManager.Instance.game_paused = false;
+            }
+        }
         if (gui_combo && gui_mult)
         {
             gui_combo.text = "Combo: " + streak.ToString();

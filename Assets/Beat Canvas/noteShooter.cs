@@ -142,6 +142,17 @@ public class noteShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!GameManager.Instance.game_paused)
+            {
+                musicInstance.setPaused(false);
+            }
+            else if (GameManager.Instance.game_paused)
+            {
+                musicInstance.setPaused(true);
+            }
+        }
         if (latestMarker != marker) {
             CameraShaker.Instance.ShakeOnce(1f, 1f, .1f, .1f);
             latestMarker = marker;
