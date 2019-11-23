@@ -6429,7 +6429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &685728603
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8527,7 +8527,6 @@ MonoBehaviour:
   gui_combo: {fileID: 0}
   gui_mult: {fileID: 0}
   pause_menu: {fileID: 489477228}
-  pause_bg: {fileID: 0}
   game_paused: 0
   loss: 0
   streak: 0
