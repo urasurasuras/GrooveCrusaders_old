@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     List<PlayerControl> playerList;
     //public noteShooter NoteShooterScript;
     //other references
+    public GameObject pause_menu;
     GameObject red_button;
     buttonController buttonControllerScript;
     boosAnimationScript boss1;
@@ -52,6 +53,9 @@ public class GameManager : MonoBehaviour
         }
 
         //reference initializations
+        //pause_bg = GameObject.Find("Pause_BG").GetComponent<Image>();
+        if(pause_menu && !game_paused)
+            pause_menu.SetActive(false);
         red_button = GameObject.Find("Buttons_Red");
         if (red_button != null)
             buttonControllerScript = red_button.GetComponent<buttonController>();
@@ -239,11 +243,15 @@ public class GameManager : MonoBehaviour
         {
             if (!GameManager.Instance.game_paused)
             {
+                if (pause_menu)
+                    pause_menu.SetActive(true);
                 Time.timeScale = 0f;
                 GameManager.Instance.game_paused = true;
             }
             else if (GameManager.Instance.game_paused)
             {
+                if (pause_menu)
+                    pause_menu.SetActive(false);
                 Time.timeScale = 1;
                 GameManager.Instance.game_paused = false;
             }
