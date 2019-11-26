@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     boosAnimationScript boss1;
     boss2 boss2;
 
-    public bool game_paused = false;
+    public bool game_paused;
     public bool loss;
 
     bool healBuff = false;
@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        setPaused(game_paused);
+
         onBeatEvent = new UnityEvent();
         redButtonCanPressEvent = new UnityEvent();
         playerList = new List<PlayerControl>();
@@ -62,7 +64,7 @@ public class GameManager : MonoBehaviour
         GameObject boss1 = GameObject.Find("Boss1");
         GameObject boss2 = GameObject.Find("Boss2");
 
-        if (red_button)
+        if (red_button!=null)
         {
             Text gui_combo = GameObject.Find("Combo").GetComponent<Text>();
             Text gui_mult = GameObject.Find("Multiplier").GetComponent<Text>();
@@ -243,17 +245,13 @@ public class GameManager : MonoBehaviour
         {
             if (!GameManager.Instance.game_paused)
             {
-                if (pause_menu)
-                    pause_menu.SetActive(true);
-                Time.timeScale = 0f;
                 GameManager.Instance.game_paused = true;
+                setPaused(GameManager.Instance.game_paused);
             }
             else if (GameManager.Instance.game_paused)
             {
-                if (pause_menu)
-                    pause_menu.SetActive(false);
-                Time.timeScale = 1;
                 GameManager.Instance.game_paused = false;
+                setPaused(GameManager.Instance.game_paused);
             }
         }
         if (gui_combo && gui_mult)
@@ -269,7 +267,15 @@ public class GameManager : MonoBehaviour
         }
         //print(minPlayerHP);
     }
-
+    void setPaused(bool paused)
+    {
+        if(paused)
+            Time.timeScale = 0f;
+        else if(!paused)
+            Time.timeScale = 1;
+        if (pause_menu)
+            pause_menu.SetActive(paused);
+    }
     private int getNumPlayers()
     {
         int numPlayers = 0;

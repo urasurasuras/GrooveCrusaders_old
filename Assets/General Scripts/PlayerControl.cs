@@ -201,7 +201,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (other.gameObject.tag == "f_healing" && playerHealth <maxHealth)
         {
-            playerHealth += healingAmount ;
+            playerHealth += (float)other.gameObject.GetComponent<projectile>().base_value; ;
             //Destroy(other.gameObject);
         }
     }

@@ -18,6 +18,12 @@ public class TwitchController : MonoBehaviour
     public InputField channelName;
     public InputField authkey;
 
+    //VOTES
+    public int vote_heal=0, vote_damage =0;
+    public GameObject guio_heal, guio_damage;   //O stands for "Object"
+    public Text voteT_heal, voteT_damage;
+    //public Text voteT_heal, voteT_damage;
+
     public static string username, password, channelname; //https://twitchapps.com/tmi/
 
     bool loggedIn = false;
@@ -39,19 +45,41 @@ public class TwitchController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (GameObject.Find("Heal Votes"))
+        {
+            guio_heal = GameObject.Find("Heal Votes");
+            Text voteT_heal = guio_heal.GetComponent<Text>();
+        }
+        if (GameObject.Find("Damage Votes"))
+        {
+            guio_damage = GameObject.Find("Damage Votes");
+            Text voteT_damage = guio_damage.GetComponent<Text>();
+        }
         //Connect();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(writer!=null)
+        writer.WriteLine("PONG tmi.twitch.tv\r\n");
+
         if (loggedIn)
         {
-            if (!twitchClient.Connected)    //connect if not
+            if (twitchClient !=null && !twitchClient.Connected)    //connect if not
             {
+                print("Lost connection, reconnecting...");
                 Connect();
             }
             ReadChat();
+            if (GameObject.Find("Heal Votes") && GameObject.Find("Damage Votes")) {
+                print("found");
+                voteT_heal = GameObject.Find("Heal Votes").GetComponent<Text>();
+                voteT_heal.text = "H: " + vote_heal;
+
+                voteT_damage = GameObject.Find("Damage Votes").GetComponent<Text>();
+                voteT_damage.text = "D: " + vote_damage;
+            }
         }
     }
 
@@ -97,6 +125,11 @@ public class TwitchController : MonoBehaviour
                 splitPoint = message.IndexOf(":", 1);
                 message = message.Substring(splitPoint + 1);
                 print(String.Format("{0}: {1}", chatName, message));
+
+                if (message.StartsWith("!heal"))
+                    vote_heal += 1;
+                else if (message.StartsWith("!damage"))
+                    vote_damage += 1;
             }
         }
     }
