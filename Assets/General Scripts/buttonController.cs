@@ -65,7 +65,7 @@ public class buttonController : MonoBehaviour
 
     void Update()
     {
-        GameManager.Instance.mult = (1.0 + (double)GameManager.Instance.streak * 0.1);
+        GameManager.Instance.combo_mult = (1.0 + (double)GameManager.Instance.streak * 0.1);
 
         timeSinceLastNoteHit += Time.deltaTime;
                

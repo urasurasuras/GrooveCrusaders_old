@@ -49,7 +49,7 @@ public class boosAnimationScript : MonoBehaviour
             }
             //Debug.Log("boss Hit!!");
             //print("Boss dmg taken: " + (float)other.gameObject.GetComponent<projectile>().base_value);
-            boss1Health -= (float)other.gameObject.GetComponent<projectile>().base_value;
+            boss1Health -= (float)other.gameObject.GetComponent<projectile>().value_final;
 
             bossAnimationController.SetTrigger("RightFight");
         }

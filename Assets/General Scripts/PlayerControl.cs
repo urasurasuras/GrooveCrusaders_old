@@ -201,7 +201,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (other.gameObject.tag == "f_healing" && playerHealth <maxHealth)
         {
-            playerHealth += (float)other.gameObject.GetComponent<projectile>().base_value; ;
+            playerHealth += (float)other.gameObject.GetComponent<projectile>().value_final ;
             //Destroy(other.gameObject);
         }
     }
@@ -216,7 +216,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        power = GameManager.Instance.mult;//we cache this value for each player individually
+        power = GameManager.Instance.combo_mult;//we cache this value for each player individually
 
         playerHealthBar.fillAmount = playerHealth/maxHealth;
         if (Input.GetJoystickNames().Length > 0)

@@ -32,7 +32,7 @@ public class boss2 : MonoBehaviour
             {
                 splitBoss2();
             }
-            bossHealth -= (float)other.gameObject.GetComponent<projectile>().base_value;
+            bossHealth -= (float)other.gameObject.GetComponent<projectile>().value_final;
         }
         if (other.gameObject.tag == "f_aoe")
         {

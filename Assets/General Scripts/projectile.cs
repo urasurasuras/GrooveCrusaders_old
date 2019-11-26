@@ -11,15 +11,29 @@ public class projectile : MonoBehaviour
     public GameObject liteDmgParticle;
     public GameObject liteHealParticle;
 
-    public double base_value=10;            //the base value of the projectiles healing or damage etc.
+    public double value_base=10;            //the starting value of the projectiles
+    public double value_heal;               //respective values then multiplied
+    public double value_damage;
+
+    public double value_final;              //final value of whatever this projectile is doing
 
     // Start is called before the first frame update
     void Start()
     {
-        base_value *= owner.GetComponent<PlayerControl>().power;
+        value_final = owner.GetComponent<PlayerControl>().power * value_base;  //multiply by combo
+
+        if (gameObject.tag == "f_damage")
+        {
+            value_final *= GameManager.Instance.mult_damage;
+            print("Damage of " + this.name + ": " + value_final);
+        }
+        if (gameObject.tag == "f_healing")
+        {
+            value_final *= GameManager.Instance.mult_heal;
+            print("Healing of " + this.name + ": " + value_final);
+        }
         if (!owner.GetComponent<PlayerControl>().facingRight)
-            velX *= -1;
-        //rb.velocity = transform.right * velX;
+            velX *= -1;     //shoot projectile other way if the char is facinf that way
     }
 
     // Update is called once per frame
@@ -31,11 +45,6 @@ public class projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.gameObject == owner && this.gameObject.tag == "f_healing")
-        //{
-        //print(owner+" hit " + collision + " with "+ this.gameObject.tag);
-
-        //}
         if (collision.gameObject.tag == "Enemy" && this.gameObject.tag == "f_damage")
         {
             Instantiate(liteDmgParticle,transform.position,Quaternion.identity);
@@ -48,21 +57,4 @@ public class projectile : MonoBehaviour
             Destroy(gameObject, 0f);
         }
     }
-    /*void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-        }
-        if (other.gameObject.tag == "Proectile")
-        {
-        }
-        else
-        {
-            Destroy(gameObject, 0f);
-        }
-    }*/
-    //void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    Destroy(gameObject, 0f);
-    //}
 }

@@ -74,10 +74,10 @@ public class TwitchController : MonoBehaviour
             if (GameObject.Find("Heal Votes") && GameObject.Find("Damage Votes")) {
                 print("found");
                 voteT_heal = GameObject.Find("Heal Votes").GetComponent<Text>();
-                voteT_heal.text = "H: " + GameManager.Instance.vote_heal;
+                voteT_heal.text = "Healing x" + GameManager.Instance.mult_heal;
 
                 voteT_damage = GameObject.Find("Damage Votes").GetComponent<Text>();
-                voteT_damage.text = "D: " + GameManager.Instance.vote_damage;
+                voteT_damage.text = "Damage x" + GameManager.Instance.mult_damage;
             }
         }
     }

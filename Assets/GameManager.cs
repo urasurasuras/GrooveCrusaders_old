@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     //VOTES
     public int vote_heal = 0, vote_damage = 0;
+    public double mult_heal = 1, mult_damage = 1;
 
     bool healBuff = false;
     bool speedBuff = false;
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
     bool boss2Debuff = false;
 
     public int streak = 0;
-    public double mult;
+    public double combo_mult;
     public double minPlayerHP = 100;
 
     public static GameManager Instance
@@ -93,14 +94,8 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        //buttonControllerScript.redButtonCanBePressed = canShoot;
-        //Debug.Log("red button can press: " + canShoot);
-        //foreach (PlayerControl pc in playerList)
-        //{
-        //    if (pc.hasRequestedFire)
-
-        //}
-        
+        mult_heal = (1.0 + (double)GameManager.Instance.vote_heal * 0.01);
+        mult_damage = (1.0 + (double)GameManager.Instance.vote_damage * 0.01);
         if (buttonControllerScript != null)
         {
             if (buttonControllerScript.redButtonBeingPressed)
@@ -111,40 +106,7 @@ public class GameManager : MonoBehaviour
                         pc.GetComponent<weapon>().fire();
                 }
             }
-            //if (buttonControllerScript.timeSinceLastNoteHit < buttonControllerScript.noteLength)
-            //{
-            //    foreach (PlayerControl pc in playerList)
-            //    {
-            //        pc.playerCanFire = true;
-            //    }
-            //}
-            //else
-            //{
-            //    foreach (PlayerControl pc in playerList)
-            //    {
-            //        pc.playerCanFire = false;
-            //    }
-            //}
-            //if (buttonControllerScript.playerFireReset)
-            //    foreach (PlayerControl pc in playerList)
-            //        pc.GetComponent<weapon>().hasFired = false;
-
         }
-
-
-        //for (int i = 0; i < playerList.Count; i++)
-        //{
-        //if (playerList[i].horizontalAxis > 0)
-        //    {
-        //        playerList[i].facingRight = true;
-        //        //print(pc + " is facing right " + pc.facingRight);
-        //    }
-        //if (playerList[i].horizontalAxis < 0)
-        //    {
-        //        playerList[i].facingRight = false;
-        //        //print(pc + " is facing right " + pc.facingRight);
-        //    }
-        //}
 
         redButtonCanPressEvent.Invoke();
         onBeatEvent.Invoke();
@@ -260,7 +222,7 @@ public class GameManager : MonoBehaviour
         if (gui_combo && gui_mult)
         {
             gui_combo.text = "Combo: " + streak.ToString();
-            gui_mult.text = "x" + mult.ToString();
+            gui_mult.text = "x" + combo_mult.ToString();
         }
         //findMinRec(playerList, getNumPlayers());
         foreach (PlayerControl pc in playerList)
