@@ -15,13 +15,16 @@ public class GameManager : MonoBehaviour
     //public noteShooter NoteShooterScript;
     //other references
     public GameObject pause_menu;
-    GameObject red_button;
+    public GameObject red_button;
     buttonController buttonControllerScript;
     boosAnimationScript boss1;
     boss2 boss2;
 
     public bool game_paused;
     public bool loss;
+
+    //VOTES
+    public int vote_heal = 0, vote_damage = 0;
 
     bool healBuff = false;
     bool speedBuff = false;

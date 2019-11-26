@@ -19,7 +19,6 @@ public class TwitchController : MonoBehaviour
     public InputField authkey;
 
     //VOTES
-    public int vote_heal=0, vote_damage =0;
     public GameObject guio_heal, guio_damage;   //O stands for "Object"
     public Text voteT_heal, voteT_damage;
     //public Text voteT_heal, voteT_damage;
@@ -75,10 +74,10 @@ public class TwitchController : MonoBehaviour
             if (GameObject.Find("Heal Votes") && GameObject.Find("Damage Votes")) {
                 print("found");
                 voteT_heal = GameObject.Find("Heal Votes").GetComponent<Text>();
-                voteT_heal.text = "H: " + vote_heal;
+                voteT_heal.text = "H: " + GameManager.Instance.vote_heal;
 
                 voteT_damage = GameObject.Find("Damage Votes").GetComponent<Text>();
-                voteT_damage.text = "D: " + vote_damage;
+                voteT_damage.text = "D: " + GameManager.Instance.vote_damage;
             }
         }
     }
@@ -127,9 +126,9 @@ public class TwitchController : MonoBehaviour
                 print(String.Format("{0}: {1}", chatName, message));
 
                 if (message.StartsWith("!heal"))
-                    vote_heal += 1;
+                    GameManager.Instance.vote_heal += 1;
                 else if (message.StartsWith("!damage"))
-                    vote_damage += 1;
+                    GameManager.Instance.vote_damage += 1;
             }
         }
     }
