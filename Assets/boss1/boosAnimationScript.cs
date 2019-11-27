@@ -18,6 +18,7 @@ public class boosAnimationScript : MonoBehaviour
     public Slider Boss1HealthSlider;
 
     public float dmgTaken = 10; //CHANGE THIS TO BE A MULTIPLIER
+    public float percentage;    //from 0-1
 
     void Start()
     {
@@ -51,6 +52,8 @@ public class boosAnimationScript : MonoBehaviour
             //print("Boss dmg taken: " + (float)other.gameObject.GetComponent<projectile>().base_value);
             boss1Health -= (float)other.gameObject.GetComponent<projectile>().value_final;
 
+            percentage = boss1Health / maxHealth;
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, percentage); 
             bossAnimationController.SetTrigger("RightFight");
         }
     }
