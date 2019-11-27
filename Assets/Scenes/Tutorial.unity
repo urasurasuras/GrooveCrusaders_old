@@ -6451,6 +6451,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07eaec8a1e59444596f836233d22283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game_started: 1
+  twitchLogin: {fileID: 0}
   gui_combo: {fileID: 0}
   gui_mult: {fileID: 0}
   pause_menu: {fileID: 0}
@@ -6459,8 +6461,10 @@ MonoBehaviour:
   loss: 0
   vote_heal: 0
   vote_damage: 0
+  mult_heal: 1
+  mult_damage: 1
   streak: 0
-  mult: 0
+  combo_mult: 0
   minPlayerHP: 100
 --- !u!4 &869138332
 Transform:
@@ -7992,7 +7996,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCanAttack: 0
-  gameStarted: 0
   LevelStateEvent: event:/MainEvent
   arrow: {fileID: 4035329070204420088, guid: ff6dad4f6bca8fc49b07d602ffdc1552, type: 3}
   beatLength: 0

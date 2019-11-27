@@ -10,7 +10,6 @@ public class noteShooter : MonoBehaviour
 {
     public static noteShooter instance;
     public bool playerCanAttack;
-    public bool gameStarted = false;
     //public float beatsPerMin;   //better if determined by FMOD
 
     public static UnityEvent markerOnEvent;

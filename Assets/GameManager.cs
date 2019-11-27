@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public bool game_started;    //
+    public GameObject twitchLogin;
     public Text gui_combo;
     public Text gui_mult;
     public static UnityEvent onBeatEvent;
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setPaused(game_paused);
+        //setPaused(game_paused);
 
         onBeatEvent = new UnityEvent();
         redButtonCanPressEvent = new UnityEvent();
@@ -206,7 +208,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start"))
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start")) && game_started)
         {
             if (!GameManager.Instance.game_paused)
             {
@@ -255,15 +257,14 @@ public class GameManager : MonoBehaviour
             pc.GetComponent<weapon>().hasRequestedFire = false;
         }
     }
-    /*
-        public static int findMinRec(List<PlayerControl> A, int n)
+    public void startGame()
+    {
+        game_started = true;
+        if (twitchLogin != null)
         {
-            // if size = 0 means whole array  
-            // has been traversed  
-            if (n == 1)
-                return A[0];
-
-            return Math.Min(A[n - 1], findMinRec(A, n - 1));
+            twitchLogin.SetActive(false);
+            game_paused = false;
+            setPaused(game_paused);
         }
-    */
+    }
 }

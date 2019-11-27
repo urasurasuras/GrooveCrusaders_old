@@ -9,7 +9,6 @@ public class PlayerControl : MonoBehaviour
 {
 
     public static UnityEvent playerTouchingEnemy;
-    public bool gameStarted;
 
     //Char values
     GameObject currChar;
@@ -39,10 +38,10 @@ public class PlayerControl : MonoBehaviour
 
     public float attackCheck = 0.2f;
 
-   
+
     private Rigidbody2D rb2d;
 
-    
+
     //public GameObject liteToRight, liteToLeft;
     //Vector2 litePos;
     //float nextFire = 0.0f;
@@ -75,10 +74,9 @@ public class PlayerControl : MonoBehaviour
             ButtonController = red_button.GetComponent<buttonController>();
         playerTouchingEnemy = new UnityEvent();
         GameManager.Instance.RegisterPlayerControl(this);
-        gameStarted = false;
         rb2d = GetComponent<Rigidbody2D>();
         //facingRight = true;
-     
+
         isDrummerStationary = false;
         drummerAnimationController = GetComponent<Animator>();
 
@@ -88,20 +86,13 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-         if (!gameStarted)
-        {
-            if (Input.anyKeyDown)
-            {
-                gameStarted = true;
-            }
-        }
         if (playerHealth <= 0)
         {
-            Destroy(gameObject,0f);
+            Destroy(gameObject, 0f);
             GameManager.Instance.deRegisterPlayerControl(this);
         }
         playerTouchingEnemy.Invoke();
-        
+
         if (Input.GetJoystickNames().Length == 0)       //if there are no joysticks connected use WASD for char0
         {
             //Debug.Log("number of joysticks" + Input.GetJoystickNames().Length);
@@ -129,7 +120,7 @@ public class PlayerControl : MonoBehaviour
             {
                 gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
                 gameObject.GetComponent<weapon>().hasRequestedFire = true;
-            }            
+            }
         }
 
 
@@ -142,21 +133,21 @@ public class PlayerControl : MonoBehaviour
                 //tutorialText.objComp_HasMoved = true;
                 horizontalAxis = Input.GetAxis("Joy" + controllerNum + "X") * speed * 0.5f;
 
-                    if (horizontalAxis < 0)         //facing left
-                    {
-                        transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-                        transform.Translate(-horizontalAxis, 0, 0);
-                        facingRight = false;
-                        //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
-                    }
-                    else if (horizontalAxis > 0)    //facing right
-                    {
-                        transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                        transform.Translate(horizontalAxis, 0, 0);
-                        facingRight = true;
-                        //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
-                    }
-                    
+                if (horizontalAxis < 0)         //facing left
+                {
+                    transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                    transform.Translate(-horizontalAxis, 0, 0);
+                    facingRight = false;
+                    //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                }
+                else if (horizontalAxis > 0)    //facing right
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                    transform.Translate(horizontalAxis, 0, 0);
+                    facingRight = true;
+                    //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                }
+
                 //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
             }
             if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "Y")) > contDeadz)
@@ -165,7 +156,7 @@ public class PlayerControl : MonoBehaviour
 
                 verticalAxis = Input.GetAxis("Joy" + controllerNum + "Y") * speed * 0.5f;
                 transform.Translate(0, -verticalAxis, 0);
-                    
+
                 //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
             }
             gameObject.GetComponent<weapon>().timeSinceAttackReq += Time.deltaTime;
@@ -199,9 +190,9 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "f_healing" && playerHealth <maxHealth)
+        if (other.gameObject.tag == "f_healing" && playerHealth < maxHealth)
         {
-            playerHealth += (float)other.gameObject.GetComponent<projectile>().value_final ;
+            playerHealth += (float)other.gameObject.GetComponent<projectile>().value_final;
             //Destroy(other.gameObject);
         }
     }
@@ -218,7 +209,7 @@ public class PlayerControl : MonoBehaviour
     {
         power = GameManager.Instance.combo_mult;//we cache this value for each player individually
 
-        playerHealthBar.fillAmount = playerHealth/maxHealth;
+        playerHealthBar.fillAmount = playerHealth / maxHealth;
         if (Input.GetJoystickNames().Length > 0)
         {
             for (int i = 0; i < Input.GetJoystickNames().Length; i++)
@@ -286,7 +277,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void setControllerNumber (int number)
+    void setControllerNumber(int number)
     {
         //horizontalAxis = "J" + number + "Horizontal";
     }
