@@ -18,6 +18,8 @@ public class TwitchController : MonoBehaviour
     public InputField channelName;
     public InputField authkey;
 
+    public Text login_status;
+
     //VOTES
     public GameObject guio_heal, guio_damage;   //O stands for "Object"
     public Text voteT_heal, voteT_damage;
@@ -60,38 +62,39 @@ public class TwitchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(writer!=null)
-        writer.WriteLine("PONG tmi.twitch.tv\r\n");
-
-        if (loggedIn)
-        {
-            if (twitchClient !=null && !twitchClient.Connected)    //connect if not
-            {
-                print("Lost connection, reconnecting...");
-                Connect();
-            }
-            ReadChat();
-            if (GameObject.Find("Heal Votes") && GameObject.Find("Damage Votes")) {
-                print("found");
-                voteT_heal = GameObject.Find("Heal Votes").GetComponent<Text>();
-                voteT_heal.text = "Healing x" + GameManager.Instance.mult_heal;
-
-                voteT_damage = GameObject.Find("Damage Votes").GetComponent<Text>();
-                voteT_damage.text = "Damage x" + GameManager.Instance.mult_damage;
-            }
-        }
-    }
-
-    public void setCred()
-    {
         username = channelName.text;
         channelname = channelName.text;
         password = authkey.text;
 
-        Connect();
-        loggedIn = true;
+        if (writer!=null)
+        writer.WriteLine("PONG tmi.twitch.tv\r\n");
+
+        if (twitchClient!=null)
+        {
+            if (!twitchClient.Connected)    //connect if not
+            {
+                login_status.text = ("Login failed, try again !");
+            }
+            
+            else if (twitchClient.Connected)
+            {
+                ReadChat();
+                login_status.text = ("Logged in as: " + username);
+                if (GameObject.Find("Heal Votes") && GameObject.Find("Damage Votes"))
+                {
+                    voteT_heal = GameObject.Find("Heal Votes").GetComponent<Text>();
+                    voteT_heal.text = "Healing x" + GameManager.Instance.mult_heal;
+
+                    voteT_damage = GameObject.Find("Damage Votes").GetComponent<Text>();
+                    voteT_damage.text = "Damage x" + GameManager.Instance.mult_damage;
+                }
+            }
+            else
+                login_status.text = ("Logging in as: " + username);
+        }
     }
-    void Connect()
+
+    public void Connect()
     {
         twitchClient = new TcpClient("irc.chat.twitch.tv", 6667);
 
