@@ -172,22 +172,22 @@ public class GameManager : MonoBehaviour
         //        Debug.Log(buttonControllerScript.noteLength);
         //    }
         //}
-        if (Input.GetKeyDown(KeyCode.F4))  //Boss1 takes more damage 
-        {
-            if (!boss1Debuff)
-            {
-                boss1.dmgTaken = 15;
-                boss1Debuff = true;
-                Debug.Log(boss1.dmgTaken);
-            }
-            else if (boss1Debuff)
-            {
-                boss1.dmgTaken = 10;
-                boss1Debuff = false;
-                Debug.Log(boss1.dmgTaken);
-            }
+        //if (Input.GetKeyDown(KeyCode.F4))  //Boss1 takes more damage 
+        //{
+        //    if (!boss1Debuff)
+        //    {
+        //        boss1.dmgTaken = 15;
+        //        boss1Debuff = true;
+        //        Debug.Log(boss1.dmgTaken);
+        //    }
+        //    else if (boss1Debuff)
+        //    {
+        //        boss1.dmgTaken = 10;
+        //        boss1Debuff = false;
+        //        Debug.Log(boss1.dmgTaken);
+        //    }
 
-        }
+        //}
         if (Input.GetKeyDown(KeyCode.F5))  //Boss2 charges slower
         {
             if (!boss2Debuff)
