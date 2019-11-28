@@ -759,7 +759,7 @@ MonoBehaviour:
   LevelStateEvent: event:/GameEvent - Local Forecast
   arrow: {fileID: 4035329070204420088, guid: ff6dad4f6bca8fc49b07d602ffdc1552, type: 3}
   beatLength: 0
-  latestMarker: 
+  latestBeat: 0
   latestBar: 0
 --- !u!1 &294265383
 GameObject:
@@ -11610,7 +11610,14 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   targetCharLocation: {fileID: 0}
   healtBar: {fileID: 2063155323}
+  maxHealth: 100
   bossHealth: 100
+  s1: {fileID: 1093230064}
+  s2: {fileID: 1801903810}
+  s3: {fileID: 19647626}
+  s4: {fileID: 1843758987}
+  s5: {fileID: 1078637972}
+  s6: {fileID: 1177853097}
   moving: 0
   boss2adObject: {fileID: 8960423192809965021, guid: 432a32eafb22da9469335ec1e33bf346,
     type: 3}
