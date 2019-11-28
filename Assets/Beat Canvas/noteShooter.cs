@@ -20,6 +20,7 @@ public class noteShooter : MonoBehaviour
     class TimelineInfo
     {
         public int currentMusicBar = 0;
+        public int currentMusicBeat = 0;
         public FMOD.StringWrapper lastMarker = new FMOD.StringWrapper();
     }
 
@@ -40,9 +41,11 @@ public class noteShooter : MonoBehaviour
     [SerializeField]
     private float beatLength;
     public static string marker;
-    public string latestMarker;
+    public int latestBeat;
     public static int bar;
+    public static int beat;
     public int latestBar;
+    public static int bpm;
 
     void Start()
     {
@@ -88,7 +91,7 @@ public class noteShooter : MonoBehaviour
     {
         if (timelineInfo != null)
         {
-            GUILayout.Box(String.Format("Current Bar = {0}{1}", timelineInfo.currentMusicBar, (string)timelineInfo.lastMarker));
+            GUILayout.Box(String.Format("Current Bar = {0}.{1}", timelineInfo.currentMusicBar, timelineInfo.currentMusicBeat));
         }
     }
 
@@ -98,6 +101,7 @@ public class noteShooter : MonoBehaviour
     [AOT.MonoPInvokeCallback(typeof(FMOD.Studio.EVENT_CALLBACK))]
     static FMOD.RESULT BeatEventCallback(FMOD.Studio.EVENT_CALLBACK_TYPE type, FMOD.Studio.EventInstance instance, IntPtr parameterPtr)
     {
+
         //Debug.Log("callback");
         // Retrieve the user data
         IntPtr timelineInfoPtr;
@@ -112,21 +116,32 @@ public class noteShooter : MonoBehaviour
             GCHandle timelineHandle = GCHandle.FromIntPtr(timelineInfoPtr);
             TimelineInfo timelineInfo = (TimelineInfo)timelineHandle.Target;
 
+            var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
+            if (parameter.tempo != 0)
+                bpm = (int)parameter.tempo;
             switch (type)
             {
                 case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT:
                     {
-                        var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
+                        //var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
                         timelineInfo.currentMusicBar = parameter.bar;
                         bar = timelineInfo.currentMusicBar;
                         //Debug.Log("bedug 1");
+
+                        timelineInfo.currentMusicBeat = parameter.beat;
+                        beat = timelineInfo.currentMusicBeat;
                     }
                     break;
                 case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
                     {
-                        var parameter = (FMOD.Studio.TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_MARKER_PROPERTIES));
-                        timelineInfo.lastMarker = parameter.name;
-                        marker = timelineInfo.lastMarker;
+                        //var parameter = (FMOD.Studio.TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_MARKER_PROPERTIES));
+                        //timelineInfo.lastMarker = parameter.name;
+                        //marker = timelineInfo.lastMarker;
+
+                        //var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
+                        //timelineInfo.currentMusicBeat = parameter.beat;
+                        //beat = timelineInfo.currentMusicBeat;
+
                         //markerEvent.Invoke();
                         //Debug.Log("bedug 2");
 
@@ -152,9 +167,9 @@ public class noteShooter : MonoBehaviour
                 musicInstance.setPaused(true);
             }
         }
-        if (latestMarker != marker) {
+        if (latestBeat != beat) {
             CameraShaker.Instance.ShakeOnce(1f, 1f, .1f, .1f);
-            latestMarker = marker;
+            latestBeat = beat;
             markerOnEvent.Invoke();
         }
         if (latestBar != bar)
