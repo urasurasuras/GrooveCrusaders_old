@@ -15,7 +15,13 @@ public class boss2 : MonoBehaviour
     private Vector3 currentBossPos;
     private Vector3 lastPlayerPos;
     public Slider healtBar;
-    public float bossHealth = 100;
+    public float maxHealth = 100;
+    public float bossHealth;
+
+
+    //EQ slider values
+    float frequency=93/8, magnitude=.5f;
+    public Slider s1, s2, s3, s4, s5, s6;
 
     public bool moving;
 
@@ -43,6 +49,7 @@ public class boss2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bossHealth = maxHealth;
         moving = false;
 
         targetPlayer = GameObject.Find("char0");
@@ -54,6 +61,16 @@ public class boss2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        magnitude = (bossHealth / maxHealth);
+        //print(magnitude);
+        var temp = Mathf.Sin(Time.time * noteShooter.bpm/8) * magnitude;
+        s1.value = temp;
+        s2.value = temp;
+        s3.value = temp;
+        s4.value = temp;
+        s5.value = temp;
+        s6.value = temp;
+        //print(temp);
         if (!GameManager.Instance.loss)
         {
             noteShooter.barEvent.AddListener(setTarget);
