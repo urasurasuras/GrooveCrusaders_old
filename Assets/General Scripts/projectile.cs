@@ -25,7 +25,7 @@ public class projectile : MonoBehaviour
         if (gameObject.tag == "f_damage")
         {
             value_final *= GameManager.Instance.mult_damage;
-            print("Damage of " + this.name + ": " + value_final);
+            //print("Damage of " + this.name + ": " + value_final);
         }
         if (gameObject.tag == "f_healing")
         {
