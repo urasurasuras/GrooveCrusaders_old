@@ -11,14 +11,28 @@ public class noteScroll : MonoBehaviour
 
     private static GameObject currentNote;
 
+    GameObject red_button;
     buttonController buttonControllerScript;
     public int lifeTime = 5;
 
+    Vector3 direction;
+    float distance;
+    float travel_time;
     void Awake() { Destroy(gameObject, lifeTime); }
     // Start is called before the first frame update
     void Start()
     {
-        buttonControllerScript = GameObject.Find("Buttons_Red").GetComponent<buttonController>();
+        if (GameObject.Find("Buttons_Red"))
+        {
+            red_button = GameObject.Find("Buttons_Red");
+            buttonControllerScript = red_button.GetComponent<buttonController>();
+            direction = red_button.GetComponent<Transform>().position - transform.position;
+            distance = direction.magnitude;
+            travel_time = 60/(float)noteShooter.bpm;//seconds
+            print(distance);
+            print(travel_time);
+            print(distance / travel_time);
+        }
     }
 
     // Update is called once per frame
@@ -35,7 +49,12 @@ public class noteScroll : MonoBehaviour
                 }
             }
         }
-        transform.position -= new Vector3(notespeed * Time.deltaTime, 0, 0);
+    }
+    void Update()
+    {
+        //print(direction +"-"+ travel_time +"-"+distance);
+        //transform.Translate(-distance / travel_time,0,0);
+        transform.position += new Vector3(-distance/travel_time*Time.deltaTime/2,0);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

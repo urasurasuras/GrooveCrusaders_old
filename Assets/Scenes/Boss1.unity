@@ -8080,7 +8080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432201667}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 0}
+  m_LocalPosition: {x: 15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 297923236}
@@ -8150,7 +8150,7 @@ MonoBehaviour:
   LevelStateEvent: event:/GameEvent - Local Forecast
   arrow: {fileID: 4035329070204420088, guid: ff6dad4f6bca8fc49b07d602ffdc1552, type: 3}
   beatLength: 0
-  latestMarker: 
+  latestBeat: 0
   latestBar: 0
 --- !u!1 &1463793329
 GameObject:
@@ -9078,6 +9078,7 @@ MonoBehaviour:
   stage2health: 75
   Boss1HealthSlider: {fileID: 976956094}
   dmgTaken: 10
+  percentage: 0
 --- !u!50 &2003192234
 Rigidbody2D:
   serializedVersion: 4

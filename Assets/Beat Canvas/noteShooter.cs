@@ -118,7 +118,7 @@ public class noteShooter : MonoBehaviour
 
             var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
             if (parameter.tempo != 0)
-                bpm = (int)parameter.tempo;
+                bpm =(int)parameter.tempo;
             switch (type)
             {
                 case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT:
@@ -151,7 +151,6 @@ public class noteShooter : MonoBehaviour
         }
         return FMOD.RESULT.OK;
     }
-
 
     // Update is called once per frame
     void Update()
