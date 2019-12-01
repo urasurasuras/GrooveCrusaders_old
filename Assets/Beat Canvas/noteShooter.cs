@@ -134,9 +134,9 @@ public class noteShooter : MonoBehaviour
                     break;
                 case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
                     {
-                        //var parameter = (FMOD.Studio.TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_MARKER_PROPERTIES));
-                        //timelineInfo.lastMarker = parameter.name;
-                        //marker = timelineInfo.lastMarker;
+                        var marker_param = (FMOD.Studio.TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_MARKER_PROPERTIES));
+                        timelineInfo.lastMarker = marker_param.name;
+                        marker = timelineInfo.lastMarker;
 
                         //var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
                         //timelineInfo.currentMusicBeat = parameter.beat;

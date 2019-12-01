@@ -11618,6 +11618,9 @@ MonoBehaviour:
   s4: {fileID: 1843758987}
   s5: {fileID: 1078637972}
   s6: {fileID: 1177853097}
+  start_color: {r: 1, g: 0, b: 0, a: 1}
+  mid_color: {r: 1, g: 0.78431374, b: 0, a: 1}
+  end_color: {r: 0.2494247, g: 1, b: 0, a: 1}
   moving: 0
   boss2adObject: {fileID: 8960423192809965021, guid: 432a32eafb22da9469335ec1e33bf346,
     type: 3}

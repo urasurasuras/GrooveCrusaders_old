@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 114314592110368476}
   StringsBanks:
   - {fileID: 114743115232692518}
-  stringsBankWriteTime: 637085896434929837
+  stringsBankWriteTime: 637108105714460737
   cacheVersion: 3
 --- !u!114 &114005271641230940
 MonoBehaviour:
@@ -336,11 +336,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: E:/Belgelerim/DERSLER/IT286/GCv2/GC2/healthscale/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637085896434879866
+  lastModified: 637108105714410798
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 4860704
+    Value: 4845408
   Exists: 1
 --- !u!114 &114323365487755248
 MonoBehaviour:
@@ -372,6 +372,23 @@ MonoBehaviour:
   m_Name: parameter:/BossHealth/Boss Health
   m_EditorClassIdentifier: 
   Name: Boss Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
+--- !u!114 &114333606188437022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/Player Health
+  m_EditorClassIdentifier: 
+  Name: Player Health
   Min: 0
   Max: 100
   Default: 100
@@ -478,6 +495,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 1
+--- !u!114 &114553481710617574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114595332926904602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,11 +583,11 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114336924224262260}
-  - {fileID: 114131884148946784}
+  - {fileID: 114553481710617574}
+  - {fileID: 114333606188437022}
   MinDistance: 0
   MaxDistance: 0
-  Length: 167164
+  Length: 166519
 --- !u!114 &114681315219203986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,7 +653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: E:/Belgelerim/DERSLER/IT286/GCv2/GC2/healthscale/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637085896434929837
+  lastModified: 637108105714460737
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -662,11 +696,11 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114660333660507000}
-  - {fileID: 114157200658126032}
+  - {fileID: 114915320478774746}
+  - {fileID: 114949638754292814}
   MinDistance: 0
   MaxDistance: 0
-  Length: 193722
+  Length: 188761
 --- !u!114 &114810271368883378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,6 +820,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 1
+--- !u!114 &114915320478774746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainEvent/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114949061946928512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -810,6 +861,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &114949638754292814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainEvent/Player Health
+  m_EditorClassIdentifier: 
+  Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114953250524201634
 MonoBehaviour:
   m_ObjectHideFlags: 0
