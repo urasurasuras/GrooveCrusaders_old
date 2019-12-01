@@ -29,9 +29,6 @@ public class noteScroll : MonoBehaviour
             direction = red_button.GetComponent<Transform>().position - transform.position;
             distance = direction.magnitude;
             travel_time = 60/(float)noteShooter.bpm;//seconds
-            print(distance);
-            print(travel_time);
-            print(distance / travel_time);
         }
     }
 
