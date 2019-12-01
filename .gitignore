@@ -59,7 +59,7 @@ sysinfo.txt
 crashlytics-build.properties
 
 #FMOD
-healthscale/Assets/FMODStudioCache.asset
-healthscale/Assets/FMODStudioCache.asset.meta
-healthscale/fmod.log
-healthscale/fmod_editor.log
+#healthscale/Assets/FMODStudioCache.asset
+#healthscale/Assets/FMODStudioCache.asset.meta
+#healthscale/fmod.log
+#healthscale/fmod_editor.log
