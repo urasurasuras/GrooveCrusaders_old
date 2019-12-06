@@ -201,7 +201,7 @@
 	</object>
 	<object class="NamedMarker" id="{58a3145d-459f-4b7d-8c1c-1f03fc65ec13}">
 		<property name="position">
-			<value>1.935483870967742</value>
+			<value>1.6129032258064515</value>
 		</property>
 		<property name="name">
 			<value>Beat 2</value>
@@ -215,7 +215,7 @@
 	</object>
 	<object class="NamedMarker" id="{1b65ccfb-8d2d-4346-90f7-76be48843af0}">
 		<property name="position">
-			<value>2.5806451612903225</value>
+			<value>1.935483870967742</value>
 		</property>
 		<property name="name">
 			<value>Beat 3</value>
@@ -229,7 +229,7 @@
 	</object>
 	<object class="NamedMarker" id="{72344c2e-42db-4126-b74c-d8d1e5a046fd}">
 		<property name="position">
-			<value>3.225806451612903</value>
+			<value>2.258064516129032</value>
 		</property>
 		<property name="name">
 			<value>Beat 4</value>
@@ -243,7 +243,7 @@
 	</object>
 	<object class="NamedMarker" id="{397b5775-db4a-4656-b7c5-7a65187fb603}">
 		<property name="position">
-			<value>3.870967741935484</value>
+			<value>2.5806451612903225</value>
 		</property>
 		<property name="name">
 			<value>Beat 5</value>
@@ -257,7 +257,7 @@
 	</object>
 	<object class="NamedMarker" id="{eb32e3af-17ec-441d-a00b-e2eb89c83481}">
 		<property name="position">
-			<value>4.5161290322580641</value>
+			<value>2.903225806451613</value>
 		</property>
 		<property name="name">
 			<value>Beat 6</value>

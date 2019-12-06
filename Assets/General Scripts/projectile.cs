@@ -30,7 +30,7 @@ public class projectile : MonoBehaviour
         if (gameObject.tag == "f_healing")
         {
             value_final *= GameManager.Instance.mult_heal;
-            print("Healing of " + this.name + ": " + value_final);
+            //print("Healing of " + this.name + ": " + value_final);
         }
         if (!owner.GetComponent<PlayerControl>().facingRight)
             velX *= -1;     //shoot projectile other way if the char is facinf that way
