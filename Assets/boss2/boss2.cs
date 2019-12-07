@@ -26,6 +26,7 @@ public class boss2 : MonoBehaviour
     Color color_cache;
     int divident = 32;
     static float time_cache;
+    public float low1,low2, mid1,mid2, high1,high2;    //Will be avg. of the 2 respective EQ sliders
 
 
     public bool moving;
@@ -68,15 +69,14 @@ public class boss2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //print(noteShooter.marker);
+        //debug
+        if (Input.GetKeyDown(KeyCode.Keypad9))
+        {
+            bossHealth -= 5;
+        }
+
         magnitude = (bossHealth / maxHealth);
-        //print(Mathf.Sin(Time.time/60*noteShooter.bpm)*magnitude);
-        //DEBUG
-        //if (Input.GetKeyDown(KeyCode.Keypad9))
-        //{
-        //    bossHealth -= 5;
-        //}
-        //print(magnitude);
+      
         if (magnitude > .5)
         {
             color_cache = Color.Lerp(mid_color, start_color,(magnitude-.5f)*2);
@@ -87,35 +87,42 @@ public class boss2 : MonoBehaviour
         }
         if (noteShooter.marker == "Beat 1" || noteShooter.marker == "Beat 2" || noteShooter.marker == "Beat 3" || noteShooter.marker == "Beat 4" || noteShooter.marker == "Beat 5" || noteShooter.marker == "Beat 6")
         {
-            s1.value = Mathf.Sin(Time.time*noteShooter.bpm *Mathf.PI/60) * magnitude ;
+            low1 = Mathf.Sin(Time.time*noteShooter.bpm *Mathf.PI/60) * magnitude ;
+            s1.value = low1;
             s1.gameObject.transform.Find("Handle Slide Area").Find("Handle").GetComponent<Image>().color = color_cache;
         }
         if (noteShooter.marker == "Beat 2" || noteShooter.marker == "Beat 3" || noteShooter.marker == "Beat 4" || noteShooter.marker == "Beat 5" || noteShooter.marker == "Beat 6")
         {
-            s2.value = Mathf.Sin((Time.time * noteShooter.bpm * Mathf.PI / 60) + Mathf.PI*.5f) * magnitude;
+            low2 = Mathf.Sin((Time.time * noteShooter.bpm * Mathf.PI / 60) + Mathf.PI*.5f) * magnitude;
+            s2.value = low2;
             s2.gameObject.transform.Find("Handle Slide Area").Find("Handle").GetComponent<Image>().color = color_cache;
         }
         if (noteShooter.marker == "Beat 3" || noteShooter.marker == "Beat 4" || noteShooter.marker == "Beat 5" || noteShooter.marker == "Beat 6")
         {
-            s3.value = Mathf.Sin((Time.time * noteShooter.bpm * Mathf.PI / 60) + Mathf.PI) * magnitude;
+            mid1 = Mathf.Sin((Time.time * noteShooter.bpm * Mathf.PI / 60) + Mathf.PI) * magnitude;
+            s3.value = mid1;
             s3.gameObject.transform.Find("Handle Slide Area").Find("Handle").GetComponent<Image>().color = color_cache;
         }
         if (noteShooter.marker == "Beat 4" || noteShooter.marker == "Beat 5" || noteShooter.marker == "Beat 6")
         {
-            s4.value = Mathf.Sin((Time.time * noteShooter.bpm * Mathf.PI / 60) + Mathf.PI * 1.5f) * magnitude;
+            mid2 = Mathf.Sin((Time.time * noteShooter.bpm * Mathf.PI / 60) + Mathf.PI * 1.5f) * magnitude;
+            s4.value = mid2;
             s4.gameObject.transform.Find("Handle Slide Area").Find("Handle").GetComponent<Image>().color = color_cache;
         }
         if (noteShooter.marker == "Beat 5" || noteShooter.marker == "Beat 6")
         {
-            s5.value = Mathf.Sin((Time.time * noteShooter.bpm * Mathf.PI / 60) + Mathf.PI * 2) * magnitude;
+            high1 = Mathf.Sin((Time.time * noteShooter.bpm * Mathf.PI / 60) + Mathf.PI * 2) * magnitude;
+            s5.value = high1;
             s5.gameObject.transform.Find("Handle Slide Area").Find("Handle").GetComponent<Image>().color = color_cache;
         }
         if (noteShooter.marker == "Beat 6")
         {
-            s6.value = Mathf.Sin((Time.time * noteShooter.bpm * Mathf.PI / 60) + Mathf.PI * 2.5f) * magnitude;
+            high2 = Mathf.Sin((Time.time * noteShooter.bpm * Mathf.PI / 60) + Mathf.PI * 2.5f) * magnitude;
+            s6.value = high2;
             s6.gameObject.transform.Find("Handle Slide Area").Find("Handle").GetComponent<Image>().color = color_cache;
         }
-            //print(temp);
+
+
         if (!GameManager.Instance.loss)
         {
             noteShooter.barEvent.AddListener(setTarget);

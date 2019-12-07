@@ -16,6 +16,7 @@ public class noteShooter : MonoBehaviour
     public static UnityEvent barEvent;
 
     boosAnimationScript boss1Script;
+    boss2 boss2script;
     [StructLayout(LayoutKind.Sequential)]
     class TimelineInfo
     {
@@ -182,6 +183,13 @@ public class noteShooter : MonoBehaviour
             boss1Script = GameObject.Find("Boss1").GetComponent<boosAnimationScript>();
             musicInstance.setParameterByName("Boss Health", boss1Script.boss1Health);
             //print(boss1Script.boss1Health);
+        }
+        else if (GameObject.Find("Boss2") != null)   //set boss at Start, then set FMOD param
+        {
+            boss2script = GameObject.Find("Boss2").GetComponent<boss2>();
+            musicInstance.setParameterByName("CEQ_Low", (boss2script.low1+boss2script.low2)/2);
+            musicInstance.setParameterByName("CEQ_Mid", (boss2script.mid1+boss2script.mid2)/2);
+            musicInstance.setParameterByName("CEQ_High", (boss2script.high1+boss2script.high2)/2);
         }
         musicInstance.setParameterByName("Player Health", (float)GameManager.Instance.minPlayerHP);
     }
