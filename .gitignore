@@ -58,3 +58,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+#FMOD
+#healthscale/Assets/FMODStudioCache.asset
+#healthscale/Assets/FMODStudioCache.asset.meta
+#healthscale/fmod.log
+fmod_editor.log
+Assets/Plugins

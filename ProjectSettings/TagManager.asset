@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Activator
+  - Enemy
+  - Note
+  - Healing
+  - Projectile
+  - f_damage
+  - f_healing
+  - f_aoe
+  - mobile_healthbar
   layers:
   - Default
   - TransparentFX

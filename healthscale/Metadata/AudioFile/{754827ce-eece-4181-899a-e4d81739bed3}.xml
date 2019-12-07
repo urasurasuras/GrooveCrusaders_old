@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{754827ce-eece-4181-899a-e4d81739bed3}">
+		<property name="assetPath">
+			<value>Local Forecast.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>165.22448979591837</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a90fe8c1-f720-4465-b9dd-c5672a337c37}</destination>
+		</relationship>
+	</object>
+</objects>
