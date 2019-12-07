@@ -62,51 +62,62 @@ public class TwitchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        username = channelName.text;
-        channelname = channelName.text;
-        password = authkey.text;
-
-        if (writer!=null)
-        writer.WriteLine("PONG tmi.twitch.tv\r\n");
-
-        if (twitchClient!=null)
+        if (channelname != null)
         {
-            if (!twitchClient.Connected)    //connect if not
-            {
-                login_status.text = ("Login failed, try again !");
-            }
-            
-            else if (twitchClient.Connected)
-            {
-                ReadChat();
-                login_status.text = ("Logged in as: " + username);
-                if (GameObject.Find("Heal Votes") && GameObject.Find("Damage Votes"))
-                {
-                    voteT_heal = GameObject.Find("Heal Votes").GetComponent<Text>();
-                    voteT_heal.text = "Healing x" + GameManager.Instance.mult_heal;
-
-                    voteT_damage = GameObject.Find("Damage Votes").GetComponent<Text>();
-                    voteT_damage.text = "Damage x" + GameManager.Instance.mult_damage;
-                }
-            }
-            else
-                login_status.text = ("Logging in as: " + username);
+            username = channelName.text;
+            channelname = channelName.text;
+            password = authkey.text;
         }
+        try
+        {
+            //If connection is refused this caused an IOexception
+            if (writer != null)
+                writer.WriteLine("PONG tmi.twitch.tv\r\n");
+
+            if (twitchClient != null)
+            {
+                if (!twitchClient.Connected)    //connect if not
+                {
+                    login_status.text = ("Login failed, try again !");
+                }
+
+                else if (twitchClient.Connected)
+                {
+                    ReadChat();
+                    login_status.text = ("Logging in as: " + username);
+                    if (GameObject.Find("Heal Votes") && GameObject.Find("Damage Votes"))
+                    {
+                        voteT_heal = GameObject.Find("Heal Votes").GetComponent<Text>();
+                        voteT_heal.text = "Healing x" + GameManager.Instance.mult_heal;
+
+                        voteT_damage = GameObject.Find("Damage Votes").GetComponent<Text>();
+                        voteT_damage.text = "Damage x" + GameManager.Instance.mult_damage;
+                    }
+                }                
+            }
+        }
+        catch(IOException e)
+        {
+            print("failed connection: " + e);
+        }
+        
     }
 
     public void Connect()
     {
-        twitchClient = new TcpClient("irc.chat.twitch.tv", 6667);
+        try {
+            twitchClient = new TcpClient("irc.chat.twitch.tv", 6667);
 
-        reader = new StreamReader(twitchClient.GetStream());
-        writer = new StreamWriter(twitchClient.GetStream());
+            reader = new StreamReader(twitchClient.GetStream());
+            writer = new StreamWriter(twitchClient.GetStream());
 
-        writer.WriteLine("PASS " + password);
-        writer.WriteLine("NICK " + username);
-        writer.WriteLine("USER " + username + " 8 * :" + username);
-        writer.WriteLine("JOIN #" + channelname);
-        writer.Flush();
-        //Debug.Log(twitchClient.Connected);
+            writer.WriteLine("PASS " + password);
+            writer.WriteLine("NICK " + username);
+            writer.WriteLine("USER " + username + " 8 * :" + username);
+            writer.WriteLine("JOIN #" + channelname);
+            writer.Flush();
+        }
+        catch (IOException e){ print("failed connection: "+e); }
     }
 
     private void ReadChat()
