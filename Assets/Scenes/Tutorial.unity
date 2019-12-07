@@ -5683,7 +5683,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: gui_damage
+  m_Text: 
 --- !u!222 &230166250
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6163,7 +6163,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: gui_heal
+  m_Text: 
 --- !u!222 &752824272
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7999,7 +7999,7 @@ MonoBehaviour:
   LevelStateEvent: event:/MainEvent
   arrow: {fileID: 4035329070204420088, guid: ff6dad4f6bca8fc49b07d602ffdc1552, type: 3}
   beatLength: 0
-  latestMarker: 
+  latestBeat: 0
   latestBar: 0
 --- !u!1 &1473352286
 GameObject:

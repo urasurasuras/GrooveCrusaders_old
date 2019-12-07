@@ -96,8 +96,11 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        mult_heal = (1.0 + (double)GameManager.Instance.vote_heal * 0.01);
-        mult_damage = (1.0 + (double)GameManager.Instance.vote_damage * 0.01);
+        if (mult_heal != null)
+        {
+            mult_heal = (1.0 + (double)GameManager.Instance.vote_heal * 0.01);
+            mult_damage = (1.0 + (double)GameManager.Instance.vote_damage * 0.01);
+        }
         if (buttonControllerScript != null)
         {
             if (buttonControllerScript.redButtonBeingPressed)

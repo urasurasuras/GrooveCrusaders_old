@@ -207,6 +207,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(power!=null)
         power = GameManager.Instance.combo_mult;//we cache this value for each player individually
 
         playerHealthBar.fillAmount = playerHealth / maxHealth;

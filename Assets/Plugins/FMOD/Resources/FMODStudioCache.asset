@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 114043004569844364}
   StringsBanks:
   - {fileID: 114682724760697216}
-  stringsBankWriteTime: 637109106332650921
+  stringsBankWriteTime: 637112498396474499
   cacheVersion: 3
 --- !u!114 &114005271641230940
 MonoBehaviour:
@@ -36,6 +36,23 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/MainEvent/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
+--- !u!114 &114017130006769036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/Boss Health
   m_EditorClassIdentifier: 
   Name: Boss Health
   Min: 0
@@ -76,6 +93,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &114030680025958700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainEvent/Player Health
+  m_EditorClassIdentifier: 
+  Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114043004569844364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/uras9/Documents/IT286/GrooveCrusaders/healthscale/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637109106332470917
+  lastModified: 637112498396351364
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -402,6 +436,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &114265437578223648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/Player Health
+  m_EditorClassIdentifier: 
+  Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114273221017642434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,8 +926,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114589724563691746}
-  - {fileID: 114563759427089126}
+  - {fileID: 114017130006769036}
+  - {fileID: 114265437578223648}
   MinDistance: 0
   MaxDistance: 0
   Length: 166514
@@ -928,7 +979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:/Users/uras9/Documents/IT286/GrooveCrusaders/healthscale/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637109106332650921
+  lastModified: 637112498396474499
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -951,6 +1002,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &114702251571906972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainEvent/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114705172262213268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,8 +1093,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114447767559311774}
-  - {fileID: 114384153967420076}
+  - {fileID: 114702251571906972}
+  - {fileID: 114030680025958700}
   MinDistance: 0
   MaxDistance: 0
   Length: 188761
