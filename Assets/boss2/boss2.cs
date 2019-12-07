@@ -77,7 +77,6 @@ public class boss2 : MonoBehaviour
         //    bossHealth -= 5;
         //}
         //print(magnitude);
-        moving = false;
         if (magnitude > .5)
         {
             color_cache = Color.Lerp(mid_color, start_color,(magnitude-.5f)*2);
