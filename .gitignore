@@ -63,4 +63,4 @@ crashlytics-build.properties
 #healthscale/Assets/FMODStudioCache.asset.meta
 #healthscale/fmod.log
 fmod_editor.log
-Assets/Plugins
+Assets/Plugins/FMOD/Resources/FMODStudioCache.asset
