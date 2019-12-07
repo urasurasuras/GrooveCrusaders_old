@@ -162,12 +162,15 @@ public class PlayerControl : MonoBehaviour
             gameObject.GetComponent<weapon>().timeSinceAttackReq += Time.deltaTime;
             if (Input.GetButtonDown("J" + controllerNum + "a"))
             {
-                if (ButtonController.timeSinceLastNoteHit < 0.2)
-                    gameObject.GetComponent<weapon>().fire();
-                gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
-                gameObject.GetComponent<weapon>().hasRequestedFire = true;
+                if (gameObject.name != "char1")
+                {
+                    if (ButtonController.timeSinceLastNoteHit < 0.2)
+                        gameObject.GetComponent<weapon>().fire();
+                    gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+                    gameObject.GetComponent<weapon>().hasRequestedFire = true;
+                }
             }
-            if (Input.GetButtonDown("J" + controllerNum + "b") /*|| Input.GetKey(KeyCode.Keypad0)*/)
+            if (Input.GetButtonDown("J" + controllerNum + "b") && gameObject.name=="char1")
             {
                 bool debB = Input.GetButtonDown("J" + controllerNum + "b");
                 if (!isDrummerStationary)
