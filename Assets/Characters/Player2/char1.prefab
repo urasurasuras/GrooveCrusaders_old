@@ -175,7 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec3db397b8a278428cfca146bdaa91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStarted: 0
   maxHealth: 100
   playerHealth: 100
   speed: 0.2
@@ -187,7 +186,6 @@ MonoBehaviour:
   ButtonController: {fileID: 0}
   playerFiredTut: 0
   playerHitTut: 0
-  timeSinceAttackReq: 0
   attackCheck: 0.2
   playerCanFire: 0
   healingAmount: 10
@@ -253,7 +251,9 @@ MonoBehaviour:
   attackPrefab: {fileID: 7994685418802011169, guid: 1b717218ba5a09f4a9e58741110deaac,
     type: 3}
   firePoint: {fileID: 4169116228736780473}
-  canFire: 0
+  timeSinceAttackReq: 0
+  hasRequestedFire: 0
+  hasFired: 1
 --- !u!1 &5134953364486941716
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,8 +344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectOfSprite: {fileID: 0}
   charScript: {fileID: 0}
-  vertOffset: 5
-  horizOffset: 0
 --- !u!1 &5862588994585358264
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,8 +458,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectOfSprite: {fileID: 4169116229269588437}
   charScript: {fileID: 0}
-  vertOffset: 2.5
-  horizOffset: -0.2
 --- !u!1001 &4760461769788697922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -578,7 +574,7 @@ PrefabInstance:
     - target: {fileID: 6005788668056646019, guid: a35bbbae5d69df442b6fe043e222c734,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a35bbbae5d69df442b6fe043e222c734, type: 3}
