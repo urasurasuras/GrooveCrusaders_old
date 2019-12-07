@@ -41,9 +41,9 @@ public class noteShooter : MonoBehaviour
     [SerializeField]
     private float beatLength;
     public static string marker;
-    public int latestBeat;
+    public int latestBeat=0;
     public static int bar;
-    public static int beat;
+    public static int beat=0;
     public int latestBar;
     public static int bpm;
 
