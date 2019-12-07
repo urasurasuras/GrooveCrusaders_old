@@ -70,10 +70,10 @@ public class boss2 : MonoBehaviour
     void Update()
     {
         //debug
-        if (Input.GetKeyDown(KeyCode.Keypad9))
-        {
-            bossHealth -= 5;
-        }
+        //if (Input.GetKeyDown(KeyCode.Keypad9))
+        //{
+        //    bossHealth -= 5;
+        //}
 
         magnitude = (bossHealth / maxHealth);
       

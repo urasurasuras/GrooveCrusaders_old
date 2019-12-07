@@ -132,37 +132,72 @@ public class PlayerControl : MonoBehaviour
             {
                 //tutorialText.objComp_HasMoved = true;
                 horizontalAxis = Input.GetAxis("Joy" + controllerNum + "X") * speed * 0.5f;
-
-                if (horizontalAxis < 0)         //facing left
+                if (gameObject.name != "char1")
                 {
-                    transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
-                    transform.Translate(-horizontalAxis, 0, 0);
-                    facingRight = false;
-                    //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                    if (horizontalAxis < 0)         //facing left
+                    {
+                        transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                        transform.Translate(-horizontalAxis, 0, 0);
+                        facingRight = false;
+                        //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                    }
+                    else if (horizontalAxis > 0)    //facing right
+                    {
+                        transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                        transform.Translate(horizontalAxis, 0, 0);
+                        facingRight = true;
+                        //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                    }
                 }
-                else if (horizontalAxis > 0)    //facing right
+                else if (gameObject.name == "char1" && !isDrummerStationary)
                 {
-                    transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
-                    transform.Translate(horizontalAxis, 0, 0);
-                    facingRight = true;
-                    //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                    if (horizontalAxis < 0)         //facing left
+                    {
+                        transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                        transform.Translate(-horizontalAxis, 0, 0);
+                        facingRight = false;
+                        //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                    }
+                    else if (horizontalAxis > 0)    //facing right
+                    {
+                        transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                        transform.Translate(horizontalAxis, 0, 0);
+                        facingRight = true;
+                        //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                    }
                 }
+                
 
                 //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
             }
             if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "Y")) > contDeadz)
             {
                 //tutorialText.objComp_HasMoved = true;
-
-                verticalAxis = Input.GetAxis("Joy" + controllerNum + "Y") * speed * 0.5f;
-                transform.Translate(0, -verticalAxis, 0);
-
+                if (gameObject.name != "char1")
+                {
+                    verticalAxis = Input.GetAxis("Joy" + controllerNum + "Y") * speed * 0.5f;
+                    transform.Translate(0, -verticalAxis, 0);
+                }
+                else if (gameObject.name == "char1" && !isDrummerStationary)
+                {
+                    verticalAxis = Input.GetAxis("Joy" + controllerNum + "Y") * speed * 0.5f;
+                    transform.Translate(0, -verticalAxis, 0);
+                }
+               
                 //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
             }
             gameObject.GetComponent<weapon>().timeSinceAttackReq += Time.deltaTime;
             if (Input.GetButtonDown("J" + controllerNum + "a"))
             {
                 if (gameObject.name != "char1")
+                {
+                    //print("im not char1");
+                    if (ButtonController.timeSinceLastNoteHit < 0.2)
+                        gameObject.GetComponent<weapon>().fire();
+                    gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+                    gameObject.GetComponent<weapon>().hasRequestedFire = true;
+                }
+                else if (gameObject.name == "char1" && isDrummerStationary)
                 {
                     if (ButtonController.timeSinceLastNoteHit < 0.2)
                         gameObject.GetComponent<weapon>().fire();
