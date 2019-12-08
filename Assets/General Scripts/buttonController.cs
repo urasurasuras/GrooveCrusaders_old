@@ -35,6 +35,9 @@ public class buttonController : MonoBehaviour
     weapon weaponBass;
     private float char0lastAtt;
 
+    [SerializeField]
+    [FMODUnity.EventRef]
+    string note_miss_sfx ="";
     //public bool playerFireReset;
 
     // Start is called before the first frame update
@@ -83,12 +86,8 @@ public class buttonController : MonoBehaviour
             {
                 timeSinceLastNoteHit = 0;
                 GameManager.Instance.streak+=1;
-                endBeatEvent.Invoke();
                 flashSripte.enabled = false;
-                //Debug.Log("Streak: " + GameManager.Instance.streak);
-                //makePlayersShoot();
             }
-
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -120,6 +119,7 @@ public class buttonController : MonoBehaviour
     private void endBeat()
     {
         GameManager.Instance.streak = 0;
+        FMODUnity.RuntimeManager.PlayOneShot(note_miss_sfx,gameObject.transform.position);
     }
     //private void setBoolBack()
     //{

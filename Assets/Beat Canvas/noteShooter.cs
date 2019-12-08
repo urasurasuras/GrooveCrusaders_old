@@ -34,6 +34,7 @@ public class noteShooter : MonoBehaviour
     FMOD.Studio.EVENT_CALLBACK beatCallback;
     FMOD.Studio.EventInstance musicInstance;
 
+    //FMOD.Studio.EventInstance missInstance;
 
 
     private float nextSpawnTime;
@@ -74,6 +75,9 @@ public class noteShooter : MonoBehaviour
         //Debug.Log("CALLBACK");
 
         musicInstance.start();
+
+        //missInstance = FMODUnity.RuntimeManager.CreateInstance("event:/NoteMiss");
+
         //
     }
 
