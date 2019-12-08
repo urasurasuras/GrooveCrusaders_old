@@ -25,7 +25,7 @@ public class boss2 : MonoBehaviour
     public Color start_color, mid_color,end_color;
     Color color_cache;
     int divident = 32;
-    static float time_cache;
+    //static float time_cache;
     public float low1,low2, mid1,mid2, high1,high2;    //Will be avg. of the 2 respective EQ sliders
 
 
@@ -52,6 +52,15 @@ public class boss2 : MonoBehaviour
         }
 
     }
+    //private void Awake()
+    //{
+    //    print("called awake ");
+
+    //}
+    private void OnLevelWasLoaded(int level)
+    {
+        print("Loaded level: " + level);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -62,13 +71,15 @@ public class boss2 : MonoBehaviour
         targetCharLocation = targetPlayer.GetComponent<Transform>();
         //boss2addRef = GetComponent<boss2add>();
         noteShooter.barEvent.AddListener(chargeToPlayer);
-        time_cache = Time.time;
+        //time_cache = Time.time;
 
     }
-
+    
     // Update is called once per frame
     void Update()
     {
+        //print("caling update");
+
         //debug
         //if (Input.GetKeyDown(KeyCode.Keypad9))
         //{

@@ -122,6 +122,11 @@ namespace FMODUnity
             }
         }
 
+        public static void PlayOneShot(object note_miss_sfx)
+        {
+            throw new NotImplementedException();
+        }
+
         public static FMOD.Studio.System StudioSystem
         {
             get { return Instance.studioSystem; }

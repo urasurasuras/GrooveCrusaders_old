@@ -19,4 +19,14 @@ public class MainMenu : MonoBehaviour
         else
             SceneManager.LoadScene(2);
     }
+    public void backToMain()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void reloadCurrentScene()
+    {
+        Scene current_scene = SceneManager.GetActiveScene();
+        //SceneManager.UnloadScene(current_scene.name);
+        SceneManager.LoadScene(current_scene.name);
+    }
 }

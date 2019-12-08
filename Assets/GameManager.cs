@@ -50,8 +50,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //setPaused(game_paused);
-
+        setPaused(false);
         onBeatEvent = new UnityEvent();
         redButtonCanPressEvent = new UnityEvent();
         playerList = new List<PlayerControl>();
@@ -145,7 +144,7 @@ public class GameManager : MonoBehaviour
             {
                 foreach (PlayerControl pc in playerList)
                 {
-                    pc.speed = 0.75f;
+                    //pc.speed = 0.75f;
                     speedBuff = true;
                     Debug.Log(pc.speed);
                 }
@@ -154,7 +153,7 @@ public class GameManager : MonoBehaviour
             {
                 foreach (PlayerControl pc in playerList)
                 {
-                    pc.speed = 0.5f;
+                    //pc.speed = 0.5f;
                     speedBuff = false;
                     Debug.Log(pc.speed);
                 }

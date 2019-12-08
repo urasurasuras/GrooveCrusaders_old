@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour
     weapon currWeapon;
     public float maxHealth;
     public float playerHealth;
-    public float speed = 0.5f;
+    public float speed;
     public bool facingRight = true;
     public double power;    //current power of player, passed onto their attacks
 
@@ -56,18 +56,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //currentChar = gameObject;
         playerHealth = maxHealth;
-        //char0 = GameObject.Find("char0");
-        //char0.SetActive(false);
-
-        //char1 = GameObject.Find("char1");
-        //char1.SetActive(false);
-
-        //char2 = GameObject.Find("char2");
-        //char2.SetActive(false);
-
-        //weapon = GetComponent<weapon>();
 
         red_button = GameObject.Find("Buttons_Red");
         if (red_button != null)
@@ -76,7 +65,8 @@ public class PlayerControl : MonoBehaviour
         GameManager.Instance.RegisterPlayerControl(this);
         rb2d = GetComponent<Rigidbody2D>();
         //facingRight = true;
-
+        speed = ((float)noteShooter.bpm / 100);
+        //print(noteShooter.bpm);
         isDrummerStationary = false;
         drummerAnimationController = GetComponent<Animator>();
 
@@ -130,6 +120,7 @@ public class PlayerControl : MonoBehaviour
             //{
             if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "X")) > contDeadz)
             {
+                print("transforming player " + gameObject.name);
                 //tutorialText.objComp_HasMoved = true;
                 horizontalAxis = Input.GetAxis("Joy" + controllerNum + "X") * speed * 0.5f;
                 if (gameObject.name != "char1")
@@ -245,7 +236,9 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(power!=null)
+        speed = ((float)noteShooter.bpm / 500);
+
+        if (power!=null)
         power = GameManager.Instance.combo_mult;//we cache this value for each player individually
 
         playerHealthBar.fillAmount = playerHealth / maxHealth;
