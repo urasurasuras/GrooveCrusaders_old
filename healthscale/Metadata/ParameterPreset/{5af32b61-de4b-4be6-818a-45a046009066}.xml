@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{5af32b61-de4b-4be6-818a-45a046009066}">
+		<property name="name">
+			<value>CEQ_Low</value>
+		</property>
+		<relationship name="folder">
+			<destination>{d6731eee-e97e-43a1-9ef5-6b0b9f20f597}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{78911bb7-2d9b-4ef8-aa89-10a7bed3f6ef}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{78911bb7-2d9b-4ef8-aa89-10a7bed3f6ef}">
+		<property name="minimum">
+			<value>-1</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
