@@ -25,6 +25,7 @@ public class TwitchController : MonoBehaviour
     public Text voteT_heal, voteT_damage;
     //public Text voteT_heal, voteT_damage;
 
+    [SerializeField]
     public static string username, password, channelname; //https://twitchapps.com/tmi/
 
     bool loggedIn = false;
@@ -62,12 +63,11 @@ public class TwitchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (channelname != null)
-        {
-            username = channelName.text;
-            channelname = channelName.text;
-            password = authkey.text;
-        }
+        
+        username = channelName.text;
+        channelname = channelName.text;
+        password = authkey.text;
+        
         try
         {
             //If connection is refused this caused an IOexception
@@ -98,7 +98,7 @@ public class TwitchController : MonoBehaviour
         }
         catch(IOException e)
         {
-            print("failed connection: " + e);
+            print("failed connection1: " + e);
         }
         
     }
@@ -117,7 +117,7 @@ public class TwitchController : MonoBehaviour
             writer.WriteLine("JOIN #" + channelname);
             writer.Flush();
         }
-        catch (IOException e){ print("failed connection: "+e); }
+        catch (IOException e){ print("failed connection2: "+e); }
     }
 
     private void ReadChat()
