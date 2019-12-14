@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     public bool game_paused;
     public bool loss;
+    public bool win;
 
     //VOTES
     public int vote_heal = 0, vote_damage = 0;
@@ -210,6 +211,14 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (!GameObject.FindGameObjectWithTag("Enemy"))
+        {
+            win = true;
+        }
+        if (win)
+        {
+            print("WON!");
+        }
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start")) && game_started)
         {
             if (!GameManager.Instance.game_paused)
