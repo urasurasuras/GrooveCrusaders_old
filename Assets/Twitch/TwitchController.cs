@@ -16,9 +16,11 @@ public class TwitchController : MonoBehaviour
     private StreamWriter writer;
 
     public InputField channelName;
+    public InputField userName;
     public InputField authkey;
 
     public Text login_status;
+    [SerializeField] bool got_response=false;
 
     //VOTES
     public GameObject guio_heal, guio_damage;   //O stands for "Object"
@@ -57,34 +59,31 @@ public class TwitchController : MonoBehaviour
             guio_damage = GameObject.Find("Damage Votes");
             Text voteT_damage = guio_damage.GetComponent<Text>();
         }
-        //Connect();
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        username = channelName.text;
+        username = userName.text;
         channelname = channelName.text;
         password = authkey.text;
         
         try
         {
             //If connection is refused this caused an IOexception
-            if (writer != null)
-                writer.WriteLine("PONG tmi.twitch.tv\r\n");
-
+            
             if (twitchClient != null)
             {
+                ReadChat(); //Only this does the readline
+
                 if (!twitchClient.Connected)    //connect if not
                 {
-                    login_status.text = ("Login failed, try again !");
+                    Connect();
                 }
 
                 else if (twitchClient.Connected)
                 {
-                    ReadChat();
-                    login_status.text = ("Logging in as: " + username);
                     if (GameObject.Find("Heal Votes") && GameObject.Find("Damage Votes"))
                     {
                         voteT_heal = GameObject.Find("Heal Votes").GetComponent<Text>();
@@ -99,6 +98,7 @@ public class TwitchController : MonoBehaviour
         catch(IOException e)
         {
             print("failed connection1: " + e);
+            got_response = false;
         }
         
     }
@@ -117,17 +117,42 @@ public class TwitchController : MonoBehaviour
             writer.WriteLine("JOIN #" + channelname);
             writer.Flush();
         }
-        catch (IOException e){ print("failed connection2: "+e); }
+        catch (IOException e){
+            print("Failed connection2: " + e);
+            got_response = false;
+        }
     }
 
     private void ReadChat()
     {
-        if(twitchClient.Available > 0)
+        if (twitchClient.Available > 0)
         {
-            var message = reader.ReadLine();
-            //Debug.Log(message);
+            //got_response = true;
+            var message = reader.ReadLine();    //reads line and caches
+            print(message);
+            if (message.Contains("NOTICE")){
 
-            if (message.Contains("PRIVMSG"))
+                if (message.Contains("Invalid NICK"))
+                {
+                    login_status.text = "Invalid nick";      
+                }
+                else if (message.Contains("Improperly formatted auth"))
+                {
+                    login_status.text = "Improperly formatted auth key";      
+                }
+                else if (message.Contains("Login authentication failed"))
+                {
+                    login_status.text = "Login authentication failed";      
+                }
+            }
+            else if (message.Contains("Welcome, GLHF!"))
+            {
+                login_status.text = "Logged in as "+username+". Invalid channel.";
+            }else if (message.Contains("Your host is tmi.twitch.tv"))
+            {
+                login_status.text = "Logged in as " + username +". Connected to "+channelname+"'s chat.";
+            }
+            else if (message.Contains("PRIVMSG"))
             {
                 //strip name
                 var splitPoint = message.IndexOf("!", 1);
@@ -143,6 +168,11 @@ public class TwitchController : MonoBehaviour
                     GameManager.Instance.vote_heal += 1;
                 else if (message.StartsWith("!damage"))
                     GameManager.Instance.vote_damage += 1;
+            }
+            else if (message.Contains("PING "))
+            {
+                if (writer != null)
+                    writer.WriteLine("PONG tmi.twitch.tv\r\n");
             }
         }
     }
