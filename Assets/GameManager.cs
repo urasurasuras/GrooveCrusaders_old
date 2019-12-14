@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public bool game_started;    //
     public GameObject twitchLogin;
+    public GameObject done_menu;
+    
     public Text gui_combo;
     public Text gui_mult;
     public static UnityEvent onBeatEvent;
@@ -78,6 +80,7 @@ public class GameManager : MonoBehaviour
         if (buttonControllerScript) {
             buttonControllerScript.endBeatEvent.AddListener(resetFireRates);
         }
+
     }
 
     //public void redButtonCanPress(bool canShoot)
@@ -215,10 +218,16 @@ public class GameManager : MonoBehaviour
         {
             win = true;
         }
-        if (win)
+        if (!GameObject.FindGameObjectWithTag("Player"))
         {
-            print("WON!");
+            loss = true;
         }
+        if ((loss || win) && done_menu!=null)
+        {
+            done_menu.SetActive(true);
+            set_done_text(win,loss);
+        }
+        
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start")) && game_started)
         {
             if (!GameManager.Instance.game_paused)
@@ -245,6 +254,15 @@ public class GameManager : MonoBehaviour
         }
         //print(minPlayerHP);
     }
+
+    private void set_done_text(bool win, bool loss)
+    {
+        if(win)
+            done_menu.transform.Find("W-L").GetComponent<Text>().text = "you WIN";
+        if(loss)
+            done_menu.transform.Find("W-L").GetComponent<Text>().text = "you LOST";
+    }
+
     void setPaused(bool paused)
     {
         if(paused)

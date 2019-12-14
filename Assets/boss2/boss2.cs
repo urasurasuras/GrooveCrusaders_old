@@ -85,7 +85,8 @@ public class boss2 : MonoBehaviour
         //{
         //    bossHealth -= 5;
         //}
-
+        //debug
+        moving = false;
         magnitude = (bossHealth / maxHealth);
       
         if (magnitude > .5)
