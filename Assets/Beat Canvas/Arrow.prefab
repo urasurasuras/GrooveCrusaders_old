@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4035329070204420086}
   - component: {fileID: 862801223751212480}
   - component: {fileID: 5303996794513192380}
+  - component: {fileID: 3893621657878215966}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Note
@@ -96,8 +97,6 @@ MonoBehaviour:
   notespeed: 10
   noteCanBePressed: 0
   keyToPress: 32
-  flashSripte: {fileID: 0}
-  flash: {fileID: 0}
   lifeTime: 5
 --- !u!58 &5303996794513192380
 CircleCollider2D:
@@ -115,3 +114,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!50 &3893621657878215966
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4035329070204420088}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
