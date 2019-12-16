@@ -31,23 +31,7 @@ public class boosAnimationScript : MonoBehaviour
     {
         if (other.gameObject.tag =="f_damage")
         {
-            //Debug.Log(this + " hit by "+other);
-            if(boss1Health < maxHealth)
-            {
-                bossAnimationController.SetTrigger("RightFight");
-                //activateRight();
-            }
-            if (boss1Health <= stage2health)
-            {
-                bossAnimationController.SetTrigger("FinalFight");
-                //activateFinal();
-            }
-            if (boss1Health <= 0)
-            {
-                bossAnimationController.SetTrigger("BossDefeat");
-                centerCollider.enabled = false;
-                //onBossDefeat();
-            }
+            
             //Debug.Log("boss Hit!!");
             //print("Boss dmg taken: " + (float)other.gameObject.GetComponent<projectile>().base_value);
             boss1Health -= (float)other.gameObject.GetComponent<projectile>().value_final;
@@ -102,5 +86,22 @@ public class boosAnimationScript : MonoBehaviour
     void Update()
     {
         Boss1HealthSlider.value = boss1Health;
+        //Debug.Log(this + " hit by "+other);
+        if (boss1Health < maxHealth)
+        {
+            bossAnimationController.SetTrigger("RightFight");
+            //activateRight();
+        }
+        if (boss1Health <= stage2health)
+        {
+            bossAnimationController.SetTrigger("FinalFight");
+            //activateFinal();
+        }
+        if (boss1Health <= 0)
+        {
+            bossAnimationController.SetTrigger("BossDefeat");
+            centerCollider.enabled = false;
+            //onBossDefeat();
+        }
     }
 }

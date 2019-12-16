@@ -223,7 +223,7 @@ MonoBehaviour:
   keyToPress: 32
   timeSinceLastNoteHit: 0
   noteLength: 0.5
-  note_miss_sfx: 
+  note_miss_sfx: event:/NoteMiss
 --- !u!212 &6748714
 SpriteRenderer:
   m_ObjectHideFlags: 0
