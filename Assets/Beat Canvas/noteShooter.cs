@@ -178,7 +178,7 @@ public class noteShooter : MonoBehaviour
         }
         if (latestBar != bar)
         {
-            Debug.Log("Bar changed to: "+latestBar);
+            //Debug.Log("Bar changed to: "+latestBar);
             latestBar = bar;
             barEvent.Invoke();
         }

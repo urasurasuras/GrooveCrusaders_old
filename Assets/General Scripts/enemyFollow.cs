@@ -13,6 +13,7 @@ public class enemyFollow : MonoBehaviour
     public bool isAlive = true;
 
     private Rigidbody2D rb2d;
+    public GameObject blood_particle;
 
     private Transform targetPosition;
     public GameObject targetPlayer;
@@ -31,6 +32,8 @@ public class enemyFollow : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerControl>().playerHealth -= 5;
+            Instantiate(blood_particle, transform.position, Quaternion.identity);
+
             //do damage to the player before dying
             isAlive = false;
             Destroy(gameObject, 0f);

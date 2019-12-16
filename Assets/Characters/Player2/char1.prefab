@@ -180,6 +180,8 @@ MonoBehaviour:
   speed: 0.2
   facingRight: 1
   power: 0
+  blood_particle: {fileID: 2058466392622220894, guid: 9106791e1d9faa0498f582c141f949e7,
+    type: 3}
   isDrummerStationary: 0
   controllerNum: 1
   playerHealthBar: {fileID: 6878211156317298105}

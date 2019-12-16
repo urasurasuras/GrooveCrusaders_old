@@ -20,6 +20,7 @@ public class PlayerControl : MonoBehaviour
     public double power;    //current power of player, passed onto their attacks
 
     Animator drummerAnimationController;
+    public GameObject blood_particle;
 
     public bool isDrummerStationary;
 
@@ -224,11 +225,10 @@ public class PlayerControl : MonoBehaviour
             playerHealth += (float)other.gameObject.GetComponent<projectile>().value_final;
             //Destroy(other.gameObject);
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
+    
+        if (other.gameObject.CompareTag("Enemy"))
         {
+            Instantiate(blood_particle, transform.position, Quaternion.identity);
             playerHealth -= 5;
         }
     }

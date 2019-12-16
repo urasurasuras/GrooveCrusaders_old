@@ -48,6 +48,8 @@ MonoBehaviour:
   speed: 2
   stoppingDistance: 1
   isAlive: 1
+  blood_particle: {fileID: 2058466392622220894, guid: 9106791e1d9faa0498f582c141f949e7,
+    type: 3}
   targetPlayer: {fileID: 0}
   charLosing: 0
 --- !u!58 &4648928590584992691
