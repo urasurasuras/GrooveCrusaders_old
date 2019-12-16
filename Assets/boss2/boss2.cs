@@ -52,15 +52,7 @@ public class boss2 : MonoBehaviour
         }
 
     }
-    //private void Awake()
-    //{
-    //    print("called awake ");
-
-    //}
-    private void OnLevelWasLoaded(int level)
-    {
-        print("Loaded level: " + level);
-    }
+    
     // Start is called before the first frame update
     void Start()
     {

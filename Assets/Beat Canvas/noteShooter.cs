@@ -194,6 +194,7 @@ public class noteShooter : MonoBehaviour
             musicInstance.setParameterByName("CEQ_Low", (boss2script.low1+boss2script.low2)/2);
             musicInstance.setParameterByName("CEQ_Mid", (boss2script.mid1+boss2script.mid2)/2);
             musicInstance.setParameterByName("CEQ_High", (boss2script.high1+boss2script.high2)/2);
+            musicInstance.setParameterByName("Boss Health", 25);   //25 is where the gain is 0
         }
         musicInstance.setParameterByName("Player Health", (float)GameManager.Instance.minPlayerHP);
     }
