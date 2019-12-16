@@ -29,16 +29,14 @@ public class boosAnimationScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        bossAnimationController.SetTrigger("RightFight");
+
         if (other.gameObject.tag =="f_damage")
         {
-            
-            //Debug.Log("boss Hit!!");
-            //print("Boss dmg taken: " + (float)other.gameObject.GetComponent<projectile>().base_value);
-            boss1Health -= (float)other.gameObject.GetComponent<projectile>().value_final;
-
-            percentage = boss1Health / maxHealth;
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, percentage); 
-            bossAnimationController.SetTrigger("RightFight");
+            boss1Health -= (float)other.gameObject.GetComponent<projectile>().value_final;   
+        }else if (other.gameObject.tag == "f_healing")
+        {
+            boss1Health -= (float)(other.gameObject.GetComponent<projectile>().value_final  /   5);//Healer does damage to boss
         }
     }
     //public void activateCenter()
@@ -86,6 +84,8 @@ public class boosAnimationScript : MonoBehaviour
     void Update()
     {
         Boss1HealthSlider.value = boss1Health;
+        percentage = boss1Health / maxHealth;
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, percentage);
         //Debug.Log(this + " hit by "+other);
         if (boss1Health < maxHealth)
         {
