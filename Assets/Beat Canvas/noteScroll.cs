@@ -30,7 +30,7 @@ public class noteScroll : MonoBehaviour
             distance = direction.magnitude-1;
             travel_time = 60/(float)noteShooter.bpm;//seconds
 
-            print(travel_time);
+            //print(travel_time);
 
         }
     }
