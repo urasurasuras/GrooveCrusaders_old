@@ -28,7 +28,13 @@ public class enemyFollow : MonoBehaviour
     {
         //Debug.Log("enemy triggered by: "+other);
         //Destroy(gameObject, 0f);
-
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerControl>().playerHealth -= 5;
+            //do damage to the player before dying
+            isAlive = false;
+            Destroy(gameObject, 0f);
+        }
         if (other.gameObject.tag == "f_damage" || other.gameObject.tag == "Player")
         {
             isAlive = false;
