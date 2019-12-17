@@ -71,7 +71,7 @@ public class PlayerControl : MonoBehaviour
         isDrummerStationary = false;
         drummerAnimationController = GetComponent<Animator>();
 
-
+        print(Input.GetJoystickNames().Length);
         //tutorialText = GameObject.Find("Tutorial Text").GetComponent<tutorialTexts>();
     }
 
@@ -84,40 +84,12 @@ public class PlayerControl : MonoBehaviour
         }
         playerTouchingEnemy.Invoke();
 
-        if (Input.GetJoystickNames().Length == 0)       //if there are no joysticks connected use WASD for char0
+        try
         {
-            //Debug.Log("number of joysticks" + Input.GetJoystickNames().Length);
-            horizontalAxis = Input.GetAxis("kyb_horizontal") * speed * 0.5f;
-            verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
-
-            //print(horizontalAxis);
-            if (horizontalAxis < 0)             //facing left
-            {
-                transform.eulerAngles = new Vector3(0, 180, 0);
-                transform.Translate(-horizontalAxis, 0, 0);
-                facingRight = false;
-                //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
-            }
-            else if (horizontalAxis > 0)        //facing right
-            {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                transform.Translate(horizontalAxis, 0, 0);
-                facingRight = true;
-                //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
-
-            }
-            transform.Translate(0, verticalAxis, 0);
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
-                gameObject.GetComponent<weapon>().hasRequestedFire = true;
-            }
-        }
-        else//if (Input.GetJoystickNames().Length > 0)
-        {
+            print(Input.GetJoystickNames()[controllerNum]);
             if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "X")) > contDeadz)
             {
-                print("transforming player " + gameObject.name);
+                //print("transforming player " + gameObject.name);
                 //tutorialText.objComp_HasMoved = true;
                 horizontalAxis = Input.GetAxis("Joy" + controllerNum + "X") * speed * 0.5f;
                 if (gameObject.name != "char1")
@@ -169,7 +141,7 @@ public class PlayerControl : MonoBehaviour
                     verticalAxis = Input.GetAxis("Joy" + controllerNum + "Y") * speed * 0.5f;
                     transform.Translate(0, -verticalAxis, 0);
                 }
-               
+
                 //Debug.Log(Input.GetJoystickNames()[controllerNum] + " is moved on y axis for: " + verticalAxis);
             }
             gameObject.GetComponent<weapon>().timeSinceAttackReq += Time.deltaTime;
@@ -191,7 +163,7 @@ public class PlayerControl : MonoBehaviour
                     gameObject.GetComponent<weapon>().hasRequestedFire = true;
                 }
             }
-            if (Input.GetButtonDown("J" + controllerNum + "b") && gameObject.name=="char1")
+            if (Input.GetButtonDown("J" + controllerNum + "b") && gameObject.name == "char1")
             {
                 bool debB = Input.GetButtonDown("J" + controllerNum + "b");
                 if (!isDrummerStationary)
@@ -209,6 +181,162 @@ public class PlayerControl : MonoBehaviour
                 //Debug.Log(Input.GetJoystickNames()[controllerNum] + " has pressed button: " + debB);
             }
         }
+        catch (IndexOutOfRangeException e)
+        {
+            print("no controller for: "+gameObject.name);
+            //Debug.Log("number of joysticks" + Input.GetJoystickNames().Length);
+            horizontalAxis = Input.GetAxis("kyb_horizontal") * speed * 0.5f;
+            verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
+
+            //print(horizontalAxis);
+            if (horizontalAxis < 0)             //facing left
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+                transform.Translate(-horizontalAxis, 0, 0);
+                facingRight = false;
+                //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+            }
+            else if (horizontalAxis > 0)        //facing right
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                transform.Translate(horizontalAxis, 0, 0);
+                facingRight = true;
+                //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+
+            }
+            transform.Translate(0, verticalAxis, 0);
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+                gameObject.GetComponent<weapon>().hasRequestedFire = true;
+            }
+        }
+    
+        //if (Input.GetJoystickNames()[controllerNum]==null)       //if there are no joysticks connected use WASD for char0
+        //{
+            ////Debug.Log("number of joysticks" + Input.GetJoystickNames().Length);
+            //horizontalAxis = Input.GetAxis("kyb_horizontal") * speed * 0.5f;
+            //verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
+
+            ////print(horizontalAxis);
+            //if (horizontalAxis < 0)             //facing left
+            //{
+            //    transform.eulerAngles = new Vector3(0, 180, 0);
+            //    transform.Translate(-horizontalAxis, 0, 0);
+            //    facingRight = false;
+            //    //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+            //}
+            //else if (horizontalAxis > 0)        //facing right
+            //{
+            //    transform.eulerAngles = new Vector3(0, 0, 0);
+            //    transform.Translate(horizontalAxis, 0, 0);
+            //    facingRight = true;
+            //    //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+
+            //}
+            //transform.Translate(0, verticalAxis, 0);
+            //if (Input.GetKeyDown(KeyCode.Mouse0))
+            //{
+            //    gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+            //    gameObject.GetComponent<weapon>().hasRequestedFire = true;
+            //}
+        //}
+        //else//if (Input.GetJoystickNames().Length > 0)
+        //{
+            //if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "X")) > contDeadz)
+            //{
+            //    print("transforming player " + gameObject.name);
+            //    //tutorialText.objComp_HasMoved = true;
+            //    horizontalAxis = Input.GetAxis("Joy" + controllerNum + "X") * speed * 0.5f;
+            //    if (gameObject.name != "char1")
+            //    {
+            //        if (horizontalAxis < 0)         //facing left
+            //        {
+            //            transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+            //            transform.Translate(-horizontalAxis, 0, 0);
+            //            facingRight = false;
+            //            //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+            //        }
+            //        else if (horizontalAxis > 0)    //facing right
+            //        {
+            //            transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+            //            transform.Translate(horizontalAxis, 0, 0);
+            //            facingRight = true;
+            //            //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+            //        }
+            //    }
+            //    else if (gameObject.name == "char1" && !isDrummerStationary)
+            //    {
+            //        if (horizontalAxis < 0)         //facing left
+            //        {
+            //            transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+            //            transform.Translate(-horizontalAxis, 0, 0);
+            //            facingRight = false;
+            //            //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+            //        }
+            //        else if (horizontalAxis > 0)    //facing right
+            //        {
+            //            transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+            //            transform.Translate(horizontalAxis, 0, 0);
+            //            facingRight = true;
+            //            //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+            //        }
+            //    }
+            //    //Debug.Log(Input.GetJoystickNames()[controllerNum] + " is moved on X axis for: " + horizontalAxis);
+            //}
+            //if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "Y")) > contDeadz)
+            //{
+            //    //tutorialText.objComp_HasMoved = true;
+            //    if (gameObject.name != "char1")
+            //    {
+            //        verticalAxis = Input.GetAxis("Joy" + controllerNum + "Y") * speed * 0.5f;
+            //        transform.Translate(0, -verticalAxis, 0);
+            //    }
+            //    else if (gameObject.name == "char1" && !isDrummerStationary)
+            //    {
+            //        verticalAxis = Input.GetAxis("Joy" + controllerNum + "Y") * speed * 0.5f;
+            //        transform.Translate(0, -verticalAxis, 0);
+            //    }
+               
+            //    //Debug.Log(Input.GetJoystickNames()[controllerNum] + " is moved on y axis for: " + verticalAxis);
+            //}
+            //gameObject.GetComponent<weapon>().timeSinceAttackReq += Time.deltaTime;
+            //if (Input.GetButtonDown("J" + controllerNum + "a"))
+            //{
+            //    if (gameObject.name != "char1")
+            //    {
+            //        //print("im not char1");
+            //        if (ButtonController.timeSinceLastNoteHit < 0.2)
+            //            gameObject.GetComponent<weapon>().fire();
+            //        gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+            //        gameObject.GetComponent<weapon>().hasRequestedFire = true;
+            //    }
+            //    else if (gameObject.name == "char1" && isDrummerStationary)
+            //    {
+            //        if (ButtonController.timeSinceLastNoteHit < 0.2)
+            //            gameObject.GetComponent<weapon>().fire();
+            //        gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+            //        gameObject.GetComponent<weapon>().hasRequestedFire = true;
+            //    }
+            //}
+            //if (Input.GetButtonDown("J" + controllerNum + "b") && gameObject.name=="char1")
+            //{
+            //    bool debB = Input.GetButtonDown("J" + controllerNum + "b");
+            //    if (!isDrummerStationary)
+            //    {
+            //        //Debug.Log("inside if stationary");
+
+            //        setDrummerStationary();
+            //    }
+            //    else if (isDrummerStationary)
+            //    {
+            //        //Debug.Log("inside if walking");
+
+            //        setDrummerWalking();
+            //    }
+            //    //Debug.Log(Input.GetJoystickNames()[controllerNum] + " has pressed button: " + debB);
+            //}
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D other)
