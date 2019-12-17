@@ -107,18 +107,14 @@ public class PlayerControl : MonoBehaviour
 
             }
             transform.Translate(0, verticalAxis, 0);
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
                 gameObject.GetComponent<weapon>().hasRequestedFire = true;
             }
         }
-
-
         else//if (Input.GetJoystickNames().Length > 0)
         {
-            //for (int i = 0; i < Input.GetJoystickNames().Length; i++)
-            //{
             if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "X")) > contDeadz)
             {
                 print("transforming player " + gameObject.name);
@@ -158,9 +154,7 @@ public class PlayerControl : MonoBehaviour
                         //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
                     }
                 }
-                
-
-                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on X axis for: " + debugXaxis);
+                //Debug.Log(Input.GetJoystickNames()[controllerNum] + " is moved on X axis for: " + horizontalAxis);
             }
             if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "Y")) > contDeadz)
             {
@@ -176,7 +170,7 @@ public class PlayerControl : MonoBehaviour
                     transform.Translate(0, -verticalAxis, 0);
                 }
                
-                //Debug.Log(Input.GetJoystickNames()[i] + " is moved on y axis for: " + debugYaxis);
+                //Debug.Log(Input.GetJoystickNames()[controllerNum] + " is moved on y axis for: " + verticalAxis);
             }
             gameObject.GetComponent<weapon>().timeSinceAttackReq += Time.deltaTime;
             if (Input.GetButtonDown("J" + controllerNum + "a"))
@@ -212,9 +206,8 @@ public class PlayerControl : MonoBehaviour
 
                     setDrummerWalking();
                 }
-                //Debug.Log(Input.GetJoystickNames()[i] + " has pressed button: " + debB);
+                //Debug.Log(Input.GetJoystickNames()[controllerNum] + " has pressed button: " + debB);
             }
-            //}
         }
     }
 
