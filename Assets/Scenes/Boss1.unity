@@ -9787,7 +9787,6 @@ GameObject:
   - component: {fileID: 2003192232}
   - component: {fileID: 2003192233}
   - component: {fileID: 2003192234}
-  - component: {fileID: 2003192235}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Enemy
@@ -9975,6 +9974,7 @@ MonoBehaviour:
   Boss1HealthSlider: {fileID: 976956094}
   dmgTaken: 10
   percentage: 0
+  targetCharLocation: {fileID: 0}
 --- !u!50 &2003192234
 Rigidbody2D:
   serializedVersion: 4
@@ -9996,22 +9996,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!111 &2003192235
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003192226}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 0}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!61 &2003192236
 BoxCollider2D:
   m_ObjectHideFlags: 0

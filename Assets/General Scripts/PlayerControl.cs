@@ -71,7 +71,7 @@ public class PlayerControl : MonoBehaviour
         isDrummerStationary = false;
         drummerAnimationController = GetComponent<Animator>();
 
-        print(Input.GetJoystickNames().Length);
+        //print(Input.GetJoystickNames().Length);
         //tutorialText = GameObject.Find("Tutorial Text").GetComponent<tutorialTexts>();
     }
 
@@ -183,7 +183,7 @@ public class PlayerControl : MonoBehaviour
         }
         catch (IndexOutOfRangeException e)
         {
-            print("no controller for: "+gameObject.name);
+            //print("no controller for: "+gameObject.name);
             //Debug.Log("number of joysticks" + Input.GetJoystickNames().Length);
             horizontalAxis = Input.GetAxis("kyb_horizontal") * speed * 0.5f;
             verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
@@ -347,6 +347,7 @@ public class PlayerControl : MonoBehaviour
             //Destroy(other.gameObject);
         }
     
+        //might become obsolete bc of enemy dealing damage to player not the other way around
         if (other.gameObject.CompareTag("Enemy"))
         {
             Instantiate(blood_particle, transform.position, Quaternion.identity);
