@@ -64,11 +64,6 @@ public class TwitchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        username = userName.text;
-        channelname = channelName.text;
-        password = authkey.text;
-        
         try
         {
             //If connection is refused this caused an IOexception
@@ -105,7 +100,12 @@ public class TwitchController : MonoBehaviour
 
     public void Connect()
     {
-        try {
+        username = userName.text;
+        channelname = channelName.text;
+        password = authkey.text;
+
+        try
+        {
             twitchClient = new TcpClient("irc.chat.twitch.tv", 6667);
 
             reader = new StreamReader(twitchClient.GetStream());
@@ -147,10 +147,10 @@ public class TwitchController : MonoBehaviour
             }
             else if (message.Contains("Welcome, GLHF!"))
             {
-                login_status.text = "Logged in as "+username+". Invalid channel.";
+                login_status.text = "Logged in as "+username+". \nInvalid channel.";
             }else if (message.Contains("Your host is tmi.twitch.tv"))
             {
-                login_status.text = "Logged in as " + username +". Connected to "+channelname+"'s chat.";
+                login_status.text = "Logged in as " + username +". \nConnected to "+channelname+"'s chat.";
             }
             else if (message.Contains("PRIVMSG"))
             {
