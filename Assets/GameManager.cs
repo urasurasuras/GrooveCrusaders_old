@@ -104,11 +104,11 @@ public class GameManager : MonoBehaviour
  
         if (buttonControllerScript != null)
         {
-            if (buttonControllerScript.redButtonBeingPressed)
+            if (buttonControllerScript.redButtonBeingPressed )
             {
                 foreach (PlayerControl pc in playerList)
                 {
-                    if(pc.GetComponent<weapon>().timeSinceAttackReq<0.2 && !pc.GetComponent<weapon>().hasFired)
+                    if(pc.GetComponent<weapon>().timeSinceAttackReq<0.2 && !pc.GetComponent<weapon>().hasFired /*&& pc.GetComponent<weapon>().hasRequestedFire*/)
                         pc.GetComponent<weapon>().fire();
                 }
             }

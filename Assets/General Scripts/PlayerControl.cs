@@ -46,7 +46,6 @@ public class PlayerControl : MonoBehaviour
     //public GameObject liteToRight, liteToLeft;
     //Vector2 litePos;
     //float nextFire = 0.0f;
-    public bool playerCanFire;
 
     //public GameObject weapon;
     GameObject red_button;

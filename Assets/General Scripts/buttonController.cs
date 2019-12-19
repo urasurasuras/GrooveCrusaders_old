@@ -79,6 +79,9 @@ public class buttonController : MonoBehaviour
             if (noteCanBePressed)
             {
                 redButtonBeingPressed = true;
+                timeSinceLastNoteHit = 0;
+                endBeatEvent.Invoke();
+
                 //Debug.Log("note can be pressed: "+noteCanBePressed);
                 //Invoke("setBoolBack", noteLength);
             }
