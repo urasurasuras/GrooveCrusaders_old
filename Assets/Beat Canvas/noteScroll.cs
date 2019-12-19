@@ -27,7 +27,7 @@ public class noteScroll : MonoBehaviour
             red_button = GameObject.Find("Buttons_Red");
             buttonControllerScript = red_button.GetComponent<buttonController>();
             direction = red_button.GetComponent<Transform>().position - transform.position;
-            distance = direction.magnitude-1;
+            distance = direction.magnitude;
             travel_time = 60/(float)noteShooter.bpm;//seconds
 
             //print(travel_time);
@@ -56,7 +56,7 @@ public class noteScroll : MonoBehaviour
         //transform.Translate(-distance / travel_time,0,0);
         //transform.position += new Vector3((-distance/travel_time)/4*Time.deltaTime,0);
 //        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-10 , 0);
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2((-distance/2 / travel_time), 0);
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2((-distance/4 / travel_time), 0);
 
     }
 
