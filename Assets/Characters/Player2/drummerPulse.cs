@@ -12,6 +12,8 @@ public class drummerPulse : MonoBehaviour
 
     public GameObject owner;
 
+    public GameObject particle;
+
     /*
 public float x = 0.1f;
 public float y = 0.1f;
@@ -28,5 +30,9 @@ public float z = 0.1f;
     {
         // Widen the object by x, y, and z values
         transform.localScale += new Vector3(growSpeed, growSpeed, growSpeed);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 }

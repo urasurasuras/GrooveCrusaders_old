@@ -70,6 +70,7 @@ public class TwitchController : MonoBehaviour
             
             if (twitchClient != null)
             {
+                print("twitchclient not null");
                 ReadChat(); //Only this does the readline
 
                 if (!twitchClient.Connected)    //connect if not
@@ -79,14 +80,7 @@ public class TwitchController : MonoBehaviour
 
                 else if (twitchClient.Connected)
                 {
-                    if (GameObject.Find("Heal Votes") && GameObject.Find("Damage Votes"))
-                    {
-                        voteT_heal = GameObject.Find("Heal Votes").GetComponent<Text>();
-                        voteT_heal.text = "Healing x" + GameManager.Instance.mult_heal;
-
-                        voteT_damage = GameObject.Find("Damage Votes").GetComponent<Text>();
-                        voteT_damage.text = "Damage x" + GameManager.Instance.mult_damage;
-                    }
+                   
                 }                
             }
         }
@@ -176,6 +170,14 @@ public class TwitchController : MonoBehaviour
             {
                 if (writer != null)
                     writer.WriteLine("PONG tmi.twitch.tv\r\n");
+            }
+            if (GameObject.Find("Heal Votes") && GameObject.Find("Damage Votes"))
+            {
+                voteT_heal = GameObject.Find("Heal Votes").GetComponent<Text>();
+                voteT_heal.text = "Healing x" + GameManager.Instance.mult_heal;
+
+                voteT_damage = GameObject.Find("Damage Votes").GetComponent<Text>();
+                voteT_damage.text = "Damage x" + GameManager.Instance.mult_damage;
             }
         }
     }

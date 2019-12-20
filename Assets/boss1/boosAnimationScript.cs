@@ -22,6 +22,8 @@ public class boosAnimationScript : MonoBehaviour
     private GameObject targetPlayer;
     public Transform targetCharLocation;
 
+    public GameObject slowparticle;
+
     void Start()
     {
         noteShooter.barEvent.AddListener(spawnEnemyAdd);
@@ -54,6 +56,10 @@ public class boosAnimationScript : MonoBehaviour
         }else if (other.gameObject.tag == "f_healing")
         {
             boss1Health -= (float)(other.gameObject.GetComponent<projectile>().value_final  /   5);//Healer does damage to boss
+        }
+        else if (other.gameObject.tag == "f_aoe")
+        {
+            Instantiate(slowparticle, transform.position, Quaternion.identity);
         }
     }
     //public void activateCenter()

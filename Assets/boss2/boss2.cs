@@ -18,6 +18,8 @@ public class boss2 : MonoBehaviour
     public float maxHealth = 100;
     public float bossHealth;
 
+    public GameObject slowparticle;
+
 
     //EQ slider values
     float frequency, magnitude;
@@ -49,6 +51,7 @@ public class boss2 : MonoBehaviour
         if (other.gameObject.tag == "f_aoe")
         {
             moving = false;
+            Instantiate(slowparticle, transform.position, Quaternion.identity);
         }
 
     }
