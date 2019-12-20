@@ -13,6 +13,7 @@ TagManager:
   - f_healing
   - f_aoe
   - mobile_healthbar
+  - Pause Menu
   layers:
   - Default
   - TransparentFX

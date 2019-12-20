@@ -272,7 +272,15 @@ public class GameManager : MonoBehaviour
         else if(!paused)
             Time.timeScale = 1;
         if (pause_menu)
+        {
             pause_menu.SetActive(paused);
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Pause Menu");
+
+            foreach (GameObject go in gameObjectArray)
+            {
+                go.SetActive(paused);
+            }
+        }
     }
     private int getNumPlayers()
     {
