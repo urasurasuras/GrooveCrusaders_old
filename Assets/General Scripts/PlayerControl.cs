@@ -203,11 +203,50 @@ public class PlayerControl : MonoBehaviour
                 //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
             }
-            transform.Translate(0, verticalAxis, 0);
+            if (gameObject.name != "char1")
+            {
+                transform.Translate(0, verticalAxis, 0);
+            }
+            else if (gameObject.name == "char1" && isDrummerStationary)
+            {
+                transform.Translate(0, verticalAxis, 0);
+            }
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
-                gameObject.GetComponent<weapon>().hasRequestedFire = true;
+                if (gameObject.name != "char1")
+                {
+                    //print("im not char1");
+                    if (ButtonController.timeSinceLastNoteHit < 0.2)
+                        gameObject.GetComponent<weapon>().fire();
+                    gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+                    gameObject.GetComponent<weapon>().hasRequestedFire = true;
+                }
+                else if (gameObject.name == "char1" && isDrummerStationary)
+                {
+                    if (ButtonController.timeSinceLastNoteHit < 0.2)
+                        gameObject.GetComponent<weapon>().fire();
+                    gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+                    gameObject.GetComponent<weapon>().hasRequestedFire = true;
+                }
+                //gameObject.GetComponent<weapon>().timeSinceAttackReq = 0;
+                //gameObject.GetComponent<weapon>().hasRequestedFire = true;
+            }
+            if (Input.GetKeyDown(KeyCode.Mouse1) && gameObject.name == "char1")
+            {
+                //bool debB = Input.GetButtonDown("J" + controllerNum + "b");
+                if (!isDrummerStationary)
+                {
+                    //Debug.Log("inside if stationary");
+
+                    setDrummerStationary();
+                }
+                else if (isDrummerStationary)
+                {
+                    //Debug.Log("inside if walking");
+
+                    setDrummerWalking();
+                }
+                //Debug.Log(Input.GetJoystickNames()[controllerNum] + " has pressed button: " + debB);
             }
         }
     
