@@ -19,6 +19,10 @@ public class MainMenu : MonoBehaviour
         else
             SceneManager.LoadScene(2);
     }
+    public void loadSuperBoss()
+    {
+        SceneManager.LoadScene(3);
+    }
     public void backToMain()
     {
         SceneManager.LoadScene(0);
