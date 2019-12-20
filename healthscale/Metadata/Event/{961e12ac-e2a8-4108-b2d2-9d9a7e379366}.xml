@@ -34,7 +34,6 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{750cf678-ac58-4a55-b7a9-8ec39c573cde}</destination>
-			<destination>{4cd00a10-f37e-45f1-8c75-521377d2746b}</destination>
 			<destination>{38bcab69-d92c-43b9-80fa-6994e6de329a}</destination>
 			<destination>{8bf8c529-9e79-415f-be76-0e7057845bc2}</destination>
 			<destination>{446c3c48-5b29-4bc5-ac65-7d40ce76b0c8}</destination>
@@ -93,16 +92,12 @@
 			<destination>{397b5775-db4a-4656-b7c5-7a65187fb603}</destination>
 			<destination>{eb32e3af-17ec-441d-a00b-e2eb89c83481}</destination>
 			<destination>{eeaee896-082d-4b81-8e09-47a9b4196e85}</destination>
+			<destination>{d0edc614-398a-42eb-9cfd-3b02e90940e9}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterProxy" id="{750cf678-ac58-4a55-b7a9-8ec39c573cde}">
 		<relationship name="preset">
 			<destination>{45c8591f-859c-43f5-adc6-1e9dda0efa01}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterProxy" id="{4cd00a10-f37e-45f1-8c75-521377d2746b}">
-		<relationship name="preset">
-			<destination>{1431c4a8-65c3-4a96-99d4-49cd6e2a1509}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterProxy" id="{38bcab69-d92c-43b9-80fa-6994e6de329a}">
@@ -289,6 +284,20 @@
 			<destination>{8a4ccace-09ce-4ed6-816b-6c2e944d0967}</destination>
 		</relationship>
 	</object>
+	<object class="NamedMarker" id="{d0edc614-398a-42eb-9cfd-3b02e90940e9}">
+		<property name="position">
+			<value>167.74193548387095</value>
+		</property>
+		<property name="name">
+			<value>END</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{9c20bba9-5997-4d1c-8e17-a32c4bdc43d1}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{ec25f467-1407-4057-8ec0-70397c68736a}</destination>
+		</relationship>
+	</object>
 	<object class="Automator" id="{dd5288f0-3b5d-4374-8a6f-4c0748629f9f}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>volume</value>
@@ -337,7 +346,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>5</value>
+			<value>9</value>
 		</property>
 		<property name="curveShape">
 			<value>-0.203376666</value>
@@ -348,7 +357,7 @@
 			<value>100</value>
 		</property>
 		<property name="value">
-			<value>-10</value>
+			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{cd02c3d2-3ea0-4e94-8210-1c00a8fee4b2}">
@@ -356,7 +365,7 @@
 			<value>24.95894808233821</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>9</value>
 		</property>
 	</object>
 	<object class="Automator" id="{5ff5f967-82ed-4f7d-90c3-891dcc51e897}">

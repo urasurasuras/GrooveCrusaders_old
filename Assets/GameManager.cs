@@ -213,11 +213,11 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (!GameObject.FindGameObjectWithTag("Enemy") && SceneManager.GetActiveScene().name != "Tutorial")
+        if (!GameObject.FindGameObjectWithTag("Enemy") && SceneManager.GetActiveScene().name != "Tutorial" && !loss)
         {
             win = true;
         }
-        if (!GameObject.FindGameObjectWithTag("Player"))
+        if (!GameObject.FindGameObjectWithTag("Player")&&!win)
         {
             loss = true;
         }
@@ -226,7 +226,10 @@ public class GameManager : MonoBehaviour
             done_menu.SetActive(true);
             set_done_text(win,loss);
         }
-        
+        if (noteShooter.marker == "END")
+        {
+            loss = true;
+        }
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start")) && game_started)
         {
             if (!GameManager.Instance.game_paused)
