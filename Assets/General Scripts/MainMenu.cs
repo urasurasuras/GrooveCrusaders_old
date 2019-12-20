@@ -33,4 +33,8 @@ public class MainMenu : MonoBehaviour
         //SceneManager.UnloadScene(current_scene.name);
         SceneManager.LoadScene(current_scene.name);
     }
+    public void sitInSilence()
+    {
+        Application.Quit();
+    }
 }

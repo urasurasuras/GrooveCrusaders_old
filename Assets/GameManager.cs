@@ -109,8 +109,13 @@ public class GameManager : MonoBehaviour
             {
                 foreach (PlayerControl pc in playerList)
                 {
-                    if(pc.GetComponent<weapon>().timeSinceAttackReq<0.2 && !pc.GetComponent<weapon>().hasFired /*&& pc.GetComponent<weapon>().hasRequestedFire*/)
-                        pc.GetComponent<weapon>().fire();
+                    
+                        if (pc.GetComponent<weapon>().timeSinceAttackReq < 0.2 && !pc.GetComponent<weapon>().hasFired /*&& pc.GetComponent<weapon>().hasRequestedFire*/)
+                        {
+                            print("Attack");
+                            pc.GetComponent<weapon>().fire();
+                        }
+                    
                 }
             }
         }

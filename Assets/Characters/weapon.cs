@@ -32,6 +32,7 @@ public class weapon : MonoBehaviour
     public void fire()
     {
         attack = Instantiate(attackPrefab, firePoint.position, firePoint.rotation);
+
         if (attack.GetComponent<projectile>())
         {
             attack.GetComponent<projectile>().owner = gameObject;

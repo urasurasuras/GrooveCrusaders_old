@@ -152,7 +152,7 @@ public class TwitchController : MonoBehaviour
             {
                 login_status.text = "Logged in as " + username +". \nConnected to "+channelname+"'s chat.";
             }
-            else if (message.Contains("PRIVMSG"))
+            if (message.Contains("PRIVMSG"))
             {
                 //strip name
                 var splitPoint = message.IndexOf("!", 1);
@@ -164,10 +164,13 @@ public class TwitchController : MonoBehaviour
                 message = message.Substring(splitPoint + 1);
                 print(String.Format("{0}: {1}", chatName, message));
 
-                if (message.StartsWith("!heal"))
-                    GameManager.Instance.vote_heal += 1;
-                else if (message.StartsWith("!damage"))
-                    GameManager.Instance.vote_damage += 1;
+                if (GameManager.Instance != null)
+                {
+                    if (message.StartsWith("!heal"))
+                        GameManager.Instance.vote_heal += 1;
+                    else if (message.StartsWith("!damage"))
+                        GameManager.Instance.vote_damage += 1;
+                }
             }
             else if (message.Contains("PING "))
             {

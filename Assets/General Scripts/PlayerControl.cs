@@ -85,7 +85,7 @@ public class PlayerControl : MonoBehaviour
 
         try
         {
-            print(Input.GetJoystickNames()[controllerNum]);
+            var num = Input.GetJoystickNames()[controllerNum];
             if (Mathf.Abs(Input.GetAxis("Joy" + controllerNum + "X")) > contDeadz)
             {
                 //print("transforming player " + gameObject.name);
