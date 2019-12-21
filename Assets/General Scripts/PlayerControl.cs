@@ -188,21 +188,55 @@ public class PlayerControl : MonoBehaviour
             verticalAxis = Input.GetAxis("kyb_vertical") * speed * 0.5f;
 
             //print(horizontalAxis);
-            if (horizontalAxis < 0)             //facing left
+            if (gameObject.name != "char1")
             {
-                transform.eulerAngles = new Vector3(0, 180, 0);
-                transform.Translate(-horizontalAxis, 0, 0);
-                facingRight = false;
-                //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                if (horizontalAxis < 0)         //facing left
+                {
+                    transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                    transform.Translate(-horizontalAxis, 0, 0);
+                    facingRight = false;
+                    //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                }
+                else if (horizontalAxis > 0)    //facing right
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                    transform.Translate(horizontalAxis, 0, 0);
+                    facingRight = true;
+                    //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                }
             }
-            else if (horizontalAxis > 0)        //facing right
+            else if (gameObject.name == "char1" && !isDrummerStationary)
             {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                transform.Translate(horizontalAxis, 0, 0);
-                facingRight = true;
-                //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                if (horizontalAxis < 0)         //facing left
+                {
+                    transform.eulerAngles = new Vector3(0, 180, 0); // Flipped
+                    transform.Translate(-horizontalAxis, 0, 0);
+                    facingRight = false;
+                    //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+                }
+                else if (horizontalAxis > 0)    //facing right
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0); // Flipped
+                    transform.Translate(horizontalAxis, 0, 0);
+                    facingRight = true;
+                    //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
+                }
+            }
+            //if (horizontalAxis < 0)             //facing left
+            //{
+            //    transform.eulerAngles = new Vector3(0, 180, 0);
+            //    transform.Translate(-horizontalAxis, 0, 0);
+            //    facingRight = false;
+            //    //Debug.Log("Horizontal axis when less than 0: " + horizontalAxis);
+            //}
+            //else if (horizontalAxis > 0)        //facing right
+            //{
+            //    transform.eulerAngles = new Vector3(0, 0, 0);
+            //    transform.Translate(horizontalAxis, 0, 0);
+            //    facingRight = true;
+            //    //Debug.Log("Horizontal axis when more than 0: " + horizontalAxis);
 
-            }
+            //}
             if (gameObject.name != "char1")
             {
                 transform.Translate(0, verticalAxis, 0);
