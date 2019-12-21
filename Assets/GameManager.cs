@@ -265,9 +265,9 @@ public class GameManager : MonoBehaviour
     private void set_done_text(bool win, bool loss)
     {
         if(win)
-            done_menu.transform.Find("W-L").GetComponent<Text>().text = "you WIN";
+            done_menu.transform.Find("W-L").GetComponent<Text>().text = "You...WON !";
         if(loss)
-            done_menu.transform.Find("W-L").GetComponent<Text>().text = "you LOST";
+            done_menu.transform.Find("W-L").GetComponent<Text>().text = "You...LOST !";
     }
 
     void setPaused(bool paused)
