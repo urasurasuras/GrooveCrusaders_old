@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 114751950787672262}
-  - {fileID: 114051425988986486}
+  - {fileID: 114180856315234876}
+  - {fileID: 114457626292843910}
   EditorEvents:
   - {fileID: 114800767410059980}
   - {fileID: 114668326013872436}
@@ -22,10 +22,10 @@ MonoBehaviour:
   - {fileID: 114549840763847740}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 114051425988986486}
+  - {fileID: 114457626292843910}
   StringsBanks:
-  - {fileID: 114751950787672262}
-  stringsBankWriteTime: 637124391497784208
+  - {fileID: 114180856315234876}
+  stringsBankWriteTime: 637124671121545454
   cacheVersion: 3
 --- !u!114 &114000941466758786
 MonoBehaviour:
@@ -89,6 +89,23 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/GameEvent - Local Forecast/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
+--- !u!114 &114018210895377532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NJIT Theme/Boss Health
   m_EditorClassIdentifier: 
   Name: Boss Health
   Min: 0
@@ -900,6 +917,43 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &114172947698725776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainEvent/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
+--- !u!114 &114180856315234876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: D:/Belgelerim/DERSLER/IT286/GCv2/GC2/healthscale/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637124671121545454
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1122
+  Exists: 1
 --- !u!114 &114182530616929418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1866,6 +1920,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &114443852264460238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NJIT Theme/Player Health
+  m_EditorClassIdentifier: 
+  Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
 --- !u!114 &114444308676137982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1967,6 +2038,26 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 100
+  Exists: 1
+--- !u!114 &114457626292843910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: D:/Belgelerim/DERSLER/IT286/GCv2/GC2/healthscale/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637124671121535446
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 6451968
   Exists: 1
 --- !u!114 &114459310441788870
 MonoBehaviour:
@@ -2070,6 +2161,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &114495664475325322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/CEQ_High
+  m_EditorClassIdentifier: 
+  Name: CEQ_High
+  Min: -1
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &114496827348901994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2189,6 +2297,23 @@ MonoBehaviour:
   Max: 100
   Default: 100
   Exists: 0
+--- !u!114 &114529763999742380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/CEQ_Mid
+  m_EditorClassIdentifier: 
+  Name: CEQ_Mid
+  Min: -1
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &114536719872327728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2255,13 +2380,13 @@ MonoBehaviour:
   Path: event:/NJIT Theme
   guid: b9be286e1c419d439b4c7f232c8071f3
   Banks:
-  - {fileID: 114051425988986486}
+  - {fileID: 114457626292843910}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114943526943339510}
-  - {fileID: 114165903692974134}
+  - {fileID: 114018210895377532}
+  - {fileID: 114443852264460238}
   MinDistance: 0
   MaxDistance: 0
   Length: 83967
@@ -2552,7 +2677,7 @@ MonoBehaviour:
   Path: event:/NoteMiss
   guid: 8fe248de9691274ea87989ab8c8d10b1
   Banks:
-  - {fileID: 114051425988986486}
+  - {fileID: 114457626292843910}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2694,16 +2819,16 @@ MonoBehaviour:
   Path: event:/GameEvent - Local Forecast
   guid: ac121e96a8e20841b2d29d9a7e379366
   Banks:
-  - {fileID: 114051425988986486}
+  - {fileID: 114457626292843910}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114382651468643624}
-  - {fileID: 114157589027792780}
-  - {fileID: 114182530616929418}
-  - {fileID: 114071781028324924}
-  - {fileID: 114665248395087602}
+  - {fileID: 114969601018765864}
+  - {fileID: 114757248975604726}
+  - {fileID: 114495664475325322}
+  - {fileID: 114529763999742380}
+  - {fileID: 114771290628346078}
   MinDistance: 0
   MaxDistance: 0
   Length: 167741
@@ -2740,6 +2865,23 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: 0
+  Exists: 1
+--- !u!114 &114674988188790100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MainEvent/Player Health
+  m_EditorClassIdentifier: 
+  Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
   Exists: 1
 --- !u!114 &114680172367374782
 MonoBehaviour:
@@ -3226,6 +3368,23 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &114757248975604726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/CEQ_Low
+  m_EditorClassIdentifier: 
+  Name: CEQ_Low
+  Min: -1
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &114765961532719428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3259,6 +3418,23 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: 0
+  Exists: 1
+--- !u!114 &114771290628346078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/Player Health
+  m_EditorClassIdentifier: 
+  Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
   Exists: 1
 --- !u!114 &114783540020279510
 MonoBehaviour:
@@ -3377,13 +3553,13 @@ MonoBehaviour:
   Path: event:/MainEvent
   guid: f50bc41800c06f478f3da00c3a48d9c6
   Banks:
-  - {fileID: 114051425988986486}
+  - {fileID: 114457626292843910}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114636734095846594}
-  - {fileID: 114454864057142748}
+  - {fileID: 114172947698725776}
+  - {fileID: 114674988188790100}
   MinDistance: 0
   MaxDistance: 0
   Length: 189146
@@ -4070,6 +4246,23 @@ MonoBehaviour:
   m_Name: parameter:/MainEvent/Player Health
   m_EditorClassIdentifier: 
   Name: Player Health
+  Min: 0
+  Max: 100
+  Default: 100
+  Exists: 1
+--- !u!114 &114969601018765864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GameEvent - Local Forecast/Boss Health
+  m_EditorClassIdentifier: 
+  Name: Boss Health
   Min: 0
   Max: 100
   Default: 100

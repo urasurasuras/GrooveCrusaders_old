@@ -21,21 +21,21 @@ public class ControllerGui : MonoBehaviour
             cont0.text = Input.GetJoystickNames()[0];
         }catch (System.IndexOutOfRangeException e)
         {
-            cont0.text = "No controller connected, move by WASD";
+            cont0.text = "No controller connected, move with WASD";
         }
         try
         {
             cont1.text = Input.GetJoystickNames()[1];
         }catch (System.IndexOutOfRangeException e)
         {
-            cont1.text = "No controller connected, move by WASD";
+            cont1.text = "No controller connected, move with WASD";
         }
         try
         {
             cont2.text = Input.GetJoystickNames()[2];
         }catch (System.IndexOutOfRangeException e)
         {
-            cont2.text = "No controller connected, move by WASD";
+            cont2.text = "No controller connected, move with WASD";
         }        
     }
 }
